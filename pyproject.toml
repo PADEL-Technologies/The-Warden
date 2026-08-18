@@ -18,5 +18,4 @@ dev = [
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["."]  # ponytail: no build-system needed, this app is never packaged
+pythonpath = ["."]

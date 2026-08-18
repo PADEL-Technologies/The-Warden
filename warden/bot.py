@@ -28,6 +28,8 @@ class Warden(commands.Bot):
         for module in feature_modules():
             await self.load_extension(module)
 
+        await self.tree.sync()
+
         # ponytail: SIGINT is already handled by Bot.run(); SIGTERM is what
         # docker/k8s send and discord.py does not install a handler for it.
         with contextlib.suppress(NotImplementedError):  # Windows

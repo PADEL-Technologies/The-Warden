@@ -1,62 +1,68 @@
 {
   "main.py": {
     "mtime": 1787068747.7270756,
-    "seen": 1787074820.5753517,
+    "seen": 1787075104.003108,
     "ast_hash": "2f33da727b0ab2a663a665323181ca0c",
     "semantic_hash": "2f33da727b0ab2a663a665323181ca0c"
   },
   "warden/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787074820.575355,
+    "seen": 1787075104.0031135,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/bot.py": {
     "mtime": 1787069744.6361575,
-    "seen": 1787074820.5753567,
+    "seen": 1787075104.0031145,
     "ast_hash": "f3be0f4f67d6249bdcdeaeee52cdf806",
     "semantic_hash": "f3be0f4f67d6249bdcdeaeee52cdf806"
   },
   "warden/features/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787074820.5753577,
+    "seen": 1787075104.0031152,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/features/ping/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787074820.5753584,
+    "seen": 1787075104.0031164,
     "ast_hash": "808b115a6980d9ce4fe6b505e1c86009",
     "semantic_hash": "808b115a6980d9ce4fe6b505e1c86009"
   },
   "warden/features/ping/handlers/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787074820.5753593,
+    "seen": 1787075104.0031168,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/features/ping/handlers/ping_handler.py": {
     "mtime": 1787069744.6361575,
-    "seen": 1787074820.57536,
+    "seen": 1787075104.0031176,
     "ast_hash": "3354cde9b232fcac859eb68fea2f78c1",
     "semantic_hash": "3354cde9b232fcac859eb68fea2f78c1"
   },
   "warden/features/ping/services/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787074820.575361,
+    "seen": 1787075104.003118,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/features/ping/services/ping_service.py": {
     "mtime": 1787069647.164972,
-    "seen": 1787074820.5753615,
+    "seen": 1787075104.0031188,
     "ast_hash": "728468c55babd3b64fd496d680e65d07",
     "semantic_hash": "728468c55babd3b64fd496d680e65d07"
   },
   "warden/features/ping/services/protocol.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787074820.5753622,
+    "seen": 1787075104.0031195,
     "ast_hash": "a1f109f38fde9042dce6c5dc2f0a1609",
     "semantic_hash": "a1f109f38fde9042dce6c5dc2f0a1609"
+  },
+  "tests/test_smoke.py": {
+    "mtime": 1787075043.3565936,
+    "seen": 1787075104.0031114,
+    "ast_hash": "d447aa26c0c01206b72b25dbbfab3d8b",
+    "semantic_hash": "d447aa26c0c01206b72b25dbbfab3d8b"
   }
 }
