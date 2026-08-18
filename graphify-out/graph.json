@@ -11,9 +11,9 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "warden_bot_warden",
       "community": 0,
-      "norm_label": "warden"
+      "norm_label": "warden",
+      "id": "warden_bot_warden"
     },
     {
       "label": "PingService",
@@ -23,9 +23,9 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "warden_features_ping_services_ping_service_pingservice",
       "community": 1,
-      "norm_label": "pingservice"
+      "norm_label": "pingservice",
+      "id": "warden_features_ping_services_ping_service_pingservice"
     },
     {
       "label": "PingHandlers",
@@ -35,9 +35,9 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "warden_features_ping_handlers_ping_handler_pinghandlers",
       "community": 2,
-      "norm_label": "pinghandlers"
+      "norm_label": "pinghandlers",
+      "id": "warden_features_ping_handlers_ping_handler_pinghandlers"
     },
     {
       "label": "PingService",
@@ -47,9 +47,9 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "warden_features_ping_services_protocol_pingservice",
       "community": 2,
-      "norm_label": "pingservice"
+      "norm_label": "pingservice",
+      "id": "warden_features_ping_services_protocol_pingservice"
     },
     {
       "label": "feature_modules()",
@@ -58,9 +58,9 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_bot_feature_modules",
       "community": 0,
-      "norm_label": "feature_modules()"
+      "norm_label": "feature_modules()",
+      "id": "warden_bot_feature_modules"
     },
     {
       "label": ".__init__()",
@@ -69,9 +69,9 @@
       "source_location": "L22",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_bot_warden_init",
       "community": 0,
-      "norm_label": ".__init__()"
+      "norm_label": ".__init__()",
+      "id": "warden_bot_warden_init"
     },
     {
       "label": ".setup_hook()",
@@ -80,9 +80,9 @@
       "source_location": "L27",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_bot_warden_setup_hook",
       "community": 0,
-      "norm_label": ".setup_hook()"
+      "norm_label": ".setup_hook()",
+      "id": "warden_bot_warden_setup_hook"
     },
     {
       "label": "setup()",
@@ -91,9 +91,9 @@
       "source_location": "L9",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_features_ping_init_setup",
       "community": 1,
-      "norm_label": "setup()"
+      "norm_label": "setup()",
+      "id": "warden_features_ping_init_setup"
     },
     {
       "label": ".format_latency()",
@@ -102,9 +102,9 @@
       "source_location": "L2",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_features_ping_services_ping_service_pingservice_format_latency",
       "community": 1,
-      "norm_label": ".format_latency()"
+      "norm_label": ".format_latency()",
+      "id": "warden_features_ping_services_ping_service_pingservice_format_latency"
     },
     {
       "label": ".format_latency()",
@@ -113,9 +113,9 @@
       "source_location": "L5",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_features_ping_services_protocol_pingservice_format_latency",
       "community": 2,
-      "norm_label": ".format_latency()"
+      "norm_label": ".format_latency()",
+      "id": "warden_features_ping_services_protocol_pingservice_format_latency"
     },
     {
       "label": ".ping()",
@@ -124,9 +124,9 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_features_ping_handlers_ping_handler_pinghandlers_ping",
       "community": 3,
-      "norm_label": ".ping()"
+      "norm_label": ".ping()",
+      "id": "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
     },
     {
       "label": ".__init__()",
@@ -135,9 +135,9 @@
       "source_location": "L7",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_features_ping_handlers_ping_handler_pinghandlers_init",
       "community": 4,
-      "norm_label": ".__init__()"
+      "norm_label": ".__init__()",
+      "id": "warden_features_ping_handlers_ping_handler_pinghandlers_init"
     },
     {
       "label": "main.py",
@@ -145,9 +145,9 @@
       "source_file": "main.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "main",
       "community": 0,
-      "norm_label": "main.py"
+      "norm_label": "main.py",
+      "id": "main"
     },
     {
       "label": "bot.py",
@@ -155,9 +155,9 @@
       "source_file": "warden/bot.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_bot",
       "community": 0,
-      "norm_label": "bot.py"
+      "norm_label": "bot.py",
+      "id": "warden_bot"
     },
     {
       "label": "Every feature package under warden/features/. Adding one = adding a folder.",
@@ -165,9 +165,9 @@
       "source_file": "warden/bot.py",
       "source_location": "L13",
       "_origin": "ast",
-      "id": "warden_bot_rationale_13",
       "community": 0,
-      "norm_label": "every feature package under warden/features/. adding one = adding a folder."
+      "norm_label": "every feature package under warden/features/. adding one = adding a folder.",
+      "id": "warden_bot_rationale_13"
     },
     {
       "label": "ping/__init__.py",
@@ -175,9 +175,9 @@
       "source_file": "warden/features/ping/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_ping_init",
       "community": 1,
-      "norm_label": "ping/__init__.py"
+      "norm_label": "ping/__init__.py",
+      "id": "warden_features_ping_init"
     },
     {
       "label": "Bot",
@@ -185,9 +185,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "warden_features_ping_init_py_bot",
       "community": 1,
-      "norm_label": "bot"
+      "norm_label": "bot",
+      "id": "warden_features_ping_init_py_bot"
     },
     {
       "label": "ping_service.py",
@@ -195,9 +195,9 @@
       "source_file": "warden/features/ping/services/ping_service.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_ping_services_ping_service",
       "community": 1,
-      "norm_label": "ping_service.py"
+      "norm_label": "ping_service.py",
+      "id": "warden_features_ping_services_ping_service"
     },
     {
       "label": "Ping feature. Wiring only \u2014 handlers and services live in their own folders.",
@@ -205,9 +205,9 @@
       "source_file": "warden/features/ping/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_ping_init_rationale_1",
       "community": 1,
-      "norm_label": "ping feature. wiring only \u2014 handlers and services live in their own folders."
+      "norm_label": "ping feature. wiring only \u2014 handlers and services live in their own folders.",
+      "id": "warden_features_ping_init_rationale_1"
     },
     {
       "label": "Protocol",
@@ -215,9 +215,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "protocol",
       "community": 2,
-      "norm_label": "protocol"
+      "norm_label": "protocol",
+      "id": "protocol"
     },
     {
       "label": "ping_handler.py",
@@ -225,9 +225,9 @@
       "source_file": "warden/features/ping/handlers/ping_handler.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_ping_handlers_ping_handler",
       "community": 2,
-      "norm_label": "ping_handler.py"
+      "norm_label": "ping_handler.py",
+      "id": "warden_features_ping_handlers_ping_handler"
     },
     {
       "label": "protocol.py",
@@ -235,9 +235,9 @@
       "source_file": "warden/features/ping/services/protocol.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_ping_services_protocol",
       "community": 2,
-      "norm_label": "protocol.py"
+      "norm_label": "protocol.py",
+      "id": "warden_features_ping_services_protocol"
     },
     {
       "label": "Context",
@@ -245,9 +245,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "context",
       "community": 3,
-      "norm_label": "context"
+      "norm_label": "context",
+      "id": "context"
     },
     {
       "label": "hybrid_command",
@@ -255,9 +255,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "hybrid_command",
       "community": 3,
-      "norm_label": "hybrid_command"
+      "norm_label": "hybrid_command",
+      "id": "hybrid_command"
     },
     {
       "label": "PingService",
@@ -265,9 +265,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "pingservice",
       "community": 4,
-      "norm_label": "pingservice"
+      "norm_label": "pingservice",
+      "id": "pingservice"
     },
     {
       "label": "Bot",
@@ -275,9 +275,9 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "warden_features_ping_handlers_ping_handler_py_bot",
       "community": 4,
-      "norm_label": "bot"
+      "norm_label": "bot",
+      "id": "warden_features_ping_handlers_ping_handler_py_bot"
     },
     {
       "label": "features/__init__.py",
@@ -285,9 +285,9 @@
       "source_file": "warden/features/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_init",
       "community": 5,
-      "norm_label": "features/__init__.py"
+      "norm_label": "features/__init__.py",
+      "id": "warden_features_init"
     },
     {
       "label": "handlers/__init__.py",
@@ -295,9 +295,9 @@
       "source_file": "warden/features/ping/handlers/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_ping_handlers_init",
       "community": 6,
-      "norm_label": "handlers/__init__.py"
+      "norm_label": "handlers/__init__.py",
+      "id": "warden_features_ping_handlers_init"
     },
     {
       "label": "services/__init__.py",
@@ -305,9 +305,9 @@
       "source_file": "warden/features/ping/services/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_features_ping_services_init",
       "community": 7,
-      "norm_label": "services/__init__.py"
+      "norm_label": "services/__init__.py",
+      "id": "warden_features_ping_services_init"
     },
     {
       "label": "warden/__init__.py",
@@ -315,9 +315,9 @@
       "source_file": "warden/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "warden_init",
       "community": 8,
-      "norm_label": "warden/__init__.py"
+      "norm_label": "warden/__init__.py",
+      "id": "warden_init"
     }
   ],
   "links": [
@@ -329,9 +329,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_bot_warden_setup_hook",
-      "target": "warden_bot_feature_modules",
-      "confidence_score": 1.0
+      "target": "warden_bot_feature_modules"
     },
     {
       "relation": "calls",
@@ -341,9 +341,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init_setup",
-      "target": "warden_features_ping_handlers_ping_handler_pinghandlers",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_handlers_ping_handler_pinghandlers"
     },
     {
       "relation": "calls",
@@ -353,9 +353,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init_setup",
-      "target": "warden_features_ping_services_ping_service_pingservice",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_ping_service_pingservice"
     },
     {
       "relation": "references",
@@ -365,9 +365,9 @@
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers_ping",
-      "target": "hybrid_command",
-      "confidence_score": 1.0
+      "target": "hybrid_command"
     },
     {
       "relation": "re_exports",
@@ -377,9 +377,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init",
-      "target": "warden_features_ping_handlers_ping_handler",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_handlers_ping_handler"
     },
     {
       "relation": "re_exports",
@@ -389,9 +389,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init",
-      "target": "warden_features_ping_services_ping_service",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_ping_service"
     },
     {
       "relation": "imports",
@@ -401,9 +401,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "main",
-      "target": "warden_bot_warden",
-      "confidence_score": 1.0
+      "target": "warden_bot_warden"
     },
     {
       "relation": "imports",
@@ -413,9 +413,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler",
-      "target": "warden_features_ping_services_protocol_pingservice",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_protocol_pingservice"
     },
     {
       "relation": "imports",
@@ -425,9 +425,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init",
-      "target": "warden_features_ping_handlers_ping_handler_pinghandlers",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_handlers_ping_handler_pinghandlers"
     },
     {
       "relation": "imports",
@@ -437,9 +437,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init",
-      "target": "warden_features_ping_services_ping_service_pingservice",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_ping_service_pingservice"
     },
     {
       "relation": "imports_from",
@@ -449,9 +449,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "main",
-      "target": "warden_bot",
-      "confidence_score": 1.0
+      "target": "warden_bot"
     },
     {
       "relation": "imports_from",
@@ -461,9 +461,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler",
-      "target": "warden_features_ping_services_protocol",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_protocol"
     },
     {
       "relation": "references",
@@ -473,9 +473,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers_init",
-      "target": "pingservice",
-      "confidence_score": 1.0
+      "target": "pingservice"
     },
     {
       "relation": "references",
@@ -485,9 +485,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers_init",
-      "target": "warden_features_ping_handlers_ping_handler_py_bot",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_handlers_ping_handler_py_bot"
     },
     {
       "relation": "references",
@@ -497,9 +497,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers_ping",
-      "target": "context",
-      "confidence_score": 1.0
+      "target": "context"
     },
     {
       "relation": "references",
@@ -509,9 +509,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init_setup",
-      "target": "warden_features_ping_init_py_bot",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_init_py_bot"
     },
     {
       "relation": "contains",
@@ -520,9 +520,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_bot",
-      "target": "warden_bot_feature_modules",
-      "confidence_score": 1.0
+      "target": "warden_bot_feature_modules"
     },
     {
       "relation": "contains",
@@ -531,9 +531,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_bot",
-      "target": "warden_bot_warden",
-      "confidence_score": 1.0
+      "target": "warden_bot_warden"
     },
     {
       "relation": "contains",
@@ -542,9 +542,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler",
-      "target": "warden_features_ping_handlers_ping_handler_pinghandlers",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_handlers_ping_handler_pinghandlers"
     },
     {
       "relation": "contains",
@@ -553,9 +553,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init",
-      "target": "warden_features_ping_init_setup",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_init_setup"
     },
     {
       "relation": "contains",
@@ -564,9 +564,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_services_ping_service",
-      "target": "warden_features_ping_services_ping_service_pingservice",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_ping_service_pingservice"
     },
     {
       "relation": "contains",
@@ -575,9 +575,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_services_protocol",
-      "target": "warden_features_ping_services_protocol_pingservice",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_protocol_pingservice"
     },
     {
       "relation": "inherits",
@@ -586,9 +586,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_services_protocol_pingservice",
-      "target": "protocol",
-      "confidence_score": 1.0
+      "target": "protocol"
     },
     {
       "relation": "method",
@@ -597,9 +597,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_bot_warden",
-      "target": "warden_bot_warden_init",
-      "confidence_score": 1.0
+      "target": "warden_bot_warden_init"
     },
     {
       "relation": "method",
@@ -608,9 +608,9 @@
       "source_location": "L27",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_bot_warden",
-      "target": "warden_bot_warden_setup_hook",
-      "confidence_score": 1.0
+      "target": "warden_bot_warden_setup_hook"
     },
     {
       "relation": "method",
@@ -619,9 +619,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers",
-      "target": "warden_features_ping_handlers_ping_handler_pinghandlers_ping",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
     },
     {
       "relation": "method",
@@ -630,9 +630,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers",
-      "target": "warden_features_ping_handlers_ping_handler_pinghandlers_init",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_handlers_ping_handler_pinghandlers_init"
     },
     {
       "relation": "method",
@@ -641,9 +641,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_services_ping_service_pingservice",
-      "target": "warden_features_ping_services_ping_service_pingservice_format_latency",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_ping_service_pingservice_format_latency"
     },
     {
       "relation": "method",
@@ -652,9 +652,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_services_protocol_pingservice",
-      "target": "warden_features_ping_services_protocol_pingservice_format_latency",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_services_protocol_pingservice_format_latency"
     },
     {
       "relation": "rationale_for",
@@ -663,9 +663,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_bot_rationale_13",
-      "target": "warden_bot_feature_modules",
-      "confidence_score": 1.0
+      "target": "warden_bot_feature_modules"
     },
     {
       "relation": "rationale_for",
@@ -674,9 +674,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "warden_features_ping_init_rationale_1",
-      "target": "warden_features_ping_init",
-      "confidence_score": 1.0
+      "target": "warden_features_ping_init"
     },
     {
       "relation": "uses",
@@ -685,11 +685,11 @@
       "source_location": "L7",
       "weight": 0.8,
       "_origin": "ast",
+      "confidence_score": 0.5,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers",
-      "target": "warden_features_ping_services_protocol_pingservice",
-      "confidence_score": 0.5
+      "target": "warden_features_ping_services_protocol_pingservice"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1fe739cf765a8778dcaa6ed1cae4321b81f76f09"
+  "built_at_commit": "bbc0728d08ae7e39423da1ce28899d7cb17f7927"
 }
