@@ -1,0 +1,144 @@
+{
+  "communities": {
+    "0": [
+      "main",
+      "warden_bot",
+      "warden_bot_feature_modules",
+      "warden_bot_rationale_13",
+      "warden_bot_warden",
+      "warden_bot_warden_init",
+      "warden_bot_warden_setup_hook"
+    ],
+    "1": [
+      "warden_features_ping_init",
+      "warden_features_ping_init_py_bot",
+      "warden_features_ping_init_rationale_1",
+      "warden_features_ping_init_setup",
+      "warden_features_ping_services_ping_service",
+      "warden_features_ping_services_ping_service_pingservice",
+      "warden_features_ping_services_ping_service_pingservice_format_latency"
+    ],
+    "2": [
+      "protocol",
+      "warden_features_ping_handlers_ping_handler",
+      "warden_features_ping_handlers_ping_handler_pinghandlers",
+      "warden_features_ping_services_protocol",
+      "warden_features_ping_services_protocol_pingservice",
+      "warden_features_ping_services_protocol_pingservice_format_latency"
+    ],
+    "3": [
+      "context",
+      "hybrid_command",
+      "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
+    ],
+    "4": [
+      "pingservice",
+      "warden_features_ping_handlers_ping_handler_pinghandlers_init",
+      "warden_features_ping_handlers_ping_handler_py_bot"
+    ],
+    "5": [
+      "warden_features_init"
+    ],
+    "6": [
+      "warden_features_ping_handlers_init"
+    ],
+    "7": [
+      "warden_features_ping_services_init"
+    ],
+    "8": [
+      "warden_init"
+    ]
+  },
+  "cohesion": {
+    "0": 0.38095238095238093,
+    "1": 0.38095238095238093,
+    "2": 0.4666666666666667,
+    "3": 0.6666666666666666,
+    "4": 0.6666666666666666,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0
+  },
+  "gods": [
+    {
+      "id": "warden_features_ping_handlers_ping_handler_pinghandlers",
+      "label": "PingHandlers",
+      "degree": 6
+    },
+    {
+      "id": "warden_features_ping_services_protocol_pingservice",
+      "label": "PingService",
+      "degree": 5
+    },
+    {
+      "id": "warden_bot_warden",
+      "label": "Warden",
+      "degree": 4
+    },
+    {
+      "id": "warden_features_ping_services_ping_service_pingservice",
+      "label": "PingService",
+      "degree": 4
+    },
+    {
+      "id": "warden_features_ping_init_setup",
+      "label": "setup()",
+      "degree": 4
+    },
+    {
+      "id": "warden_bot_feature_modules",
+      "label": "feature_modules()",
+      "degree": 3
+    },
+    {
+      "id": "warden_bot_rationale_13",
+      "label": "Every feature package under warden/features/. Adding one = adding a folder.",
+      "degree": 1
+    },
+    {
+      "id": "warden_features_ping_init_rationale_1",
+      "label": "Ping feature. Wiring only \u2014 handlers and services live in their own folders.",
+      "degree": 1
+    }
+  ],
+  "surprises": [
+    {
+      "source": "PingHandlers",
+      "target": "PingService",
+      "source_files": [
+        "warden/features/ping/handlers/ping_handler.py",
+        "warden/features/ping/services/protocol.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source"
+    },
+    {
+      "source": "setup()",
+      "target": "PingHandlers",
+      "source_files": [
+        "warden/features/ping/__init__.py",
+        "warden/features/ping/handlers/ping_handler.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "setup()",
+      "target": "PingService",
+      "source_files": [
+        "warden/features/ping/__init__.py",
+        "warden/features/ping/services/ping_service.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

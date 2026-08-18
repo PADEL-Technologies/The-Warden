@@ -11,3 +11,7 @@ wheels/
 
 # Docs (local only)
 docs/
+
+# graphify machine-local state (regenerated per machine)
+graphify-out/.graphify_python
+graphify-out/.graphify_root
