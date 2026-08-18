@@ -8,6 +8,6 @@ class PingHandlers(commands.Cog):
         self.bot = bot
         self.service = service
 
-    @commands.command()
+    @commands.hybrid_command()
     async def ping(self, ctx: commands.Context) -> None:
         await ctx.send(f"Pong! {self.service.format_latency(self.bot.latency)}")
