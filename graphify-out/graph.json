@@ -11,33 +11,9 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 0,
+      "community": 1,
       "norm_label": "warden",
       "id": "warden_bot_warden"
-    },
-    {
-      "label": "PingService",
-      "file_type": "code",
-      "source_file": "warden/features/ping/services/ping_service.py",
-      "source_location": "L1",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "pingservice",
-      "id": "warden_features_ping_services_ping_service_pingservice"
-    },
-    {
-      "label": "PingHandlers",
-      "file_type": "code",
-      "source_file": "warden/features/ping/handlers/ping_handler.py",
-      "source_location": "L6",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "norm_label": "pinghandlers",
-      "id": "warden_features_ping_handlers_ping_handler_pinghandlers"
     },
     {
       "label": "PingService",
@@ -52,6 +28,30 @@
       "id": "warden_features_ping_services_protocol_pingservice"
     },
     {
+      "label": "PingService",
+      "file_type": "code",
+      "source_file": "warden/features/ping/services/ping_service.py",
+      "source_location": "L1",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "pingservice",
+      "id": "warden_features_ping_services_ping_service_pingservice"
+    },
+    {
+      "label": "PingHandlers",
+      "file_type": "code",
+      "source_file": "warden/features/ping/handlers/ping_handler.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "pinghandlers",
+      "id": "warden_features_ping_handlers_ping_handler_pinghandlers"
+    },
+    {
       "label": "test_feature_modules_discovers_ping()",
       "file_type": "code",
       "source_file": "tests/test_smoke.py",
@@ -59,7 +59,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_smoke_test_feature_modules_discovers_ping",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_feature_modules_discovers_ping()"
     },
     {
@@ -69,7 +69,7 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "community": 0,
+      "community": 1,
       "norm_label": "feature_modules()",
       "id": "warden_bot_feature_modules"
     },
@@ -80,7 +80,7 @@
       "source_location": "L22",
       "_callable": true,
       "_origin": "ast",
-      "community": 0,
+      "community": 1,
       "norm_label": ".__init__()",
       "id": "warden_bot_warden_init"
     },
@@ -91,31 +91,9 @@
       "source_location": "L27",
       "_callable": true,
       "_origin": "ast",
-      "community": 0,
+      "community": 1,
       "norm_label": ".setup_hook()",
       "id": "warden_bot_warden_setup_hook"
-    },
-    {
-      "label": "setup()",
-      "file_type": "code",
-      "source_file": "warden/features/ping/__init__.py",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "setup()",
-      "id": "warden_features_ping_init_setup"
-    },
-    {
-      "label": ".format_latency()",
-      "file_type": "code",
-      "source_file": "warden/features/ping/services/ping_service.py",
-      "source_location": "L2",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": ".format_latency()",
-      "id": "warden_features_ping_services_ping_service_pingservice_format_latency"
     },
     {
       "label": ".format_latency()",
@@ -129,15 +107,15 @@
       "id": "warden_features_ping_services_protocol_pingservice_format_latency"
     },
     {
-      "label": ".ping()",
+      "label": ".format_latency()",
       "file_type": "code",
-      "source_file": "warden/features/ping/handlers/ping_handler.py",
-      "source_location": "L12",
+      "source_file": "warden/features/ping/services/ping_service.py",
+      "source_location": "L2",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "norm_label": ".ping()",
-      "id": "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
+      "norm_label": ".format_latency()",
+      "id": "warden_features_ping_services_ping_service_pingservice_format_latency"
     },
     {
       "label": ".__init__()",
@@ -151,12 +129,134 @@
       "id": "warden_features_ping_handlers_ping_handler_pinghandlers_init"
     },
     {
+      "label": ".ping()",
+      "file_type": "code",
+      "source_file": "warden/features/ping/handlers/ping_handler.py",
+      "source_location": "L12",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": ".ping()",
+      "id": "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
+    },
+    {
+      "label": "setup()",
+      "file_type": "code",
+      "source_file": "warden/features/ping/__init__.py",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "setup()",
+      "id": "warden_features_ping_init_setup"
+    },
+    {
+      "label": "opencode.json",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "opencode",
+      "community": 0,
+      "norm_label": "opencode.json"
+    },
+    {
+      "label": "lsp",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "opencode_lsp",
+      "community": 0,
+      "norm_label": "lsp"
+    },
+    {
+      "label": "pyright",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "opencode_lsp_pyright",
+      "community": 0,
+      "norm_label": "pyright"
+    },
+    {
+      "label": "command",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "opencode_pyright_command",
+      "community": 0,
+      "norm_label": "command"
+    },
+    {
+      "label": "extensions",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "opencode_pyright_extensions",
+      "community": 0,
+      "norm_label": "extensions"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "opencode_schema",
+      "community": 0,
+      "norm_label": "$schema"
+    },
+    {
+      "label": ".py",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "ref_py",
+      "community": 0,
+      "norm_label": ".py"
+    },
+    {
+      "label": ".pyi",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "ref_pyi",
+      "community": 0,
+      "norm_label": ".pyi"
+    },
+    {
+      "label": "pyright-langserver",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "ref_pyright_langserver",
+      "community": 0,
+      "norm_label": "pyright-langserver"
+    },
+    {
+      "label": "--stdio",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "ref_stdio",
+      "community": 0,
+      "norm_label": "--stdio"
+    },
+    {
       "label": "main.py",
       "file_type": "code",
       "source_file": "main.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 1,
       "norm_label": "main.py",
       "id": "main"
     },
@@ -167,7 +267,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_test_smoke",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_smoke.py"
     },
     {
@@ -176,7 +276,7 @@
       "source_file": "warden/bot.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 1,
       "norm_label": "bot.py",
       "id": "warden_bot"
     },
@@ -186,49 +286,19 @@
       "source_file": "warden/bot.py",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 0,
+      "community": 1,
       "norm_label": "every feature package under warden/features/. adding one = adding a folder.",
       "id": "warden_bot_rationale_13"
     },
     {
-      "label": "ping/__init__.py",
+      "label": "warden/__init__.py",
       "file_type": "code",
-      "source_file": "warden/features/ping/__init__.py",
+      "source_file": "warden/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "ping/__init__.py",
-      "id": "warden_features_ping_init"
-    },
-    {
-      "label": "Bot",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "bot",
-      "id": "warden_features_ping_init_py_bot"
-    },
-    {
-      "label": "ping_service.py",
-      "file_type": "code",
-      "source_file": "warden/features/ping/services/ping_service.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "ping_service.py",
-      "id": "warden_features_ping_services_ping_service"
-    },
-    {
-      "label": "Ping feature. Wiring only \u2014 handlers and services live in their own folders.",
-      "file_type": "rationale",
-      "source_file": "warden/features/ping/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "ping feature. wiring only \u2014 handlers and services live in their own folders.",
-      "id": "warden_features_ping_init_rationale_1"
+      "community": 10,
+      "norm_label": "warden/__init__.py",
+      "id": "warden_init"
     },
     {
       "label": "Protocol",
@@ -261,24 +331,34 @@
       "id": "warden_features_ping_services_protocol"
     },
     {
-      "label": "Context",
+      "label": "ping/__init__.py",
       "file_type": "code",
-      "source_file": "",
-      "source_location": "",
+      "source_file": "warden/features/ping/__init__.py",
+      "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "norm_label": "context",
-      "id": "context"
+      "norm_label": "ping/__init__.py",
+      "id": "warden_features_ping_init"
     },
     {
-      "label": "hybrid_command",
+      "label": "ping_service.py",
       "file_type": "code",
-      "source_file": "",
-      "source_location": "",
+      "source_file": "warden/features/ping/services/ping_service.py",
+      "source_location": "L1",
       "_origin": "ast",
       "community": 3,
-      "norm_label": "hybrid_command",
-      "id": "hybrid_command"
+      "norm_label": "ping_service.py",
+      "id": "warden_features_ping_services_ping_service"
+    },
+    {
+      "label": "Ping feature. Wiring only \u2014 handlers and services live in their own folders.",
+      "file_type": "rationale",
+      "source_file": "warden/features/ping/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "ping feature. wiring only \u2014 handlers and services live in their own folders.",
+      "id": "warden_features_ping_init_rationale_1"
     },
     {
       "label": "PingService",
@@ -301,12 +381,42 @@
       "id": "warden_features_ping_handlers_ping_handler_py_bot"
     },
     {
+      "label": "Context",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "context",
+      "id": "context"
+    },
+    {
+      "label": "hybrid_command",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "hybrid_command",
+      "id": "hybrid_command"
+    },
+    {
+      "label": "Bot",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "bot",
+      "id": "warden_features_ping_init_py_bot"
+    },
+    {
       "label": "features/__init__.py",
       "file_type": "code",
       "source_file": "warden/features/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
+      "community": 7,
       "norm_label": "features/__init__.py",
       "id": "warden_features_init"
     },
@@ -316,7 +426,7 @@
       "source_file": "warden/features/ping/handlers/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 6,
+      "community": 8,
       "norm_label": "handlers/__init__.py",
       "id": "warden_features_ping_handlers_init"
     },
@@ -326,19 +436,9 @@
       "source_file": "warden/features/ping/services/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 9,
       "norm_label": "services/__init__.py",
       "id": "warden_features_ping_services_init"
-    },
-    {
-      "label": "warden/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 8,
-      "norm_label": "warden/__init__.py",
-      "id": "warden_init"
     }
   ],
   "links": [
@@ -413,6 +513,54 @@
       "confidence_score": 1.0,
       "source": "warden_features_ping_init",
       "target": "warden_features_ping_services_ping_service"
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast",
+      "source": "opencode_pyright_command",
+      "target": "ref_pyright_langserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast",
+      "source": "opencode_pyright_command",
+      "target": "ref_stdio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast",
+      "source": "opencode_pyright_extensions",
+      "target": "ref_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast",
+      "source": "opencode_pyright_extensions",
+      "target": "ref_pyi",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -545,6 +693,61 @@
       "confidence_score": 1.0,
       "source": "warden_features_ping_init_setup",
       "target": "warden_features_ping_init_py_bot"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "opencode",
+      "target": "opencode_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "opencode",
+      "target": "opencode_lsp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "opencode_lsp",
+      "target": "opencode_lsp_pyright",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "opencode_lsp_pyright",
+      "target": "opencode_pyright_command",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "opencode_lsp_pyright",
+      "target": "opencode_pyright_extensions",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -735,5 +938,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bbf61ea8bc08271386fca9f8920f960f36c9148b"
+  "built_at_commit": "88db25a585b8d5fb0815b0f6fe877e112bb370e2"
 }

@@ -1,6 +1,18 @@
 {
   "communities": {
     "0": [
+      "opencode",
+      "opencode_lsp",
+      "opencode_lsp_pyright",
+      "opencode_pyright_command",
+      "opencode_pyright_extensions",
+      "opencode_schema",
+      "ref_py",
+      "ref_pyi",
+      "ref_pyright_langserver",
+      "ref_stdio"
+    ],
+    "1": [
       "main",
       "tests_test_smoke",
       "tests_test_smoke_test_feature_modules_discovers_ping",
@@ -11,56 +23,60 @@
       "warden_bot_warden_init",
       "warden_bot_warden_setup_hook"
     ],
-    "1": [
-      "warden_features_ping_init",
-      "warden_features_ping_init_py_bot",
-      "warden_features_ping_init_rationale_1",
-      "warden_features_ping_init_setup",
-      "warden_features_ping_services_ping_service",
-      "warden_features_ping_services_ping_service_pingservice",
-      "warden_features_ping_services_ping_service_pingservice_format_latency"
-    ],
     "2": [
       "protocol",
       "warden_features_ping_handlers_ping_handler",
-      "warden_features_ping_handlers_ping_handler_pinghandlers",
       "warden_features_ping_services_protocol",
       "warden_features_ping_services_protocol_pingservice",
       "warden_features_ping_services_protocol_pingservice_format_latency"
     ],
     "3": [
-      "context",
-      "hybrid_command",
-      "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
+      "warden_features_ping_init",
+      "warden_features_ping_init_rationale_1",
+      "warden_features_ping_services_ping_service",
+      "warden_features_ping_services_ping_service_pingservice",
+      "warden_features_ping_services_ping_service_pingservice_format_latency"
     ],
     "4": [
       "pingservice",
+      "warden_features_ping_handlers_ping_handler_pinghandlers",
       "warden_features_ping_handlers_ping_handler_pinghandlers_init",
       "warden_features_ping_handlers_ping_handler_py_bot"
     ],
     "5": [
-      "warden_features_init"
+      "context",
+      "hybrid_command",
+      "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
     ],
     "6": [
-      "warden_features_ping_handlers_init"
+      "warden_features_ping_init_py_bot",
+      "warden_features_ping_init_setup"
     ],
     "7": [
-      "warden_features_ping_services_init"
+      "warden_features_init"
     ],
     "8": [
+      "warden_features_ping_handlers_init"
+    ],
+    "9": [
+      "warden_features_ping_services_init"
+    ],
+    "10": [
       "warden_init"
     ]
   },
   "cohesion": {
-    "0": 0.2777777777777778,
-    "1": 0.38095238095238093,
-    "2": 0.4666666666666667,
-    "3": 0.6666666666666666,
-    "4": 0.6666666666666666,
-    "5": 1.0,
+    "0": 0.2,
+    "1": 0.2777777777777778,
+    "2": 0.5,
+    "3": 0.5,
+    "4": 0.5,
+    "5": 0.6666666666666666,
     "6": 1.0,
     "7": 1.0,
-    "8": 1.0
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0
   },
   "gods": [
     {
@@ -94,14 +110,24 @@
       "degree": 3
     },
     {
-      "id": "warden_bot_rationale_13",
-      "label": "Every feature package under warden/features/. Adding one = adding a folder.",
-      "degree": 1
+      "id": "opencode_lsp_pyright",
+      "label": "pyright",
+      "degree": 3
     },
     {
-      "id": "warden_features_ping_init_rationale_1",
-      "label": "Ping feature. Wiring only \u2014 handlers and services live in their own folders.",
-      "degree": 1
+      "id": "opencode_pyright_command",
+      "label": "command",
+      "degree": 3
+    },
+    {
+      "id": "opencode_pyright_extensions",
+      "label": "extensions",
+      "degree": 3
+    },
+    {
+      "id": "opencode_lsp",
+      "label": "lsp",
+      "degree": 2
     }
   ],
   "surprises": [
@@ -114,7 +140,18 @@
       ],
       "confidence": "INFERRED",
       "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source"
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "setup()",
+      "target": "PingService",
+      "source_files": [
+        "warden/features/ping/__init__.py",
+        "warden/features/ping/services/ping_service.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
     },
     {
       "source": "setup()",
@@ -126,17 +163,6 @@
       "confidence": "EXTRACTED",
       "relation": "calls",
       "why": "bridges separate communities"
-    },
-    {
-      "source": "setup()",
-      "target": "PingService",
-      "source_files": [
-        "warden/features/ping/__init__.py",
-        "warden/features/ping/services/ping_service.py"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "cross-file semantic connection"
     }
   ],
   "tokens": {
