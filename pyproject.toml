@@ -1,0 +1,22 @@
+[project]
+name = "warden"
+version = "0.1.0"
+description = "Discord bot. One feature per module in warden/features/."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "discord-py>=2.7.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.9",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]  # ponytail: no build-system needed, this app is never packaged
