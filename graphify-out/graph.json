@@ -58,9 +58,9 @@
       "source_location": "L4",
       "_callable": true,
       "_origin": "ast",
-      "id": "tests_test_smoke_test_feature_modules_discovers_ping",
       "community": 1,
-      "norm_label": "test_feature_modules_discovers_ping()"
+      "norm_label": "test_feature_modules_discovers_ping()",
+      "id": "tests_test_smoke_test_feature_modules_discovers_ping"
     },
     {
       "label": "feature_modules()",
@@ -156,9 +156,9 @@
       "source_file": "opencode.json",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "opencode",
       "community": 0,
-      "norm_label": "opencode.json"
+      "norm_label": "opencode.json",
+      "id": "opencode"
     },
     {
       "label": "lsp",
@@ -166,9 +166,9 @@
       "source_file": "opencode.json",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "opencode_lsp",
       "community": 0,
-      "norm_label": "lsp"
+      "norm_label": "lsp",
+      "id": "opencode_lsp"
     },
     {
       "label": "pyright",
@@ -176,9 +176,9 @@
       "source_file": "opencode.json",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "opencode_lsp_pyright",
       "community": 0,
-      "norm_label": "pyright"
+      "norm_label": "pyright",
+      "id": "opencode_lsp_pyright"
     },
     {
       "label": "command",
@@ -186,9 +186,9 @@
       "source_file": "opencode.json",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "opencode_pyright_command",
       "community": 0,
-      "norm_label": "command"
+      "norm_label": "command",
+      "id": "opencode_pyright_command"
     },
     {
       "label": "extensions",
@@ -196,9 +196,9 @@
       "source_file": "opencode.json",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "opencode_pyright_extensions",
       "community": 0,
-      "norm_label": "extensions"
+      "norm_label": "extensions",
+      "id": "opencode_pyright_extensions"
     },
     {
       "label": "$schema",
@@ -206,9 +206,9 @@
       "source_file": "opencode.json",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "opencode_schema",
       "community": 0,
-      "norm_label": "$schema"
+      "norm_label": "$schema",
+      "id": "opencode_schema"
     },
     {
       "label": ".py",
@@ -216,9 +216,9 @@
       "source_file": "opencode.json",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "ref_py",
       "community": 0,
-      "norm_label": ".py"
+      "norm_label": ".py",
+      "id": "ref_py"
     },
     {
       "label": ".pyi",
@@ -226,9 +226,9 @@
       "source_file": "opencode.json",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "ref_pyi",
       "community": 0,
-      "norm_label": ".pyi"
+      "norm_label": ".pyi",
+      "id": "ref_pyi"
     },
     {
       "label": "pyright-langserver",
@@ -236,9 +236,9 @@
       "source_file": "opencode.json",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "ref_pyright_langserver",
       "community": 0,
-      "norm_label": "pyright-langserver"
+      "norm_label": "pyright-langserver",
+      "id": "ref_pyright_langserver"
     },
     {
       "label": "--stdio",
@@ -246,9 +246,9 @@
       "source_file": "opencode.json",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "ref_stdio",
       "community": 0,
-      "norm_label": "--stdio"
+      "norm_label": "--stdio",
+      "id": "ref_stdio"
     },
     {
       "label": "main.py",
@@ -266,9 +266,9 @@
       "source_file": "tests/test_smoke.py",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "tests_test_smoke",
       "community": 1,
-      "norm_label": "test_smoke.py"
+      "norm_label": "test_smoke.py",
+      "id": "tests_test_smoke"
     },
     {
       "label": "bot.py",
@@ -522,9 +522,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode_pyright_command",
-      "target": "ref_pyright_langserver",
-      "confidence_score": 1.0
+      "target": "ref_pyright_langserver"
     },
     {
       "relation": "extends",
@@ -534,9 +534,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode_pyright_command",
-      "target": "ref_stdio",
-      "confidence_score": 1.0
+      "target": "ref_stdio"
     },
     {
       "relation": "extends",
@@ -546,9 +546,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode_pyright_extensions",
-      "target": "ref_py",
-      "confidence_score": 1.0
+      "target": "ref_py"
     },
     {
       "relation": "extends",
@@ -558,9 +558,9 @@
       "weight": 1.0,
       "context": "import",
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode_pyright_extensions",
-      "target": "ref_pyi",
-      "confidence_score": 1.0
+      "target": "ref_pyi"
     },
     {
       "relation": "imports",
@@ -582,9 +582,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "tests_test_smoke",
-      "target": "warden_bot",
-      "confidence_score": 1.0
+      "target": "warden_bot"
     },
     {
       "relation": "imports",
@@ -701,9 +701,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode",
-      "target": "opencode_schema",
-      "confidence_score": 1.0
+      "target": "opencode_schema"
     },
     {
       "relation": "contains",
@@ -712,9 +712,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode",
-      "target": "opencode_lsp",
-      "confidence_score": 1.0
+      "target": "opencode_lsp"
     },
     {
       "relation": "contains",
@@ -723,9 +723,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode_lsp",
-      "target": "opencode_lsp_pyright",
-      "confidence_score": 1.0
+      "target": "opencode_lsp_pyright"
     },
     {
       "relation": "contains",
@@ -734,9 +734,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode_lsp_pyright",
-      "target": "opencode_pyright_command",
-      "confidence_score": 1.0
+      "target": "opencode_pyright_command"
     },
     {
       "relation": "contains",
@@ -745,9 +745,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "opencode_lsp_pyright",
-      "target": "opencode_pyright_extensions",
-      "confidence_score": 1.0
+      "target": "opencode_pyright_extensions"
     },
     {
       "relation": "contains",
@@ -756,9 +756,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "tests_test_smoke",
-      "target": "tests_test_smoke_test_feature_modules_discovers_ping",
-      "confidence_score": 1.0
+      "target": "tests_test_smoke_test_feature_modules_discovers_ping"
     },
     {
       "relation": "contains",
@@ -938,5 +938,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "88db25a585b8d5fb0815b0f6fe877e112bb370e2"
+  "built_at_commit": "8bf42024d39428605bcd05e0a22c5b89ab1b92ff"
 }
