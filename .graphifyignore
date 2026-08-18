@@ -1,0 +1,13 @@
+# Focus graphify on source code only — everything else here is docs,
+# config, or tooling metadata that would otherwise trigger semantic
+# (LLM) extraction instead of the free structural (AST) pass.
+*.md
+*.toml
+*.lock
+*.yml
+*.yaml
+.python-version
+.github/
+.claude/
+.serena/
+graphify-out/
