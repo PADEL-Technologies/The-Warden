@@ -9,6 +9,8 @@ uv sync
 DISCORD_TOKEN=... uv run main.py
 ```
 
+Or via `make install` / `DISCORD_TOKEN=... make run` (same commands, see `Makefile`).
+
 ## Adding a feature
 
 One feature = one folder under `warden/features/`, laid out like `ping/`:
@@ -46,4 +48,27 @@ that keeps the service testable without booting a bot.
 uv run ruff check . && uv run ruff format . && uv run pytest
 ```
 
-Same three commands run in CI on every push and PR.
+Or `make check`. Same three commands run in CI on every push and PR.
+
+## Docker
+
+```bash
+make docker-build
+make docker-run   # reads DISCORD_TOKEN from .env
+```
+
+Multi-stage build (`Dockerfile`): dependencies are installed in a `builder`
+stage, the runtime stage copies only the built venv and `warden/`/`main.py`
+— no `uv`, no build tools, no audio/voice libs in the final image. Runs
+headless as a non-root user, timezone pinned to `Asia/Jakarta`.
+
+## AI harness
+
+This repo carries a graphify knowledge graph (`graphify-out/`) and Serena
+project memories (`.serena/memories/`) for AI coding assistants. `.graphifyignore`
+keeps the graph scoped to `warden/` source only — no docs/config noise.
+
+- `make update-harness` — refresh the graph (code-only, no viz) and clear
+  Serena's stale symbol cache. Safe to run anytime.
+- `make install-hooks` — opt in to a pre-commit hook (`.github/hooks/pre-commit`)
+  that does the same refresh automatically before each commit.
