@@ -5,6 +5,7 @@ description = "Discord bot. One feature per module in warden/features/."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "aiosqlite>=0.22.1",
     "discord-py>=2.7.1",
 ]
 

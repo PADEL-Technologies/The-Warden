@@ -12,6 +12,9 @@ wheels/
 # Docs (local only)
 docs/
 
+# Local databases
+data/
+
 # graphify machine-local state (regenerated per machine)
 graphify-out/.graphify_python
 graphify-out/.graphify_root

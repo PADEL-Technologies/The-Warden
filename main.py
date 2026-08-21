@@ -1,7 +1,6 @@
-import os
-
 from warden.bot import Warden
+from warden.config import load_config
 
-# ponytail: token read straight from the env. Add a config module at 3+ settings.
 if __name__ == "__main__":
-    Warden().run(os.environ["DISCORD_TOKEN"], root_logger=True)
+    config = load_config()
+    Warden(config).run(config.discord_token, root_logger=True)
