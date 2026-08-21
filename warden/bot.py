@@ -7,6 +7,7 @@ import discord
 from discord.ext import commands
 
 import warden.features
+from warden.config import Config
 
 
 def feature_modules() -> list[str]:
@@ -19,10 +20,12 @@ def feature_modules() -> list[str]:
 
 
 class Warden(commands.Bot):
-    def __init__(self) -> None:
+    def __init__(self, config: Config) -> None:
         intents = discord.Intents.default()
         intents.message_content = True
-        super().__init__(command_prefix="/", intents=intents)
+        intents.members = True  # privileged: aktifkan juga di Developer Portal
+        super().__init__(command_prefix="!", intents=intents)
+        self.config = config
 
     async def setup_hook(self) -> None:
         for module in feature_modules():

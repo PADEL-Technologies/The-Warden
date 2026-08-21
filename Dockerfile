@@ -9,6 +9,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 
 COPY warden ./warden
+COPY migrations ./migrations
 COPY main.py ./
 RUN uv sync --frozen --no-dev
 
@@ -28,6 +29,7 @@ RUN apt-get update \
 WORKDIR /app
 COPY --from=builder --chown=warden:warden /app/.venv ./.venv
 COPY --from=builder --chown=warden:warden /app/warden ./warden
+COPY --from=builder --chown=warden:warden /app/migrations ./migrations
 COPY --from=builder --chown=warden:warden /app/main.py ./
 
 USER warden

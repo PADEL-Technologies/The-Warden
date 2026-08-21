@@ -5,12 +5,14 @@ description = "Discord bot. One feature per module in warden/features/."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "aiosqlite>=0.22.1",
     "discord-py>=2.7.1",
 ]
 
 [dependency-groups]
 dev = [
     "pytest>=8",
+    "pytest-asyncio>=1.4.0",
     "ruff>=0.9",
 ]
 
@@ -19,3 +21,4 @@ select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
+asyncio_mode = "auto"

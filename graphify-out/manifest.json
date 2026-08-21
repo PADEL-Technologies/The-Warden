@@ -1,74 +1,224 @@
 {
   "main.py": {
-    "mtime": 1787068747.7270756,
-    "seen": 1787076591.3736718,
-    "ast_hash": "2f33da727b0ab2a663a665323181ca0c",
-    "semantic_hash": "2f33da727b0ab2a663a665323181ca0c"
+    "mtime": 1787346734.5330124,
+    "seen": 1787348275.8788407,
+    "ast_hash": "1710eef7090314c32e49ec90cbc00c4c",
+    "semantic_hash": "1710eef7090314c32e49ec90cbc00c4c"
   },
   "warden/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787076591.373677,
+    "seen": 1787348275.8788455,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/bot.py": {
-    "mtime": 1787076437.1607323,
-    "seen": 1787076591.3736777,
-    "ast_hash": "f3be0f4f67d6249bdcdeaeee52cdf806",
-    "semantic_hash": "f3be0f4f67d6249bdcdeaeee52cdf806"
+    "mtime": 1787346734.1199312,
+    "seen": 1787348275.8788464,
+    "ast_hash": "771ef52aa67ef2cde9ed3ad69f592c96",
+    "semantic_hash": "771ef52aa67ef2cde9ed3ad69f592c96"
   },
   "warden/features/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787076591.3736784,
+    "seen": 1787348275.878848,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/features/ping/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787076591.3736792,
+    "seen": 1787348275.8788576,
     "ast_hash": "808b115a6980d9ce4fe6b505e1c86009",
     "semantic_hash": "808b115a6980d9ce4fe6b505e1c86009"
   },
   "warden/features/ping/handlers/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787076591.3736796,
+    "seen": 1787348275.8788583,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/features/ping/handlers/ping_handler.py": {
     "mtime": 1787076437.1607323,
-    "seen": 1787076591.3736804,
+    "seen": 1787348275.878859,
     "ast_hash": "3354cde9b232fcac859eb68fea2f78c1",
     "semantic_hash": "3354cde9b232fcac859eb68fea2f78c1"
   },
   "warden/features/ping/services/__init__.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787076591.3736808,
+    "seen": 1787348275.8788598,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "warden/features/ping/services/ping_service.py": {
     "mtime": 1787069647.164972,
-    "seen": 1787076591.3736815,
+    "seen": 1787348275.8788602,
     "ast_hash": "728468c55babd3b64fd496d680e65d07",
     "semantic_hash": "728468c55babd3b64fd496d680e65d07"
   },
   "warden/features/ping/services/protocol.py": {
     "mtime": 1787068401.0725818,
-    "seen": 1787076591.3736825,
+    "seen": 1787348275.8788607,
     "ast_hash": "a1f109f38fde9042dce6c5dc2f0a1609",
     "semantic_hash": "a1f109f38fde9042dce6c5dc2f0a1609"
   },
-  "tests/test_smoke.py": {
+  "opencode.json": {
+    "mtime": 1787075189.626652,
+    "seen": 1787348275.8788443,
+    "ast_hash": "b67069c835b30593ecb510d9bb9809c2",
+    "semantic_hash": "b67069c835b30593ecb510d9bb9809c2"
+  },
+  "warden/config.py": {
+    "mtime": 1787346690.3640893,
+    "seen": 1787348275.878847,
+    "ast_hash": "6865aaae0f80eb2128b4320edd015f10",
+    "semantic_hash": "6865aaae0f80eb2128b4320edd015f10"
+  },
+  "warden/features/onboarding/__init__.py": {
+    "mtime": 1787346722.3484578,
+    "seen": 1787348275.8788486,
+    "ast_hash": "cdc78c00547ed3152574c3638c23462e",
+    "semantic_hash": "cdc78c00547ed3152574c3638c23462e"
+  },
+  "warden/features/onboarding/entities/__init__.py": {
+    "mtime": 1787345597.222891,
+    "seen": 1787348275.8788493,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/features/onboarding/entities/member_role.py": {
+    "mtime": 1787345629.3815553,
+    "seen": 1787348275.87885,
+    "ast_hash": "18a4786087c12c4622f4479b4133df01",
+    "semantic_hash": "18a4786087c12c4622f4479b4133df01"
+  },
+  "warden/features/onboarding/entities/snapshot_member.py": {
+    "mtime": 1787346068.1594515,
+    "seen": 1787348275.8788507,
+    "ast_hash": "74fb08a43c7ebb0a7d8d28fb28bda3ef",
+    "semantic_hash": "74fb08a43c7ebb0a7d8d28fb28bda3ef"
+  },
+  "warden/features/onboarding/handlers/__init__.py": {
+    "mtime": 1787346722.567296,
+    "seen": 1787348275.8788517,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/features/onboarding/handlers/onboarding_handler.py": {
+    "mtime": 1787346836.0849483,
+    "seen": 1787348275.8788521,
+    "ast_hash": "22c172eaea739d8c13ac945f9ccac45f",
+    "semantic_hash": "22c172eaea739d8c13ac945f9ccac45f"
+  },
+  "warden/features/onboarding/repositories/__init__.py": {
+    "mtime": 1787346111.9938366,
+    "seen": 1787348275.8788526,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/features/onboarding/repositories/aiosqlite/__init__.py": {
+    "mtime": 1787346722.824661,
+    "seen": 1787348275.8788533,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py": {
+    "mtime": 1787346776.2438836,
+    "seen": 1787348275.8788538,
+    "ast_hash": "a1fea440eb8d3b60618d2ef57d5964ff",
+    "semantic_hash": "a1fea440eb8d3b60618d2ef57d5964ff"
+  },
+  "warden/features/onboarding/repositories/aiosqlite/runner.py": {
+    "mtime": 1787347096.7397647,
+    "seen": 1787348275.8788545,
+    "ast_hash": "f562e2913cb496cce569a0a7af9a308a",
+    "semantic_hash": "f562e2913cb496cce569a0a7af9a308a"
+  },
+  "warden/features/onboarding/repositories/protocol.py": {
+    "mtime": 1787346691.383031,
+    "seen": 1787348275.8788552,
+    "ast_hash": "ceb31fcb0171b6523ae91715df403828",
+    "semantic_hash": "ceb31fcb0171b6523ae91715df403828"
+  },
+  "warden/features/onboarding/services/__init__.py": {
+    "mtime": 1787345261.07319,
+    "seen": 1787348275.8788557,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/features/onboarding/services/onboarding_service.py": {
+    "mtime": 1787347259.4794767,
+    "seen": 1787348275.8788562,
+    "ast_hash": "e738026ce99a8fe5e450601b9dedae98",
+    "semantic_hash": "e738026ce99a8fe5e450601b9dedae98"
+  },
+  "warden/features/onboarding/services/protocol.py": {
+    "mtime": 1787347257.6448407,
+    "seen": 1787348275.878857,
+    "ast_hash": "6a0d9c8d551411783667bdbf1e58c2df",
+    "semantic_hash": "6a0d9c8d551411783667bdbf1e58c2df"
+  },
+  "warden/tests/test_smoke.py": {
     "mtime": 1787076437.1607323,
-    "seen": 1787076591.3736763,
+    "seen": 1787348275.8788676,
     "ast_hash": "44909b725bb3ea52466757200ea84c87",
     "semantic_hash": "44909b725bb3ea52466757200ea84c87"
   },
-  "opencode.json": {
-    "mtime": 1787075189.626652,
-    "seen": 1787076591.3736749,
-    "ast_hash": "b67069c835b30593ecb510d9bb9809c2",
-    "semantic_hash": "b67069c835b30593ecb510d9bb9809c2"
+  "warden/tests/features/__init__.py": {
+    "mtime": 1787347945.1333957,
+    "seen": 1787348275.878862,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/tests/features/onboarding/__init__.py": {
+    "mtime": 1787347945.1335218,
+    "seen": 1787348275.8788624,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/tests/features/onboarding/repositories/__init__.py": {
+    "mtime": 1787348113.8795297,
+    "seen": 1787348275.878863,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/tests/features/onboarding/repositories/aiosqlite/__init__.py": {
+    "mtime": 1787348113.8796453,
+    "seen": 1787348275.8788636,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py": {
+    "mtime": 1787348122.0217516,
+    "seen": 1787348275.878864,
+    "ast_hash": "030e3400f36c582c259b05411e47ed71",
+    "semantic_hash": "030e3400f36c582c259b05411e47ed71"
+  },
+  "warden/tests/features/onboarding/services/__init__.py": {
+    "mtime": 1787347945.1336336,
+    "seen": 1787348275.8788645,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/tests/features/onboarding/services/test_onboarding_service.py": {
+    "mtime": 1787348107.183184,
+    "seen": 1787348275.8788655,
+    "ast_hash": "ca9409f02cc8b92e3edef857cc1d1036",
+    "semantic_hash": "ca9409f02cc8b92e3edef857cc1d1036"
+  },
+  "warden/tests/features/ping/__init__.py": {
+    "mtime": 1787347945.133741,
+    "seen": 1787348275.878866,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/tests/features/ping/services/__init__.py": {
+    "mtime": 1787347945.133912,
+    "seen": 1787348275.8788664,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "warden/tests/features/ping/services/test_ping_service.py": {
+    "mtime": 1787347950.7815526,
+    "seen": 1787348275.878867,
+    "ast_hash": "118a006cb0ec38666d5a9ab8e869c926",
+    "semantic_hash": "118a006cb0ec38666d5a9ab8e869c926"
   }
 }
