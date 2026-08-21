@@ -1,6 +1,29 @@
 {
   "communities": {
     "0": [
+      "parametrize",
+      "path",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_has_onboarding",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_init",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_member_count",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_save",
+      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_py_connection",
+      "warden_features_onboarding_repositories_aiosqlite_runner",
+      "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending",
+      "warden_features_onboarding_repositories_aiosqlite_runner_py_connection",
+      "warden_features_onboarding_repositories_aiosqlite_runner_rationale_10",
+      "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
+      "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_py_snapshotmember",
+      "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
+      "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_force_replaces_previous_snapshot",
+      "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_migrations_applied_fresh_db",
+      "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_and_has_onboarding",
+      "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_twice_without_force_is_idempotent"
+    ],
+    "1": [
       "warden_features_onboarding_entities_member_role",
       "warden_features_onboarding_entities_member_role_memberrole",
       "warden_features_onboarding_entities_member_role_py_typeddict",
@@ -23,7 +46,27 @@
       "warden_features_onboarding_services_onboarding_service_onboardingservice_init",
       "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent"
     ],
-    "1": [
+    "2": [
+      "onboardingservice",
+      "snapshotmembersource",
+      "snapshotrole",
+      "warden_tests_features_onboarding_services_test_onboarding_service",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakemember",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_has_onboarding",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_init",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_member_count",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_save",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerole",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerole_is_default",
+      "warden_tests_features_onboarding_services_test_onboarding_service_py_snapshotmember",
+      "warden_tests_features_onboarding_services_test_onboarding_service_service",
+      "warden_tests_features_onboarding_services_test_onboarding_service_test_filters_everyone_and_converts_joined_at",
+      "warden_tests_features_onboarding_services_test_onboarding_service_test_force_overrides_existing",
+      "warden_tests_features_onboarding_services_test_onboarding_service_test_none_joined_at_survives",
+      "warden_tests_features_onboarding_services_test_onboarding_service_test_skips_when_snapshot_exists"
+    ],
+    "3": [
       "pingservice",
       "protocol",
       "warden_features_ping_handlers_ping_handler",
@@ -39,9 +82,11 @@
       "warden_features_ping_services_ping_service_pingservice_format_latency",
       "warden_features_ping_services_protocol",
       "warden_features_ping_services_protocol_pingservice",
-      "warden_features_ping_services_protocol_pingservice_format_latency"
+      "warden_features_ping_services_protocol_pingservice_format_latency",
+      "warden_tests_features_ping_services_test_ping_service",
+      "warden_tests_features_ping_services_test_ping_service_test_format_latency"
     ],
-    "2": [
+    "4": [
       "command",
       "context",
       "group",
@@ -57,38 +102,6 @@
       "warden_features_onboarding_handlers_onboarding_handler_py_bot",
       "warden_features_onboarding_handlers_onboarding_handler_py_onboardingservice",
       "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
-    ],
-    "3": [
-      "warden_tests_test_onboarding_service",
-      "warden_tests_test_onboarding_service_fakemember",
-      "warden_tests_test_onboarding_service_fakerepo",
-      "warden_tests_test_onboarding_service_fakerepo_has_onboarding",
-      "warden_tests_test_onboarding_service_fakerepo_init",
-      "warden_tests_test_onboarding_service_fakerepo_member_count",
-      "warden_tests_test_onboarding_service_fakerepo_save",
-      "warden_tests_test_onboarding_service_fakerole",
-      "warden_tests_test_onboarding_service_fakerole_is_default",
-      "warden_tests_test_onboarding_service_py_onboardingservice",
-      "warden_tests_test_onboarding_service_service",
-      "warden_tests_test_onboarding_service_test_filters_everyone_and_converts_joined_at",
-      "warden_tests_test_onboarding_service_test_force_overrides_existing",
-      "warden_tests_test_onboarding_service_test_none_joined_at_survives",
-      "warden_tests_test_onboarding_service_test_skips_when_snapshot_exists"
-    ],
-    "4": [
-      "path",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_has_onboarding",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_init",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_member_count",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_save",
-      "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_py_connection",
-      "warden_features_onboarding_repositories_aiosqlite_runner",
-      "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending",
-      "warden_features_onboarding_repositories_aiosqlite_runner_py_connection",
-      "warden_features_onboarding_repositories_aiosqlite_runner_rationale_10"
     ],
     "5": [
       "main",
@@ -155,14 +168,35 @@
     ],
     "16": [
       "warden_init"
+    ],
+    "17": [
+      "warden_tests_features_init"
+    ],
+    "18": [
+      "warden_tests_features_onboarding_init"
+    ],
+    "19": [
+      "warden_tests_features_onboarding_repositories_aiosqlite_init"
+    ],
+    "20": [
+      "warden_tests_features_onboarding_repositories_init"
+    ],
+    "21": [
+      "warden_tests_features_onboarding_services_init"
+    ],
+    "22": [
+      "warden_tests_features_ping_init"
+    ],
+    "23": [
+      "warden_tests_features_ping_services_init"
     ]
   },
   "cohesion": {
-    "0": 0.18095238095238095,
-    "1": 0.175,
-    "2": 0.14285714285714285,
-    "3": 0.22857142857142856,
-    "4": 0.21794871794871795,
+    "0": 0.15714285714285714,
+    "1": 0.18095238095238095,
+    "2": 0.17647058823529413,
+    "3": 0.1568627450980392,
+    "4": 0.14285714285714285,
     "5": 0.2878787878787879,
     "6": 0.2545454545454545,
     "7": 0.2,
@@ -174,23 +208,25 @@
     "13": 1.0,
     "14": 1.0,
     "15": 1.0,
-    "16": 1.0
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0
   },
   "gods": [
     {
-      "id": "warden_features_onboarding_entities_snapshot_member_snapshotmember",
-      "label": "SnapshotMember",
-      "degree": 15
-    },
-    {
-      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice",
-      "label": "OnboardingService",
-      "degree": 10
-    },
-    {
       "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
       "label": "AiosqliteOnboardingRepository",
-      "degree": 9
+      "degree": 13
+    },
+    {
+      "id": "warden_features_onboarding_entities_snapshot_member_snapshotmember",
+      "label": "SnapshotMember",
+      "degree": 12
     },
     {
       "id": "warden_features_onboarding_repositories_protocol_onboardingrepository",
@@ -198,14 +234,14 @@
       "degree": 9
     },
     {
-      "id": "warden_tests_test_onboarding_service_service",
-      "label": "service()",
+      "id": "warden_features_onboarding_entities_member_role_memberrole",
+      "label": "MemberRole",
       "degree": 8
     },
     {
-      "id": "warden_features_onboarding_entities_member_role_memberrole",
-      "label": "MemberRole",
-      "degree": 7
+      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "label": "OnboardingService",
+      "degree": 8
     },
     {
       "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
@@ -213,8 +249,13 @@
       "degree": 7
     },
     {
-      "id": "warden_tests_test_onboarding_service_fakerepo",
-      "label": "FakeRepo",
+      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
+      "label": "snap()",
+      "degree": 7
+    },
+    {
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_service",
+      "label": "service()",
       "degree": 7
     },
     {
@@ -241,48 +282,48 @@
       "why": "inferred connection - not explicitly stated in source; bridges separate communities"
     },
     {
-      "source": "FakeRepo",
-      "target": "SnapshotMember",
+      "source": "SnapshotMember",
+      "target": "MemberRole",
       "source_files": [
-        "warden/tests/test_onboarding_service.py",
-        "warden/features/onboarding/entities/snapshot_member.py"
-      ],
-      "confidence": "INFERRED",
-      "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
-    },
-    {
-      "source": "PingHandlers",
-      "target": "PingService",
-      "source_files": [
-        "warden/features/ping/handlers/ping_handler.py",
-        "warden/features/ping/services/protocol.py"
+        "warden/features/onboarding/entities/snapshot_member.py",
+        "warden/features/onboarding/entities/member_role.py"
       ],
       "confidence": "INFERRED",
       "relation": "uses",
       "why": "inferred connection - not explicitly stated in source"
     },
     {
-      "source": "Warden",
-      "target": "Config",
+      "source": "OnboardingService",
+      "target": "MemberRole",
       "source_files": [
-        "warden/bot.py",
-        "warden/config.py"
+        "warden/features/onboarding/services/onboarding_service.py",
+        "warden/features/onboarding/entities/member_role.py"
       ],
       "confidence": "INFERRED",
       "relation": "uses",
       "why": "inferred connection - not explicitly stated in source"
     },
     {
-      "source": "setup()",
-      "target": "OnboardingHandlers",
+      "source": "snap()",
+      "target": "MemberRole",
       "source_files": [
-        "warden/features/onboarding/__init__.py",
-        "warden/features/onboarding/handlers/onboarding_handler.py"
+        "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
+        "warden/features/onboarding/entities/member_role.py"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
       "why": "bridges separate communities"
+    },
+    {
+      "source": "OnboardingRepository",
+      "target": "SnapshotMember",
+      "source_files": [
+        "warden/features/onboarding/repositories/protocol.py",
+        "warden/features/onboarding/entities/snapshot_member.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source"
     }
   ],
   "tokens": {
