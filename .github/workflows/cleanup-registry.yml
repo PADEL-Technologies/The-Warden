@@ -1,0 +1,22 @@
+name: cleanup-registry
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # tiap hari tengah malam UTC
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Delete old images
+        uses: snok/container-retention-policy@v3
+        with:
+          image-names: the-warden
+          account-type: org
+          org-name: padel-technologies
+          token: ${{ secrets.GITHUB_TOKEN }}
+          cut-off: 30d # hapus versi lebih tua dari 30 hari
+          keep-n-most-recent: 10 # tapi selalu simpan 10 terbaru
