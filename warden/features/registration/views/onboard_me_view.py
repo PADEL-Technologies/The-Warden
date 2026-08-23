@@ -1,12 +1,15 @@
 import contextlib
+from typing import TYPE_CHECKING
 
 import asyncpg
 import discord
 
-from warden.config import Config
-from warden.features.registration.services.protocol import RegistrationService
 from warden.features.registration.views.pilih_tipe_view import PilihTipeView
 from warden.features.registration.views.threads import get_thread
+
+if TYPE_CHECKING:
+    from warden.config import Config
+    from warden.features.registration.services.protocol import RegistrationService
 
 THREAD_ARCHIVE_MINUTES = 60
 
@@ -24,7 +27,7 @@ class OnboardMeView(discord.ui.View):
         custom_id="registration:start",
     )
     async def start(
-        self, interaction: discord.Interaction, button: discord.ui.Button
+        self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
         # semua balasan ephemeral: #registration-locket publik dan pesan permanennya
         # jangan ketimbun

@@ -145,7 +145,7 @@ async def test_start_fresh_when_no_active_row():
 
 
 async def test_start_reuses_live_open_thread():
-    svc, repo = service()
+    svc, _repo = service()
     await svc.open_thread(5, 1, thread_id=99, now=NOW)
     action, reg = await svc.start(5, 1, NOW + timedelta(minutes=14))
     assert action == "reuse"
@@ -161,7 +161,7 @@ async def test_start_recreates_when_ttl_lewat():
 
 
 async def test_start_recreates_when_thread_sudah_disapu():
-    svc, repo = service()
+    svc, _repo = service()
     await svc.open_thread(5, 1, thread_id=99, now=NOW)
     await svc.clear_thread(99)
     action, _ = await svc.start(5, 1, NOW)  # TTL masih hidup, threadnya tidak
@@ -169,7 +169,7 @@ async def test_start_recreates_when_thread_sudah_disapu():
 
 
 async def test_start_wait_and_already():
-    svc, repo = service()
+    svc, _repo = service()
     reg = await svc.open_thread(5, 1, thread_id=99, now=NOW)
     await svc.submit(reg["id"], "alumni", "Rizky R", "Rizky", "2021", linkedin="x")
     assert (await svc.start(5, 1, NOW))[0] == "wait"
@@ -178,7 +178,7 @@ async def test_start_wait_and_already():
 
 
 async def test_rejected_orang_boleh_daftar_lagi():
-    svc, repo = service()
+    svc, _repo = service()
     reg = await svc.open_thread(5, 1, thread_id=99, now=NOW)
     await svc.submit(reg["id"], "alumni", "Rizky R", "Rizky", "2021", linkedin="x")
     await svc.decide(reg["id"], approve=False, reviewed_by=7, reason="foto buram")
@@ -212,7 +212,7 @@ async def test_submit_menormalkan_nim():
 
 
 async def test_nim_holder_hanya_lihat_approved():
-    svc, repo = service()
+    svc, _repo = service()
     reg = await svc.open_thread(5, 1, thread_id=99, now=NOW)
     await svc.submit(
         reg["id"],

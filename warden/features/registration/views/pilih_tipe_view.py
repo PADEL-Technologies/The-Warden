@@ -1,8 +1,12 @@
+from typing import TYPE_CHECKING
+
 import discord
 
-from warden.config import Config
-from warden.features.registration.services.protocol import RegistrationService
 from warden.features.registration.views.registrasi_modal import RegistrasiModal
+
+if TYPE_CHECKING:
+    from warden.config import Config
+    from warden.features.registration.services.protocol import RegistrationService
 
 
 class PilihTipeView(discord.ui.View):
@@ -38,7 +42,7 @@ class PilihTipeView(discord.ui.View):
         custom_id="registration:mahasiswa",
     )
     async def mahasiswa(
-        self, interaction: discord.Interaction, button: discord.ui.Button
+        self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
         await self._open(interaction, "mahasiswa")
 
@@ -48,6 +52,6 @@ class PilihTipeView(discord.ui.View):
         custom_id="registration:alumni",
     )
     async def alumni(
-        self, interaction: discord.Interaction, button: discord.ui.Button
+        self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
         await self._open(interaction, "alumni")

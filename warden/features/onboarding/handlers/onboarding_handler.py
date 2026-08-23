@@ -1,9 +1,12 @@
 import logging
+from typing import TYPE_CHECKING
 
-import discord
 from discord.ext import commands
 
-from warden.features.onboarding.services.protocol import OnboardingService
+if TYPE_CHECKING:
+    import discord
+
+    from warden.features.onboarding.services.protocol import OnboardingService
 
 log = logging.getLogger(__name__)
 

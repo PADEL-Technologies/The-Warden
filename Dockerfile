@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.14-slim AS builder
+FROM python:3.14.7-slim AS builder
 WORKDIR /app
-RUN pip install --no-cache-dir uv
+RUN pip install --no-cache-dir uv==0.12.5
 
 # Deps-only layer first so code changes don't invalidate the dependency cache.
 COPY pyproject.toml uv.lock ./
@@ -12,7 +12,7 @@ COPY warden ./warden
 COPY main.py ./
 RUN uv sync --frozen --no-dev
 
-FROM python:3.14-slim AS runtime
+FROM python:3.14.7-slim AS runtime
 
 ENV TZ=Asia/Jakarta \
     PYTHONUNBUFFERED=1 \

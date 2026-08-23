@@ -1,0 +1,55 @@
+#!/bin/sh
+# Refresh the graphify graph AFTER a code commit, as its OWN commit.
+# Never blocks and never fails the enclosing command - this is a
+# convenience refresh, not a correctness gate.
+#
+# Recursion guard: the graph commit only ever touches graphify-out/,
+# never *.py, and this hook only acts when the last commit touched
+# *.py - so the commit made here cannot retrigger the hook.
+
+# Only care about code commits. `git commit` alone does not set HEAD
+# for merge commits; diff-tree then outputs nothing and we skip.
+if ! git rev-parse -q --verify HEAD >/dev/null 2>&1; then
+    exit 0
+fi
+if [ -z "$(git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r HEAD -- '*.py')" ]; then
+    exit 0
+fi
+
+if ! command -v uv >/dev/null 2>&1; then
+    echo "[post-commit] uv not found, skipping graphify refresh" >&2
+    exit 0
+fi
+
+echo "[post-commit] refreshing graphify graph (code-only)..."
+# Guard: this hook must only ever touch graphify-out/. A cold `uv tool run`
+# cache has been observed once rewriting unrelated tracked files (e.g.
+# pyproject.toml) as a side effect - warn instead of silently committing
+# (or discarding) whatever changed.
+before=$(git diff --name-only -- . ':!graphify-out')
+if uv tool run --from graphifyy graphify extract . --code-only >/dev/null 2>&1; then
+    # graphify backs up graphify-out/ into a dated dir before overwriting
+    # curated (manually labeled) graphs. git history already versions
+    # graphify-out/, so a fresh dated copy every run is pure clutter -
+    # prune it rather than committing an ever-growing pile of snapshots.
+    find graphify-out -maxdepth 1 -type d -regextype posix-extended -regex '.*/[0-9]{4}-[0-9]{2}-[0-9]{2}' -exec rm -rf {} +
+    git add graphify-out/
+    # Separate graph commit, always distinct from the code commit. Skipped
+    # entirely when the graph did not change (no empty commits).
+    if ! git diff --cached --quiet -- graphify-out/; then
+        git commit --no-verify -m "chore(graphify): refresh graph" -- graphify-out/ \
+            && echo "[post-commit] graph committed separately"
+    fi
+else
+    echo "[post-commit] graphify refresh failed, skipping" >&2
+fi
+after=$(git diff --name-only -- . ':!graphify-out')
+if [ "$before" != "$after" ]; then
+    echo "[post-commit] WARNING: graphify refresh touched files outside graphify-out/ - review before committing:" >&2
+    echo "$after" >&2
+fi
+
+echo "[post-commit] clearing stale Serena project cache..."
+rm -rf .serena/cache
+
+exit 0

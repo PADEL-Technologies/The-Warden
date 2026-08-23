@@ -1,34 +1,17 @@
 #!/bin/sh
-# Best-effort AI-harness refresh. Never blocks the commit on failure -
-# this is a convenience refresh, not a correctness gate.
+# Keep graphify-out/ out of code commits. The post-commit hook refreshes the
+# graph and commits it separately, so a code commit must not carry graph
+# changes (e.g. stale ones from a manual `make update-harness` swept in by
+# `git add -A`). If graphify-out/ is staged together with other paths, unstage
+# it - post-commit will pick it up. A commit of graphify-out/ alone is allowed.
 
-if command -v uv >/dev/null 2>&1; then
-    echo "[pre-commit] refreshing graphify graph (code-only)..."
-    # Guard: this hook must only ever touch graphify-out/. A cold `uv tool run`
-    # cache has been observed once rewriting unrelated tracked files (e.g.
-    # pyproject.toml) as a side effect - warn instead of silently committing
-    # (or discarding) whatever changed.
-    before=$(git diff --name-only -- . ':!graphify-out')
-    if uv tool run --from graphifyy graphify extract . --code-only >/dev/null 2>&1; then
-        # graphify backs up graphify-out/ into a dated dir before overwriting
-        # curated (manually labeled) graphs. git history already versions
-        # graphify-out/, so a fresh dated copy every run is pure clutter -
-        # prune it rather than committing an ever-growing pile of snapshots.
-        find graphify-out -maxdepth 1 -type d -regextype posix-extended -regex '.*/[0-9]{4}-[0-9]{2}-[0-9]{2}' -exec rm -rf {} +
-        git add graphify-out/
-    else
-        echo "[pre-commit] graphify refresh failed, skipping" >&2
-    fi
-    after=$(git diff --name-only -- . ':!graphify-out')
-    if [ "$before" != "$after" ]; then
-        echo "[pre-commit] WARNING: graphify refresh touched files outside graphify-out/ - review before committing:" >&2
-        echo "$after" >&2
-    fi
-else
-    echo "[pre-commit] uv not found, skipping graphify refresh" >&2
+staged=$(git diff --cached --name-only -- graphify-out/)
+[ -n "$staged" ] || exit 0
+
+other=$(git diff --cached --name-only -- . ':!graphify-out')
+if [ -n "$other" ]; then
+    git restore --staged graphify-out/
+    echo "[pre-commit] graphify-out/ unstaged - post-commit will commit it separately"
 fi
-
-echo "[pre-commit] clearing stale Serena project cache..."
-rm -rf .serena/cache
 
 exit 0

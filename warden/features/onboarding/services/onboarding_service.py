@@ -1,9 +1,13 @@
-from collections.abc import Sequence
+from typing import TYPE_CHECKING
 
 from warden.features.onboarding.entities.member_role import MemberRole
 from warden.features.onboarding.entities.snapshot_member import SnapshotMember
-from warden.features.onboarding.repositories.protocol import OnboardingRepository
-from warden.features.onboarding.services.protocol import SnapshotMemberSource
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
+
+    from warden.features.onboarding.repositories.protocol import OnboardingRepository
+    from warden.features.onboarding.services.protocol import SnapshotMemberSource
 
 
 class OnboardingService:

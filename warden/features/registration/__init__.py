@@ -1,8 +1,9 @@
 """Registration feature. Wiring only — handlers, services, repositories, views
 hidup terpisah."""
 
+from typing import TYPE_CHECKING
+
 import asyncpg
-from discord.ext import commands
 
 from warden.features.registration.handlers.registration_handler import (
     RegistrationHandlers,
@@ -16,6 +17,9 @@ from warden.features.registration.services.registration_service import (
 from warden.features.registration.views.onboard_me_view import OnboardMeView
 from warden.features.registration.views.pilih_tipe_view import PilihTipeView
 from warden.features.registration.views.review_view import ReviewView
+
+if TYPE_CHECKING:
+    from discord.ext import commands
 
 
 async def setup(bot: commands.Bot) -> None:

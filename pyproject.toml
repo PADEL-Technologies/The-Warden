@@ -3,7 +3,7 @@ name = "warden"
 version = "0.1.0"
 description = "Discord bot. One feature per module in warden/features/."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = "==3.14.*"
 dependencies = [
     "asyncpg>=0.30.0",
     "discord-py>=2.7.1",
@@ -17,7 +17,26 @@ dev = [
 ]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B"]
+select = [
+    "E", "W", "F",
+    "I", "UP", "B",
+    "N",
+    "C4", "SIM", "RET",
+    "ARG", "PTH", "DTZ",
+    "ASYNC",
+    "S",
+    "PERF", "FURB",
+    "TC",
+    "PLE", "PLW", "PLR",
+    "RUF",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"warden/tests/**" = ["S101", "S106", "S311", "PLR2004", "TC"]
+
+[tool.ruff.lint.pylint]
+max-args = 8
+max-positional-args = 8
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

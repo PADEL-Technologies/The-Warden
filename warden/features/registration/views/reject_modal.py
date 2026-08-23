@@ -2,9 +2,8 @@ from typing import TYPE_CHECKING
 
 import discord
 
-from warden.features.registration.entities.registration import Registration
-
 if TYPE_CHECKING:  # ReviewView yang membuat modal ini — impor balik cuma untuk tipe
+    from warden.features.registration.entities.registration import Registration
     from warden.features.registration.views.review_view import ReviewView
 
 

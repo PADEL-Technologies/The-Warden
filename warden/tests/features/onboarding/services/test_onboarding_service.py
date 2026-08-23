@@ -24,7 +24,7 @@ class FakeRepo:
     async def save(
         self,
         guild_id: int,
-        triggered_by: int | None,
+        triggered_by: int | None,  # noqa: ARG002 - signature follows OnboardingRepository
         members: list[SnapshotMember],
         force: bool = False,
     ) -> None:
