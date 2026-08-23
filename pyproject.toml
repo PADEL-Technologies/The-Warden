@@ -16,6 +16,9 @@ dev = [
     "ruff>=0.9",
 ]
 
+[tool.ruff]
+extend-exclude = ["*.md"]
+
 [tool.ruff.lint]
 select = [
     "E", "W", "F",
