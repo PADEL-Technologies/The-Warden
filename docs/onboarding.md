@@ -10,14 +10,19 @@ point-in-time baseline — it is **not** kept in sync afterwards.
 - **`!onboard existing --force`** → replace the guild's snapshot. The old rows are
   deleted inside the same transaction as the new ones.
 
-`@everyone` is never stored — everyone has it, so it carries no information.
+`@everyone` and managed roles (bot/integration roles, including Nitro Booster) are never
+stored — they are not human-managed roles. Bot accounts are not stored as members;
+`member_count` counts humans only.
+
+The role and channel catalogs come from the guild itself, not from what members hold:
+roles and channels with zero members/users are still recorded.
+
+The snapshot is written as one transaction across `roles`, `members`, `member_roles`,
+`channels` and `onboardings`, so a partial snapshot is never left behind. `onboardings`
+records who triggered it (`NULL` = automatic) and the member count at the time.
 
 The roster is chunked (`guild.chunk()`) before snapshotting: on a runtime join the
 member list is not populated yet. This is why the **Server Members** privileged
 intent is required.
-
-The snapshot is written as one transaction across `roles`, `members`, `member_roles`
-and `onboardings`, so a partial snapshot is never left behind. `onboardings` records
-who triggered it (`NULL` = automatic) and the member count at the time.
 
 Toggle with `ONBOARDING_ENABLED` — see [Configuration](configuration.md).
