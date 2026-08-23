@@ -15,8 +15,11 @@ async def setup(bot: commands.Bot) -> None:
         return  # toggle OFF = cog tidak dimuat
     pool = await asyncpg.create_pool(bot.config.database_url)
 
-    class Cog(OnboardingHandlers):
+    # nama kelas = kunci cog di seluruh bot, jadi harus unik antar feature
+    class OnboardingCog(OnboardingHandlers):
         async def cog_unload(self) -> None:
             await pool.close()
 
-    await bot.add_cog(Cog(bot, OnboardingService(PostgresOnboardingRepository(pool))))
+    await bot.add_cog(
+        OnboardingCog(bot, OnboardingService(PostgresOnboardingRepository(pool)))
+    )
