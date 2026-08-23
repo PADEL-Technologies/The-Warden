@@ -18,6 +18,10 @@ check:
 test:
 	uv run pytest
 
+GOOSE_VERSION ?= v3.24.3
+goose-install:
+	go install github.com/pressly/goose/v3/cmd/goose@$(GOOSE_VERSION)
+
 NAME ?=
 migration:
 	@if [ -z "$(NAME)" ]; then echo "Usage: make migration NAME=add_left_at"; exit 1; fi
@@ -51,4 +55,4 @@ docker-build:
 docker-run:
 	docker run --rm --env-file .env warden
 
-.PHONY: install run lint format check test migration migrate-up migrate-down migrate-status db update-harness install-hooks docker-build docker-run
+.PHONY: install run lint format check test goose-install migration migrate-up migrate-down migrate-status db update-harness install-hooks docker-build docker-run

@@ -1,15 +1,18 @@
 import contextlib
 import logging
+from typing import TYPE_CHECKING
 
 import discord
 from discord.ext import commands, tasks
 
-from warden.features.registration.services.protocol import RegistrationService
 from warden.features.registration.services.registration_service import (
     nickname,
     role_ids_for,
 )
 from warden.features.registration.views.onboard_me_view import OnboardMeView
+
+if TYPE_CHECKING:
+    from warden.features.registration.services.protocol import RegistrationService
 
 log = logging.getLogger(__name__)
 

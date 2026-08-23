@@ -1,8 +1,11 @@
-from datetime import datetime
+from typing import TYPE_CHECKING
 
-import asyncpg
+if TYPE_CHECKING:
+    from datetime import datetime
 
-from warden.features.registration.entities.registration import Registration
+    import asyncpg
+
+    from warden.features.registration.entities.registration import Registration
 
 
 def _row(record: asyncpg.Record | None) -> Registration | None:

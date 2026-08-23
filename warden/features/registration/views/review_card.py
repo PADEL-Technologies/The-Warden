@@ -1,6 +1,9 @@
+from typing import TYPE_CHECKING
+
 import discord
 
-from warden.features.registration.entities.registration import Registration
+if TYPE_CHECKING:
+    from warden.features.registration.entities.registration import Registration
 
 
 def _dt(value) -> str:

@@ -1,7 +1,9 @@
-from datetime import datetime
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
 
-from warden.features.registration.entities.registration import Registration
+if TYPE_CHECKING:
+    from datetime import datetime
+
+    from warden.features.registration.entities.registration import Registration
 
 
 class RegistrationService(Protocol):

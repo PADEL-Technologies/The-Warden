@@ -1,6 +1,7 @@
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
 
-from warden.features.onboarding.entities.snapshot_member import SnapshotMember
+if TYPE_CHECKING:
+    from warden.features.onboarding.entities.snapshot_member import SnapshotMember
 
 
 class OnboardingRepository(Protocol):

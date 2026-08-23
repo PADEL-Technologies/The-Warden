@@ -1,6 +1,7 @@
-from typing import TypedDict
+from typing import TYPE_CHECKING, TypedDict
 
-from warden.features.onboarding.entities.member_role import MemberRole
+if TYPE_CHECKING:
+    from warden.features.onboarding.entities.member_role import MemberRole
 
 
 class SnapshotMember(TypedDict):

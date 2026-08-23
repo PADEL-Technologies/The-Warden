@@ -1,11 +1,9 @@
 import contextlib
 import logging
+from typing import TYPE_CHECKING
 
 import discord
 
-from warden.config import Config
-from warden.features.registration.entities.registration import Registration
-from warden.features.registration.services.protocol import RegistrationService
 from warden.features.registration.services.registration_service import (
     nickname,
     role_ids_for,
@@ -13,6 +11,11 @@ from warden.features.registration.services.registration_service import (
 from warden.features.registration.views.reject_modal import RejectModal
 from warden.features.registration.views.review_card import mark_decided
 from warden.features.registration.views.threads import get_thread, speak
+
+if TYPE_CHECKING:
+    from warden.config import Config
+    from warden.features.registration.entities.registration import Registration
+    from warden.features.registration.services.protocol import RegistrationService
 
 log = logging.getLogger(__name__)
 
@@ -79,7 +82,7 @@ class ReviewView(discord.ui.View):
         custom_id="registration:approve",
     )
     async def approve(
-        self, interaction: discord.Interaction, button: discord.ui.Button
+        self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
         reg = await self.resolve(interaction)
         if reg is None:
@@ -149,7 +152,7 @@ class ReviewView(discord.ui.View):
         custom_id="registration:reject",
     )
     async def reject(
-        self, interaction: discord.Interaction, button: discord.ui.Button
+        self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
         reg = await self.resolve(interaction)
         if reg is None:
@@ -162,7 +165,7 @@ class ReviewView(discord.ui.View):
         custom_id="registration:join",
     )
     async def join(
-        self, interaction: discord.Interaction, button: discord.ui.Button
+        self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
         reg = await self.resolve(interaction)
         if reg is None:

@@ -1,13 +1,16 @@
 import contextlib
+from typing import TYPE_CHECKING
 
 import discord
 
-from warden.config import Config
-from warden.features.registration.entities.registration import Registration
-from warden.features.registration.services.protocol import RegistrationService
 from warden.features.registration.services.registration_service import validate_angkatan
 from warden.features.registration.views.review_card import build_review_embed
 from warden.features.registration.views.review_view import ReviewView
+
+if TYPE_CHECKING:
+    from warden.config import Config
+    from warden.features.registration.entities.registration import Registration
+    from warden.features.registration.services.protocol import RegistrationService
 
 # 7 hari: begitu formnya masuk, threadnya harus bertahan selama verifikator manusia
 # belum memutuskan.
@@ -161,6 +164,6 @@ class IsiUlangView(discord.ui.View):
 
     @discord.ui.button(label="Isi Ulang", style=discord.ButtonStyle.primary)
     async def isi_ulang(
-        self, interaction: discord.Interaction, button: discord.ui.Button
+        self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
         await interaction.response.send_modal(self.modal.refill())

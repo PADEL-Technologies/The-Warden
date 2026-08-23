@@ -2,12 +2,15 @@ import asyncio
 import contextlib
 import pkgutil
 import signal
+from typing import TYPE_CHECKING
 
 import discord
 from discord.ext import commands
 
 import warden.features
-from warden.config import Config
+
+if TYPE_CHECKING:
+    from warden.config import Config
 
 
 def feature_modules() -> list[str]:

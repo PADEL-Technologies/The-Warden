@@ -1,6 +1,9 @@
+from typing import TYPE_CHECKING
+
 from discord.ext import commands
 
-from warden.features.ping.services.protocol import PingService
+if TYPE_CHECKING:
+    from warden.features.ping.services.protocol import PingService
 
 
 class PingHandlers(commands.Cog):

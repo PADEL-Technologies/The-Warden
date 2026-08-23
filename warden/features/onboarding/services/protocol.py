@@ -1,6 +1,8 @@
-from collections.abc import Sequence
-from datetime import datetime
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
+
+if TYPE_CHECKING:
+    from collections.abc import Sequence
+    from datetime import datetime
 
 
 class SnapshotRole(Protocol):

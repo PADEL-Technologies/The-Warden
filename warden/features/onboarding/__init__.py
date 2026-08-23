@@ -1,13 +1,17 @@
 """Onboarding feature. Wiring only — handlers, services, repositories live apart."""
 
+from typing import TYPE_CHECKING
+
 import asyncpg
-from discord.ext import commands
 
 from warden.features.onboarding.handlers.onboarding_handler import OnboardingHandlers
 from warden.features.onboarding.repositories.postgres.onboarding_repository import (
     PostgresOnboardingRepository,
 )
 from warden.features.onboarding.services.onboarding_service import OnboardingService
+
+if TYPE_CHECKING:
+    from discord.ext import commands
 
 
 async def setup(bot: commands.Bot) -> None:

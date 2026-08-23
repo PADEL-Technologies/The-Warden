@@ -1,7 +1,11 @@
 from datetime import UTC, datetime, timedelta
+from typing import TYPE_CHECKING
 
-from warden.features.registration.entities.registration import Registration
-from warden.features.registration.repositories.protocol import RegistrationRepository
+if TYPE_CHECKING:
+    from warden.features.registration.entities.registration import Registration
+    from warden.features.registration.repositories.protocol import (
+        RegistrationRepository,
+    )
 
 # Petunjuk cleanup, bukan gerbang: submit di menit ke-20 dengan thread masih hidup
 # tetap diterima. auto_archive_duration Discord cuma menerima 60/1440/4320/10080.

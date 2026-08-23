@@ -1,5 +1,7 @@
-from datetime import datetime
-from typing import TypedDict
+from typing import TYPE_CHECKING, TypedDict
+
+if TYPE_CHECKING:
+    from datetime import datetime
 
 
 class Registration(TypedDict):
