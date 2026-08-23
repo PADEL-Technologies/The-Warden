@@ -20,7 +20,11 @@ class OnboardingHandlers(commands.Cog):
     async def on_guild_join(self, guild: discord.Guild) -> None:
         await guild.chunk()  # join saat runtime: roster belum terisi
         created = await self.service.snapshot_if_absent(
-            guild.members, guild.id, triggered_by=None
+            guild.members,
+            guild.roles,
+            guild.channels,
+            guild.id,
+            triggered_by=None,
         )
         if created:
             count = len(guild.members)
@@ -45,6 +49,8 @@ class OnboardingHandlers(commands.Cog):
             await ctx.guild.chunk()
         created = await self.service.snapshot_if_absent(
             ctx.guild.members,
+            ctx.guild.roles,
+            ctx.guild.channels,
             ctx.guild.id,
             triggered_by=ctx.author.id,
             force=flag == "--force",

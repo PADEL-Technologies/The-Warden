@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 
+from warden.features.onboarding.entities.channel import SnapshotChannel
 from warden.features.onboarding.entities.member_role import MemberRole
 from warden.features.onboarding.entities.snapshot_member import SnapshotMember
 
@@ -7,7 +8,17 @@ if TYPE_CHECKING:
     from collections.abc import Sequence
 
     from warden.features.onboarding.repositories.protocol import OnboardingRepository
-    from warden.features.onboarding.services.protocol import SnapshotMemberSource
+    from warden.features.onboarding.services.protocol import (
+        SnapshotChannelSource,
+        SnapshotMemberSource,
+        SnapshotRole,
+    )
+
+
+def _keep_role(role: SnapshotRole) -> bool:
+    # @everyone pasti dimiliki semua orang; managed = role bot/integrasi (Booster
+    # termasuk) — bukan role yang dikelola manusia, keduanya tidak informatif.
+    return not role.is_default() and not role.managed
 
 
 class OnboardingService:
@@ -17,6 +28,8 @@ class OnboardingService:
     async def snapshot_if_absent(
         self,
         members: Sequence[SnapshotMemberSource],
+        roles: Sequence[SnapshotRole],
+        channels: Sequence[SnapshotChannelSource],
         guild_id: int,
         triggered_by: int | None,
         force: bool = False,
@@ -28,12 +41,25 @@ class OnboardingService:
                 member_id=m.id,
                 joined_at=m.joined_at.isoformat() if m.joined_at else None,
                 roles=[
-                    MemberRole(id=r.id, name=r.name)
-                    for r in m.roles
-                    if not r.is_default()
+                    MemberRole(id=r.id, name=r.name) for r in m.roles if _keep_role(r)
                 ],
             )
             for m in members
+            if not m.bot
         ]
-        await self._repo.save(guild_id, triggered_by, snapshot, force=force)
+        role_catalog = [
+            MemberRole(id=r.id, name=r.name) for r in roles if _keep_role(r)
+        ]
+        channel_snapshot = [
+            SnapshotChannel(channel_id=c.id, name=c.name, type=str(c.type))
+            for c in channels
+        ]
+        await self._repo.save(
+            guild_id,
+            triggered_by,
+            snapshot,
+            role_catalog,
+            channel_snapshot,
+            force=force,
+        )
         return True

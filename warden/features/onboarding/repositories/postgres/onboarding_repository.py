@@ -3,6 +3,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     import asyncpg
 
+    from warden.features.onboarding.entities.channel import SnapshotChannel
+    from warden.features.onboarding.entities.member_role import MemberRole
     from warden.features.onboarding.entities.snapshot_member import SnapshotMember
 
 
@@ -33,6 +35,8 @@ class PostgresOnboardingRepository:
         guild_id: int,
         triggered_by: int | None,
         members: list[SnapshotMember],
+        roles: list[MemberRole],
+        channels: list[SnapshotChannel],
         force: bool = False,
     ) -> None:
         async with self._pool.acquire() as conn, conn.transaction():
@@ -44,20 +48,23 @@ class PostgresOnboardingRepository:
                 )
                 await conn.execute("DELETE FROM members WHERE guild_id = $1", guild_id)
                 await conn.execute("DELETE FROM roles WHERE guild_id = $1", guild_id)
+                await conn.execute("DELETE FROM channels WHERE guild_id = $1", guild_id)
                 await conn.execute(
                     "DELETE FROM onboardings WHERE guild_id = $1", guild_id
                 )
 
-            # katalog role guild ini, dedup lewat dict
-            role_catalog: dict[int, str] = {}
-            for m in members:
-                for role in m["roles"]:
-                    role_catalog[role["id"]] = role["name"]
-
+            # katalog role & channel dari guild, bukan diturunkan dari member
+            # (role/channel tanpa member tetap masuk — issue #7)
             await conn.executemany(
                 "INSERT INTO roles (guild_id, role_id, role_name) "
                 "VALUES ($1, $2, $3) ON CONFLICT DO NOTHING",
-                [(guild_id, rid, name) for rid, name in role_catalog.items()],
+                [(guild_id, r["id"], r["name"]) for r in roles],
+            )
+            await conn.executemany(
+                "INSERT INTO channels "
+                "(guild_id, channel_id, channel_name, channel_type) "
+                "VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING",
+                [(guild_id, c["channel_id"], c["name"], c["type"]) for c in channels],
             )
             await conn.executemany(
                 "INSERT INTO members (guild_id, user_id, joined_at) "
