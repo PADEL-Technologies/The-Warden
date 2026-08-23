@@ -24,12 +24,13 @@ async def setup(bot: commands.Bot) -> None:
     pool = await asyncpg.create_pool(bot.config.database_url)
     service = RegistrationService(PostgresRegistrationRepository(pool))
 
-    class Cog(RegistrationHandlers):
+    # nama kelas = kunci cog di seluruh bot, jadi harus unik antar feature
+    class RegistrationCog(RegistrationHandlers):
         async def cog_unload(self) -> None:
             await super().cog_unload()
             await pool.close()
 
-    await bot.add_cog(Cog(bot, service))
+    await bot.add_cog(RegistrationCog(bot, service))
 
     # add_view mendaftarkan handler untuk custom_id, bukan untuk satu pesan: sekali di
     # sini menghidupkan kembali semua thread lama dan semua kartu yang belum diputuskan.
