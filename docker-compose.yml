@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: warden
+      POSTGRES_PASSWORD: warden
+      POSTGRES_DB: warden
+    ports:
+      - "5432:5432"
+    volumes:
+      - warden_pgdata:/var/lib/postgresql/data
+
+volumes:
+  warden_pgdata:

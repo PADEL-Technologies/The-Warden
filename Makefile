@@ -21,8 +21,21 @@ test:
 NAME ?=
 migration:
 	@if [ -z "$(NAME)" ]; then echo "Usage: make migration NAME=add_left_at"; exit 1; fi
-	@touch "migrations/$$(uv run python -c "from datetime import UTC, datetime; print(datetime.now(UTC).strftime('%Y%m%d%H%M%S'))")_$(NAME).sql"
+	@goose -dir migrations create -s "$(NAME)" $(ARGS)
 	@ls -t migrations | head -1
+
+DB_URL ?= $${DATABASE_URL:?set DATABASE_URL, e.g. from make db}
+migrate-up:
+	goose -dir migrations postgres "$(DB_URL)" up
+
+migrate-down:
+	goose -dir migrations postgres "$(DB_URL)" down
+
+migrate-status:
+	goose -dir migrations postgres "$(DB_URL)" status
+
+db:
+	docker compose up -d
 
 update-harness:
 	uv tool run --from graphifyy graphify extract . --code-only
@@ -38,4 +51,4 @@ docker-build:
 docker-run:
 	docker run --rm --env-file .env warden
 
-.PHONY: install run lint format check test migration update-harness install-hooks docker-build docker-run
+.PHONY: install run lint format check test migration migrate-up migrate-down migrate-status db update-harness install-hooks docker-build docker-run
