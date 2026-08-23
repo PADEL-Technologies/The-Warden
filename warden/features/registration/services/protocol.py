@@ -40,6 +40,7 @@ class RegistrationService(Protocol):
         approve: bool,
         reviewed_by: int,
         reason: str | None = None,
+        joined_at: str | None = None,
     ) -> Registration | None:
         """None = sudah diputuskan verifikator lain."""
         ...

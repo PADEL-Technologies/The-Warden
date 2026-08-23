@@ -114,10 +114,15 @@ class RegistrationService:
         approve: bool,
         reviewed_by: int,
         reason: str | None = None,
+        joined_at: str | None = None,
     ) -> Registration | None:
         """None = sudah diputuskan verifikator lain."""
         return await self._repo.decide(
-            registration_id, "approved" if approve else "rejected", reviewed_by, reason
+            registration_id,
+            "approved" if approve else "rejected",
+            reviewed_by,
+            reason,
+            joined_at,
         )
 
     async def by_thread(self, thread_id: int) -> Registration | None:

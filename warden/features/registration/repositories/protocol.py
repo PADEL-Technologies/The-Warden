@@ -43,9 +43,16 @@ class RegistrationRepository(Protocol):
     ) -> None: ...
 
     async def decide(
-        self, registration_id: int, state: str, reviewed_by: int, reason: str | None
+        self,
+        registration_id: int,
+        state: str,
+        reviewed_by: int,
+        reason: str | None,
+        joined_at: str | None = None,
     ) -> Registration | None:
-        """None = barisnya sudah bukan pending; verifikator lain menang balapan."""
+        """None = barisnya sudah bukan pending; verifikator lain menang balapan.
+        state='approved' sekalian menulis barisnya ke members (issue #12);
+        joined_at dari Discord, NULL kalau orangnya sudah keluar server."""
         ...
 
     async def attempt_count(self, guild_id: int, user_id: int) -> int:

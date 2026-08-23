@@ -86,6 +86,35 @@ resolved back to a row.
 `angkatan` is stored as `TEXT`: it is an identity, not a number anything is computed
 from. Consistent with `joined_at TEXT` in `members`.
 
+### Approve writes two tables in one statement
+
+`registrations` is the only table the registration feature owns, with one exception:
+`decide()` is a data-modifying CTE that transitions the row **and** enrols the person
+into `members`.
+
+```sql
+WITH decided AS (
+    UPDATE registrations SET state = $2, ... WHERE id = $1 AND state = 'pending'
+    RETURNING *
+), enrolled AS (
+    INSERT INTO members (guild_id, user_id, joined_at)
+    SELECT guild_id, user_id, $5 FROM decided WHERE state = 'approved'
+    ON CONFLICT (guild_id, user_id) DO NOTHING
+)
+SELECT * FROM decided
+```
+
+One statement rather than two inside a `conn.transaction()`: the `members` row is
+*derived* from the row that just changed, so it cannot drift out of sync — which is
+exactly what issue #12 was, approved people with no `members` row at all. The
+`WHERE state = 'approved'` filter is what keeps reject a no-op here, and
+`ON CONFLICT DO NOTHING` leaves someone already captured by the onboarding snapshot
+untouched, `joined_at` included.
+
+`member_roles` is deliberately **not** written on approve — it stores internal
+`roles.id`, which only exists if the snapshot ran, and every other role change after
+the snapshot is equally stale.
+
 ## Operational note: pgbouncer
 
 `create_pool()` does not set `statement_cache_size=0`. That is safe under pgbouncer

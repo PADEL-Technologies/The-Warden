@@ -3,8 +3,10 @@
 Manual member verification: someone joins the server, fills a form in a private
 thread, and a human verifier decides before any role is granted.
 
-Not a continuation of [onboarding](onboarding.md) — that one photographs
-members and roles once when the bot joins, zero overlap with this flow.
+Not a continuation of [onboarding](onboarding.md) — that one photographs members and
+roles once when the bot joins. The only overlap is the `members` table: approving
+someone also enrols them there, because the snapshot has long since run and would
+otherwise never see them.
 
 ## Flow
 
@@ -19,8 +21,9 @@ members and roles once when the bot joins, zero overlap with this flow.
                                 └─ [Approve] [Reject] [Join Thread]
 ```
 
-**Approve** → type role + prodi role → nickname → result message in the thread → the
-card is edited in place, buttons disabled.
+**Approve** → `state=approved` **+ a row in `members`, in one statement** → type role +
+prodi role → nickname → result message in the thread → the card is edited in place,
+buttons disabled.
 
 **Reject** → reason modal → the reason is posted in the thread → `state=rejected`.
 The person may register again from scratch.

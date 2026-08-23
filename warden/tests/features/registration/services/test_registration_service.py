@@ -104,7 +104,11 @@ class FakeRepo:
     async def set_report_message(self, registration_id, message_id) -> None:
         self._by_id(registration_id)["report_message_id"] = message_id
 
-    async def decide(self, registration_id, state, reviewed_by, reason):
+    async def decide(
+        self, registration_id, state, reviewed_by, reason, _joined_at=None
+    ):
+        # joined_at cuma dipakai insert ke members, dan itu SQL — lihat
+        # tests/.../postgres/test_registration_repository.py
         row = self._by_id(registration_id)
         if row["state"] != "pending":
             return None  # verifikator lain sudah menang

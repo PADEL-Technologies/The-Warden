@@ -123,24 +123,43 @@ class PostgresRegistrationRepository:
             )
 
     async def decide(
-        self, registration_id: int, state: str, reviewed_by: int, reason: str | None
+        self,
+        registration_id: int,
+        state: str,
+        reviewed_by: int,
+        reason: str | None,
+        joined_at: str | None = None,
     ) -> Registration | None:
         # `AND state = 'pending'` adalah satu-satunya penjaga balapan dua verifikator:
         # approve itu UPDATE, jadi registrations_active tidak pernah ikut bicara.
+        #
+        # Satu statement, bukan dua di dalam transaction: baris members lahir dari
+        # baris registrations yang barusan berubah, jadi "approved tapi members
+        # kosong" (issue #12) tidak bisa terjadi lagi walau koneksinya putus di
+        # tengah. `WHERE state = 'approved'` membuat reject tidak menyentuh members.
         async with self._pool.acquire() as conn:
             return _row(
                 await conn.fetchrow(
                     """
-                    UPDATE registrations SET
-                        state = $2, reviewed_by = $3, reviewed_at = now(),
-                        reject_reason = $4
-                    WHERE id = $1 AND state = 'pending'
-                    RETURNING *
+                    WITH decided AS (
+                        UPDATE registrations SET
+                            state = $2, reviewed_by = $3, reviewed_at = now(),
+                            reject_reason = $4
+                        WHERE id = $1 AND state = 'pending'
+                        RETURNING *
+                    ), enrolled AS (
+                        INSERT INTO members (guild_id, user_id, joined_at)
+                        SELECT guild_id, user_id, $5 FROM decided
+                        WHERE state = 'approved'
+                        ON CONFLICT (guild_id, user_id) DO NOTHING
+                    )
+                    SELECT * FROM decided
                     """,
                     registration_id,
                     state,
                     reviewed_by,
                     reason,
+                    joined_at,
                 )
             )
 

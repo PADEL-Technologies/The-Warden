@@ -103,14 +103,22 @@ class ReviewView(discord.ui.View):
             return
 
         await interaction.response.defer()
+        # dicari sekali di sini, bukan dua kali: decide butuh joined_at-nya,
+        # _grant butuh objeknya
+        member = interaction.guild.get_member(reg["user_id"])
         decided = await self.service.decide(
-            reg["id"], approve=True, reviewed_by=interaction.user.id
+            reg["id"],
+            approve=True,
+            reviewed_by=interaction.user.id,
+            joined_at=member.joined_at.isoformat()
+            if member and member.joined_at
+            else None,
         )
         if decided is None:
             await self.already_decided(interaction)
             return
 
-        problem = await self._grant(interaction, decided, role_ids)
+        problem = await self._grant(interaction, decided, role_ids, member)
         await self.finish(
             interaction, decided, "registrasimu disetujui. Selamat datang!"
         )
@@ -122,10 +130,10 @@ class ReviewView(discord.ui.View):
         interaction: discord.Interaction,
         reg: Registration,
         role_ids: list[int],
+        member: discord.Member | None,
     ) -> str | None:
         """None = beres. Selain itu pesan untuk verifikator — kegagalan di sini tidak
         boleh membatalkan approve yang sudah tercatat."""
-        member = interaction.guild.get_member(reg["user_id"])
         if member is None:
             return (
                 "Ditandai approved, tapi orangnya sudah keluar server. "
