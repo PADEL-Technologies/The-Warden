@@ -6,10 +6,11 @@ Discord bot.
 
 ```bash
 uv sync
-DISCORD_TOKEN=... uv run main.py
+DISCORD_TOKEN=... DATABASE_URL=postgres://... uv run main.py
 ```
 
-Or via `make install` / `DISCORD_TOKEN=... make run` (same commands, see `Makefile`).
+Or via `make install` / `DISCORD_TOKEN=... DATABASE_URL=postgres://... make run`
+(same commands, see `Makefile`).
 
 ## Configuration
 
@@ -18,8 +19,8 @@ All settings come from environment variables (or `.env` for `make docker-run`):
 | Variable            | Default           | Purpose                              |
 | ------------------- | ----------------- | ------------------------------------ |
 | `DISCORD_TOKEN`     | — (required)      | Bot token                            |
+| `DATABASE_URL`      | — (required)      | Postgres DSN, e.g. `postgres://user:pass@host:5432/db` |
 | `ONBOARDING_ENABLED`| `true`            | Load the onboarding feature at all   |
-| `WARDEN_DB_PATH`    | `data/warden.db`  | SQLite database file location        |
 
 The bot needs the **Server Members** privileged intent — enable it in the
 Discord Developer Portal, it is already requested in `warden/bot.py`.
@@ -73,17 +74,34 @@ Snapshots every member and their roles the first time the bot joins a guild
 
 ## Database & migrations
 
-SQLite via `aiosqlite`, one file, default `data/warden.db` (git-ignored).
-Migrations are plain SQL files in `migrations/`, named
-`<timestamp>_<name>.sql` (UTC `YYYYMMDDHHMMSS`, sorts chronologically):
+PostgreSQL via `asyncpg`. Migrations are managed by
+[goose](https://github.com/pressly/goose) — plain SQL files in `migrations/`
+with `-- +goose Up` / `-- +goose Down` sections. Migration runs are recorded
+in goose's `goose_db_version` table.
+
+Local dev setup:
 
 ```bash
-make migration NAME=add_left_at   # scaffold an empty migration file
+make db                # docker compose up -d: postgres:18 on localhost:5432 (warden/warden)
+export DATABASE_URL=postgres://warden:warden@localhost:5432/warden
+make migrate-up        # apply pending migrations
+make migration NAME=add_left_at   # scaffold a new migration (goose create -s)
 ```
 
-They are applied automatically on the first database connection after
-startup — each file runs once, recorded in the `schema_migrations` table.
-There is no down/rollback: fix forward with a new migration.
+Install the goose binary once
+([releases](https://github.com/pressly/goose/releases), or
+`go install github.com/pressly/goose/v3/cmd/goose@latest`). The app itself
+never runs migrations — apply them as a separate step (or in CI) before
+starting the bot.
+
+Tests that need a real database set `WARDEN_TEST_DATABASE_URL` and are
+skipped otherwise:
+
+```bash
+make db
+goose -dir migrations postgres postgres://warden:warden@localhost:5432/warden up
+WARDEN_TEST_DATABASE_URL=postgres://warden:warden@localhost:5432/warden uv run pytest
+```
 
 The schema has no foreign keys by design — the repository layer owns
 referential integrity (e.g. `save(force=True)` deletes junction rows before
@@ -110,9 +128,11 @@ make docker-run   # reads DISCORD_TOKEN from .env
 ```
 
 Multi-stage build (`Dockerfile`): dependencies are installed in a `builder`
-stage, the runtime stage copies only the built venv, `warden/`, `migrations/`
-and `main.py` — no `uv`, no build tools, no audio/voice libs in the final
-image. Runs headless as a non-root user, timezone pinned to `Asia/Jakarta`.
+stage, the runtime stage copies only the built venv, `warden/` and `main.py`
+— no `uv`, no build tools, no audio/voice libs in the final image. Runs
+headless as a non-root user, timezone pinned to `Asia/Jakarta`. The image
+does not carry `migrations/` — migrations are applied by a separate process
+before the bot starts.
 
 ## AI harness
 

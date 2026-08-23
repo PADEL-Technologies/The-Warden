@@ -4,64 +4,40 @@
   "graph": {},
   "nodes": [
     {
-      "label": "AiosqliteOnboardingRepository",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L11",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": "aiosqliteonboardingrepository",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
-    },
-    {
-      "label": "MemberRole",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/entities/member_role.py",
-      "source_location": "L4",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "memberrole",
-      "id": "warden_features_onboarding_entities_member_role_memberrole"
-    },
-    {
-      "label": "SnapshotMember",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/entities/snapshot_member.py",
-      "source_location": "L6",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "snapshotmember",
-      "id": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
-    },
-    {
-      "label": "OnboardingRepository",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L6",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "onboardingrepository",
-      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository"
-    },
-    {
       "label": "OnboardingService",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
-      "source_location": "L9",
+      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_location": "L23",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "onboardingservice",
-      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice"
+      "id": "warden_features_onboarding_services_protocol_onboardingservice",
+      "community": 0,
+      "norm_label": "onboardingservice"
+    },
+    {
+      "label": "SnapshotMemberSource",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_location": "L15",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_services_protocol_snapshotmembersource",
+      "community": 0,
+      "norm_label": "snapshotmembersource"
+    },
+    {
+      "label": "SnapshotRole",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_services_protocol_snapshotrole",
+      "community": 0,
+      "norm_label": "snapshotrole"
     },
     {
       "label": "FakeMember",
@@ -72,20 +48,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakemember",
-      "community": 2,
+      "community": 0,
       "norm_label": "fakemember"
-    },
-    {
-      "label": "FakeRepo",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
-      "source_location": "L13",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo",
-      "community": 2,
-      "norm_label": "fakerepo"
     },
     {
       "label": "FakeRole",
@@ -96,7 +60,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerole",
-      "community": 2,
+      "community": 0,
       "norm_label": "fakerole"
     },
     {
@@ -107,7 +71,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "pinghandlers",
       "id": "warden_features_ping_handlers_ping_handler_pinghandlers"
     },
@@ -119,7 +83,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "pingservice",
       "id": "warden_features_ping_services_ping_service_pingservice"
     },
@@ -131,9 +95,57 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "pingservice",
       "id": "warden_features_ping_services_protocol_pingservice"
+    },
+    {
+      "label": "MemberRole",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/entities/member_role.py",
+      "source_location": "L4",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "memberrole",
+      "id": "warden_features_onboarding_entities_member_role_memberrole"
+    },
+    {
+      "label": "SnapshotMember",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/entities/snapshot_member.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "snapshotmember",
+      "id": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
+    },
+    {
+      "label": "OnboardingRepository",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/protocol.py",
+      "source_location": "L6",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository",
+      "community": 2,
+      "norm_label": "onboardingrepository"
+    },
+    {
+      "label": "OnboardingService",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/onboarding_service.py",
+      "source_location": "L9",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "community": 2,
+      "norm_label": "onboardingservice"
     },
     {
       "label": "OnboardingHandlers",
@@ -143,9 +155,9 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "onboardinghandlers",
-      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers"
+      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
+      "community": 3,
+      "norm_label": "onboardinghandlers"
     },
     {
       "label": "Warden",
@@ -155,7 +167,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 4,
       "norm_label": "warden",
       "id": "warden_bot_warden"
     },
@@ -167,276 +179,55 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 5,
-      "norm_label": "config",
-      "id": "warden_config_config"
+      "id": "warden_config_config",
+      "community": 4,
+      "norm_label": "config"
     },
     {
-      "label": "OnboardingService",
+      "label": "PostgresOnboardingRepository",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/services/protocol.py",
-      "source_location": "L23",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "onboardingservice",
-      "id": "warden_features_onboarding_services_protocol_onboardingservice"
-    },
-    {
-      "label": "SnapshotMemberSource",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/services/protocol.py",
-      "source_location": "L15",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "snapshotmembersource",
-      "id": "warden_features_onboarding_services_protocol_snapshotmembersource"
-    },
-    {
-      "label": "SnapshotRole",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
       "source_location": "L6",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "snapshotrole",
-      "id": "warden_features_onboarding_services_protocol_snapshotrole"
+      "id": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "community": 5,
+      "norm_label": "postgresonboardingrepository"
     },
     {
-      "label": "._connect()",
+      "label": "FakeRepo",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L16",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L13",
       "_callable": true,
+      "_callable_class": true,
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "._connect()",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect"
-    },
-    {
-      "label": ".has_onboarding()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L22",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": ".has_onboarding()",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_has_onboarding"
-    },
-    {
-      "label": ".__init__()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L12",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": ".__init__()",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_init"
-    },
-    {
-      "label": ".member_count()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L29",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": ".member_count()",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_member_count"
-    },
-    {
-      "label": ".save()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L36",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": ".save()",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_save"
-    },
-    {
-      "label": "apply_pending()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/runner.py",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": "apply_pending()",
-      "id": "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending"
-    },
-    {
-      "label": "snap()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
-      "community": 0,
-      "norm_label": "snap()"
-    },
-    {
-      "label": "test_force_replaces_previous_snapshot()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L28",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_force_replaces_previous_snapshot",
-      "community": 0,
-      "norm_label": "test_force_replaces_previous_snapshot()"
-    },
-    {
-      "label": "test_migrations_applied_fresh_db()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L57",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_migrations_applied_fresh_db",
-      "community": 0,
-      "norm_label": "test_migrations_applied_fresh_db()"
-    },
-    {
-      "label": "test_save_and_has_onboarding()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L19",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_and_has_onboarding",
-      "community": 0,
-      "norm_label": "test_save_and_has_onboarding()"
-    },
-    {
-      "label": "test_save_twice_without_force_is_idempotent()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L49",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
-      "community": 0,
-      "norm_label": "test_save_twice_without_force_is_idempotent()"
-    },
-    {
-      "label": "setup()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L12",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "setup()",
-      "id": "warden_features_onboarding_init_setup"
-    },
-    {
-      "label": ".has_onboarding()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L7",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": ".has_onboarding()",
-      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository_has_onboarding"
-    },
-    {
-      "label": ".member_count()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L8",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": ".member_count()",
-      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository_member_count"
-    },
-    {
-      "label": ".save()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L9",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": ".save()",
-      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository_save"
-    },
-    {
-      "label": ".__init__()",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
-      "source_location": "L10",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": ".__init__()",
-      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice_init"
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo",
+      "community": 8,
+      "norm_label": "fakerepo"
     },
     {
       "label": ".snapshot_if_absent()",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
-      "source_location": "L13",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": ".snapshot_if_absent()",
-      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent"
-    },
-    {
-      "label": ".has_onboarding()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
-      "source_location": "L18",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_has_onboarding",
-      "community": 2,
-      "norm_label": ".has_onboarding()"
-    },
-    {
-      "label": ".__init__()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
-      "source_location": "L14",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_init",
-      "community": 2,
-      "norm_label": ".__init__()"
-    },
-    {
-      "label": ".member_count()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
-      "source_location": "L21",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_member_count",
-      "community": 2,
-      "norm_label": ".member_count()"
-    },
-    {
-      "label": ".save()",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_file": "warden/features/onboarding/services/protocol.py",
       "source_location": "L24",
       "_callable": true,
       "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_save",
-      "community": 2,
-      "norm_label": ".save()"
+      "id": "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent",
+      "community": 0,
+      "norm_label": ".snapshot_if_absent()"
+    },
+    {
+      "label": ".is_default()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_location": "L12",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_services_protocol_snapshotrole_is_default",
+      "community": 0,
+      "norm_label": ".is_default()"
     },
     {
       "label": ".is_default()",
@@ -446,7 +237,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerole_is_default",
-      "community": 2,
+      "community": 0,
       "norm_label": ".is_default()"
     },
     {
@@ -457,7 +248,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_service",
-      "community": 2,
+      "community": 0,
       "norm_label": "service()"
     },
     {
@@ -468,7 +259,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_test_filters_everyone_and_converts_joined_at",
-      "community": 2,
+      "community": 0,
       "norm_label": "test_filters_everyone_and_converts_joined_at()"
     },
     {
@@ -479,7 +270,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_test_force_overrides_existing",
-      "community": 2,
+      "community": 0,
       "norm_label": "test_force_overrides_existing()"
     },
     {
@@ -490,7 +281,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_test_none_joined_at_survives",
-      "community": 2,
+      "community": 0,
       "norm_label": "test_none_joined_at_survives()"
     },
     {
@@ -501,7 +292,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "warden_tests_features_onboarding_services_test_onboarding_service_test_skips_when_snapshot_exists",
-      "community": 2,
+      "community": 0,
       "norm_label": "test_skips_when_snapshot_exists()"
     },
     {
@@ -511,7 +302,7 @@
       "source_location": "L7",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": ".__init__()",
       "id": "warden_features_ping_handlers_ping_handler_pinghandlers_init"
     },
@@ -522,7 +313,7 @@
       "source_location": "L9",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "setup()",
       "id": "warden_features_ping_init_setup"
     },
@@ -533,7 +324,7 @@
       "source_location": "L2",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": ".format_latency()",
       "id": "warden_features_ping_services_ping_service_pingservice_format_latency"
     },
@@ -544,7 +335,7 @@
       "source_location": "L5",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": ".format_latency()",
       "id": "warden_features_ping_services_protocol_pingservice_format_latency"
     },
@@ -556,8 +347,63 @@
       "_callable": true,
       "_origin": "ast",
       "id": "warden_tests_features_ping_services_test_ping_service_test_format_latency",
-      "community": 3,
+      "community": 1,
       "norm_label": "test_format_latency()"
+    },
+    {
+      "label": ".has_onboarding()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/protocol.py",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository_has_onboarding",
+      "community": 2,
+      "norm_label": ".has_onboarding()"
+    },
+    {
+      "label": ".member_count()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/protocol.py",
+      "source_location": "L8",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository_member_count",
+      "community": 2,
+      "norm_label": ".member_count()"
+    },
+    {
+      "label": ".save()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/protocol.py",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_protocol_onboardingrepository_save",
+      "community": 2,
+      "norm_label": ".save()"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/onboarding_service.py",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice_init",
+      "community": 2,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".snapshot_if_absent()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/onboarding_service.py",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent",
+      "community": 2,
+      "norm_label": ".snapshot_if_absent()"
     },
     {
       "label": ".existing()",
@@ -566,9 +412,9 @@
       "source_location": "L34",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "norm_label": ".existing()",
-      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing"
+      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing",
+      "community": 3,
+      "norm_label": ".existing()"
     },
     {
       "label": ".__init__()",
@@ -577,9 +423,9 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "norm_label": ".__init__()",
-      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init"
+      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init",
+      "community": 3,
+      "norm_label": ".__init__()"
     },
     {
       "label": ".on_guild_join()",
@@ -588,9 +434,9 @@
       "source_location": "L17",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "norm_label": ".on_guild_join()",
-      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join"
+      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join",
+      "community": 3,
+      "norm_label": ".on_guild_join()"
     },
     {
       "label": ".onboard()",
@@ -599,9 +445,9 @@
       "source_location": "L29",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "norm_label": ".onboard()",
-      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard"
+      "id": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard",
+      "community": 3,
+      "norm_label": ".onboard()"
     },
     {
       "label": ".ping()",
@@ -610,7 +456,7 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 3,
       "norm_label": ".ping()",
       "id": "warden_features_ping_handlers_ping_handler_pinghandlers_ping"
     },
@@ -621,7 +467,7 @@
       "source_location": "L13",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 4,
       "norm_label": "feature_modules()",
       "id": "warden_bot_feature_modules"
     },
@@ -632,7 +478,7 @@
       "source_location": "L23",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 4,
       "norm_label": ".__init__()",
       "id": "warden_bot_warden_init"
     },
@@ -643,7 +489,7 @@
       "source_location": "L30",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 4,
       "norm_label": ".setup_hook()",
       "id": "warden_bot_warden_setup_hook"
     },
@@ -654,9 +500,9 @@
       "source_location": "L12",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "norm_label": "load_config()",
-      "id": "warden_config_load_config"
+      "id": "warden_config_load_config",
+      "community": 4,
+      "norm_label": "load_config()"
     },
     {
       "label": "test_feature_modules_discovers_ping()",
@@ -665,191 +511,194 @@
       "source_location": "L4",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
+      "community": 4,
       "norm_label": "test_feature_modules_discovers_ping()",
       "id": "warden_tests_test_smoke_test_feature_modules_discovers_ping"
     },
     {
-      "label": ".snapshot_if_absent()",
+      "label": "setup()",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_file": "warden/features/onboarding/__init__.py",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_init_setup",
+      "community": 5,
+      "norm_label": "setup()"
+    },
+    {
+      "label": ".has_onboarding()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L10",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_has_onboarding",
+      "community": 5,
+      "norm_label": ".has_onboarding()"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L7",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_init",
+      "community": 5,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".member_count()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L19",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_member_count",
+      "community": 5,
+      "norm_label": ".member_count()"
+    },
+    {
+      "label": ".save()",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L28",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_save",
+      "community": 5,
+      "norm_label": ".save()"
+    },
+    {
+      "label": "pool()",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
       "source_location": "L24",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
-      "norm_label": ".snapshot_if_absent()",
-      "id": "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent"
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_pool",
+      "community": 7,
+      "norm_label": "pool()"
     },
     {
-      "label": ".is_default()",
+      "label": "repo()",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/services/protocol.py",
-      "source_location": "L12",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L31",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
-      "norm_label": ".is_default()",
-      "id": "warden_features_onboarding_services_protocol_snapshotrole_is_default"
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_repo",
+      "community": 7,
+      "norm_label": "repo()"
     },
     {
-      "label": "parametrize",
+      "label": "snap()",
       "file_type": "code",
-      "source_file": "",
-      "source_location": "",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L35",
+      "_callable": true,
       "_origin": "ast",
-      "id": "parametrize",
-      "community": 0,
-      "norm_label": "parametrize"
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
+      "community": 7,
+      "norm_label": "snap()"
     },
     {
-      "label": "Path",
+      "label": "test_force_replaces_previous_snapshot()",
       "file_type": "code",
-      "source_file": "",
-      "source_location": "",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L51",
+      "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "path",
-      "id": "path"
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_force_replaces_previous_snapshot",
+      "community": 7,
+      "norm_label": "test_force_replaces_previous_snapshot()"
     },
     {
-      "label": "onboarding_repository.py",
+      "label": "test_save_and_has_onboarding()",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L43",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_and_has_onboarding",
+      "community": 7,
+      "norm_label": "test_save_and_has_onboarding()"
+    },
+    {
+      "label": "test_save_twice_without_force_is_idempotent()",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L74",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
+      "community": 7,
+      "norm_label": "test_save_twice_without_force_is_idempotent()"
+    },
+    {
+      "label": ".has_onboarding()",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L18",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_has_onboarding",
+      "community": 8,
+      "norm_label": ".has_onboarding()"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L14",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_init",
+      "community": 8,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".member_count()",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L21",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_member_count",
+      "community": 8,
+      "norm_label": ".member_count()"
+    },
+    {
+      "label": ".save()",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L24",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_save",
+      "community": 8,
+      "norm_label": ".save()"
+    },
+    {
+      "label": "onboarding_handler.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/handlers/onboarding_handler.py",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "warden_features_onboarding_handlers_onboarding_handler",
       "community": 0,
-      "norm_label": "onboarding_repository.py",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository"
+      "norm_label": "onboarding_handler.py"
     },
     {
-      "label": "Connection",
+      "label": "onboarding/services/protocol.py",
       "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": "connection",
-      "id": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_py_connection"
-    },
-    {
-      "label": "runner.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/runner.py",
+      "source_file": "warden/features/onboarding/services/protocol.py",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "warden_features_onboarding_services_protocol",
       "community": 0,
-      "norm_label": "runner.py",
-      "id": "warden_features_onboarding_repositories_aiosqlite_runner"
-    },
-    {
-      "label": "Connection",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": "connection",
-      "id": "warden_features_onboarding_repositories_aiosqlite_runner_py_connection"
-    },
-    {
-      "label": "test_onboarding_repository.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
-      "community": 0,
-      "norm_label": "test_onboarding_repository.py"
-    },
-    {
-      "label": "SnapshotMember",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_py_snapshotmember",
-      "community": 0,
-      "norm_label": "snapshotmember"
-    },
-    {
-      "label": "Terapkan .sql yang belum tercatat, urut nama file (<timestamp>_<name>.sql).",
-      "file_type": "rationale",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/runner.py",
-      "source_location": "L10",
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": "terapkan .sql yang belum tercatat, urut nama file (<timestamp>_<name>.sql).",
-      "id": "warden_features_onboarding_repositories_aiosqlite_runner_rationale_10"
-    },
-    {
-      "label": "member_role.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/entities/member_role.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "member_role.py",
-      "id": "warden_features_onboarding_entities_member_role"
-    },
-    {
-      "label": "TypedDict",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "typeddict",
-      "id": "warden_features_onboarding_entities_member_role_py_typeddict"
-    },
-    {
-      "label": "snapshot_member.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/entities/snapshot_member.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "snapshot_member.py",
-      "id": "warden_features_onboarding_entities_snapshot_member"
-    },
-    {
-      "label": "TypedDict",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "typeddict",
-      "id": "warden_features_onboarding_entities_snapshot_member_py_typeddict"
-    },
-    {
-      "label": "warden/features/onboarding/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "warden/features/onboarding/__init__.py",
-      "id": "warden_features_onboarding_init"
-    },
-    {
-      "label": "Bot",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "bot",
-      "id": "warden_features_onboarding_init_py_bot"
-    },
-    {
-      "label": "repositories/protocol.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "repositories/protocol.py",
-      "id": "warden_features_onboarding_repositories_protocol"
+      "norm_label": "onboarding/services/protocol.py"
     },
     {
       "label": "Protocol",
@@ -857,139 +706,19 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 1,
+      "community": 0,
       "norm_label": "protocol",
-      "id": "warden_features_onboarding_repositories_protocol_py_protocol"
+      "id": "warden_features_onboarding_services_protocol_py_protocol"
     },
     {
-      "label": "onboarding_service.py",
+      "label": "test_onboarding_service.py",
       "file_type": "code",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "onboarding_service.py",
-      "id": "warden_features_onboarding_services_onboarding_service"
-    },
-    {
-      "label": "Onboarding feature. Wiring only \u2014 handlers, services, repositories live apart.",
-      "file_type": "rationale",
-      "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "onboarding feature. wiring only \u2014 handlers, services, repositories live apart.",
-      "id": "warden_features_onboarding_init_rationale_1"
-    },
-    {
-      "label": "force=True: hapus snapshot guild ini dulu, dalam transaksi yang sama.",
-      "file_type": "rationale",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L16",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "force=true: hapus snapshot guild ini dulu, dalam transaksi yang sama.",
-      "id": "warden_features_onboarding_repositories_protocol_rationale_16"
-    },
-    {
-      "label": "onboarding/handlers/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/handlers/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 10,
-      "norm_label": "onboarding/handlers/__init__.py",
-      "id": "warden_features_onboarding_handlers_init"
-    },
-    {
-      "label": "warden/features/onboarding/repositories/aiosqlite/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 11,
-      "norm_label": "warden/features/onboarding/repositories/aiosqlite/__init__.py",
-      "id": "warden_features_onboarding_repositories_aiosqlite_init"
-    },
-    {
-      "label": "warden/features/onboarding/repositories/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/repositories/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 12,
-      "norm_label": "warden/features/onboarding/repositories/__init__.py",
-      "id": "warden_features_onboarding_repositories_init"
-    },
-    {
-      "label": "warden/features/onboarding/services/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/services/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 13,
-      "norm_label": "warden/features/onboarding/services/__init__.py",
-      "id": "warden_features_onboarding_services_init"
-    },
-    {
-      "label": "ping/handlers/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/features/ping/handlers/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 14,
-      "norm_label": "ping/handlers/__init__.py",
-      "id": "warden_features_ping_handlers_init"
-    },
-    {
-      "label": "warden/features/ping/services/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/features/ping/services/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 15,
-      "norm_label": "warden/features/ping/services/__init__.py",
-      "id": "warden_features_ping_services_init"
-    },
-    {
-      "label": "warden/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 16,
-      "norm_label": "warden/__init__.py",
-      "id": "warden_init"
-    },
-    {
-      "label": "tests/features/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_init",
-      "community": 17,
-      "norm_label": "tests/features/__init__.py"
-    },
-    {
-      "label": "tests/features/onboarding/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_init",
-      "community": 18,
-      "norm_label": "tests/features/onboarding/__init__.py"
-    },
-    {
-      "label": "tests/features/onboarding/repositories/aiosqlite/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_aiosqlite_init",
-      "community": 19,
-      "norm_label": "tests/features/onboarding/repositories/aiosqlite/__init__.py"
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service",
+      "community": 0,
+      "norm_label": "test_onboarding_service.py"
     },
     {
       "label": "OnboardingService",
@@ -997,89 +726,39 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "onboardingservice",
-      "community": 2,
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_py_onboardingservice",
+      "community": 0,
       "norm_label": "onboardingservice"
     },
     {
-      "label": "SnapshotMemberSource",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
+      "label": "Subset discord.Member yang dibaca service \u2014 fake di test memenuhi ini.",
+      "file_type": "rationale",
+      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_location": "L16",
       "_origin": "ast",
-      "id": "snapshotmembersource",
-      "community": 2,
-      "norm_label": "snapshotmembersource"
+      "id": "warden_features_onboarding_services_protocol_rationale_16",
+      "community": 0,
+      "norm_label": "subset discord.member yang dibaca service \u2014 fake di test memenuhi ini."
     },
     {
-      "label": "SnapshotRole",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
+      "label": "True kalau snapshot dibuat; False kalau sudah ada dan bukan force.",
+      "file_type": "rationale",
+      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_location": "L31",
       "_origin": "ast",
-      "id": "snapshotrole",
-      "community": 2,
-      "norm_label": "snapshotrole"
+      "id": "warden_features_onboarding_services_protocol_rationale_31",
+      "community": 0,
+      "norm_label": "true kalau snapshot dibuat; false kalau sudah ada dan bukan force."
     },
     {
-      "label": "services/test_onboarding_service.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
-      "source_location": "L1",
+      "label": "Subset discord.Role yang dibaca service.",
+      "file_type": "rationale",
+      "source_file": "warden/features/onboarding/services/protocol.py",
+      "source_location": "L7",
       "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_test_onboarding_service",
-      "community": 2,
-      "norm_label": "services/test_onboarding_service.py"
-    },
-    {
-      "label": "SnapshotMember",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_test_onboarding_service_py_snapshotmember",
-      "community": 2,
-      "norm_label": "snapshotmember"
-    },
-    {
-      "label": "tests/features/onboarding/repositories/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/repositories/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_repositories_init",
-      "community": 20,
-      "norm_label": "tests/features/onboarding/repositories/__init__.py"
-    },
-    {
-      "label": "tests/features/onboarding/services/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/onboarding/services/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_onboarding_services_init",
-      "community": 21,
-      "norm_label": "tests/features/onboarding/services/__init__.py"
-    },
-    {
-      "label": "tests/features/ping/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/ping/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_ping_init",
-      "community": 22,
-      "norm_label": "tests/features/ping/__init__.py"
-    },
-    {
-      "label": "tests/features/ping/services/__init__.py",
-      "file_type": "code",
-      "source_file": "warden/tests/features/ping/services/__init__.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "warden_tests_features_ping_services_init",
-      "community": 23,
-      "norm_label": "tests/features/ping/services/__init__.py"
+      "id": "warden_features_onboarding_services_protocol_rationale_7",
+      "community": 0,
+      "norm_label": "subset discord.role yang dibaca service."
     },
     {
       "label": "PingService",
@@ -1087,7 +766,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "pingservice",
       "id": "pingservice"
     },
@@ -1097,7 +776,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "protocol",
       "id": "protocol"
     },
@@ -1107,7 +786,7 @@
       "source_file": "warden/features/ping/handlers/ping_handler.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "ping_handler.py",
       "id": "warden_features_ping_handlers_ping_handler"
     },
@@ -1117,7 +796,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "bot",
       "id": "warden_features_ping_handlers_ping_handler_py_bot"
     },
@@ -1127,7 +806,7 @@
       "source_file": "warden/features/ping/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "warden/features/ping/__init__.py",
       "id": "warden_features_ping_init"
     },
@@ -1137,7 +816,7 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "bot",
       "id": "warden_features_ping_init_py_bot"
     },
@@ -1147,7 +826,7 @@
       "source_file": "warden/features/ping/services/ping_service.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "ping_service.py",
       "id": "warden_features_ping_services_ping_service"
     },
@@ -1157,7 +836,7 @@
       "source_file": "warden/features/ping/services/protocol.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "ping/services/protocol.py",
       "id": "warden_features_ping_services_protocol"
     },
@@ -1168,7 +847,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "warden_tests_features_ping_services_test_ping_service",
-      "community": 3,
+      "community": 1,
       "norm_label": "test_ping_service.py"
     },
     {
@@ -1177,309 +856,29 @@
       "source_file": "warden/features/ping/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 3,
+      "community": 1,
       "norm_label": "ping feature. wiring only \u2014 handlers and services live in their own folders.",
       "id": "warden_features_ping_init_rationale_1"
     },
     {
-      "label": "command",
+      "label": "SnapshotMemberSource",
       "file_type": "code",
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "command",
-      "id": "command"
+      "community": 10,
+      "norm_label": "snapshotmembersource",
+      "id": "snapshotmembersource"
     },
     {
-      "label": "Context",
+      "label": "SnapshotRole",
       "file_type": "code",
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "context",
-      "id": "context"
-    },
-    {
-      "label": "group",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "group",
-      "id": "group"
-    },
-    {
-      "label": "Guild",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "guild",
-      "id": "guild"
-    },
-    {
-      "label": "has_guild_permissions",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "has_guild_permissions",
-      "id": "has_guild_permissions"
-    },
-    {
-      "label": "hybrid_command",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "hybrid_command",
-      "id": "hybrid_command"
-    },
-    {
-      "label": "listener",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "listener",
-      "id": "listener"
-    },
-    {
-      "label": "Bot",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "bot",
-      "id": "warden_features_onboarding_handlers_onboarding_handler_py_bot"
-    },
-    {
-      "label": "OnboardingService",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 4,
-      "norm_label": "onboardingservice",
-      "id": "warden_features_onboarding_handlers_onboarding_handler_py_onboardingservice"
-    },
-    {
-      "label": "main.py",
-      "file_type": "code",
-      "source_file": "main.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "norm_label": "main.py",
-      "id": "main"
-    },
-    {
-      "label": "bot.py",
-      "file_type": "code",
-      "source_file": "warden/bot.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "norm_label": "bot.py",
-      "id": "warden_bot"
-    },
-    {
-      "label": "config.py",
-      "file_type": "code",
-      "source_file": "warden/config.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "norm_label": "config.py",
-      "id": "warden_config"
-    },
-    {
-      "label": "warden/tests/test_smoke.py",
-      "file_type": "code",
-      "source_file": "warden/tests/test_smoke.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 5,
-      "norm_label": "warden/tests/test_smoke.py",
-      "id": "warden_tests_test_smoke"
-    },
-    {
-      "label": "Every feature package under warden/features/. Adding one = adding a folder.",
-      "file_type": "rationale",
-      "source_file": "warden/bot.py",
-      "source_location": "L14",
-      "_origin": "ast",
-      "community": 5,
-      "norm_label": "every feature package under warden/features/. adding one = adding a folder.",
-      "id": "warden_bot_rationale_14"
-    },
-    {
-      "label": "onboarding_handler.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/handlers/onboarding_handler.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "onboarding_handler.py",
-      "id": "warden_features_onboarding_handlers_onboarding_handler"
-    },
-    {
-      "label": "onboarding/services/protocol.py",
-      "file_type": "code",
-      "source_file": "warden/features/onboarding/services/protocol.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "onboarding/services/protocol.py",
-      "id": "warden_features_onboarding_services_protocol"
-    },
-    {
-      "label": "Protocol",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "protocol",
-      "id": "warden_features_onboarding_services_protocol_py_protocol"
-    },
-    {
-      "label": "Subset discord.Member yang dibaca service \u2014 fake di test memenuhi ini.",
-      "file_type": "rationale",
-      "source_file": "warden/features/onboarding/services/protocol.py",
-      "source_location": "L16",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "subset discord.member yang dibaca service \u2014 fake di test memenuhi ini.",
-      "id": "warden_features_onboarding_services_protocol_rationale_16"
-    },
-    {
-      "label": "True kalau snapshot dibuat; False kalau sudah ada dan bukan force.",
-      "file_type": "rationale",
-      "source_file": "warden/features/onboarding/services/protocol.py",
-      "source_location": "L31",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "true kalau snapshot dibuat; false kalau sudah ada dan bukan force.",
-      "id": "warden_features_onboarding_services_protocol_rationale_31"
-    },
-    {
-      "label": "Subset discord.Role yang dibaca service.",
-      "file_type": "rationale",
-      "source_file": "warden/features/onboarding/services/protocol.py",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 6,
-      "norm_label": "subset discord.role yang dibaca service.",
-      "id": "warden_features_onboarding_services_protocol_rationale_7"
-    },
-    {
-      "label": "opencode.json",
-      "file_type": "code",
-      "source_file": "opencode.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "opencode.json",
-      "id": "opencode"
-    },
-    {
-      "label": "lsp",
-      "file_type": "code",
-      "source_file": "opencode.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "lsp",
-      "id": "opencode_lsp"
-    },
-    {
-      "label": "pyright",
-      "file_type": "code",
-      "source_file": "opencode.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "pyright",
-      "id": "opencode_lsp_pyright"
-    },
-    {
-      "label": "command",
-      "file_type": "code",
-      "source_file": "opencode.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "command",
-      "id": "opencode_pyright_command"
-    },
-    {
-      "label": "extensions",
-      "file_type": "code",
-      "source_file": "opencode.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "extensions",
-      "id": "opencode_pyright_extensions"
-    },
-    {
-      "label": "$schema",
-      "file_type": "code",
-      "source_file": "opencode.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "$schema",
-      "id": "opencode_schema"
-    },
-    {
-      "label": ".py",
-      "file_type": "concept",
-      "source_file": "opencode.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": ".py",
-      "id": "ref_py"
-    },
-    {
-      "label": ".pyi",
-      "file_type": "concept",
-      "source_file": "opencode.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": ".pyi",
-      "id": "ref_pyi"
-    },
-    {
-      "label": "pyright-langserver",
-      "file_type": "concept",
-      "source_file": "opencode.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "pyright-langserver",
-      "id": "ref_pyright_langserver"
-    },
-    {
-      "label": "--stdio",
-      "file_type": "concept",
-      "source_file": "opencode.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 7,
-      "norm_label": "--stdio",
-      "id": "ref_stdio"
+      "community": 11,
+      "norm_label": "snapshotrole",
+      "id": "snapshotrole"
     },
     {
       "label": "warden/features/__init__.py",
@@ -1487,7 +886,7 @@
       "source_file": "warden/features/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 8,
+      "community": 12,
       "norm_label": "warden/features/__init__.py",
       "id": "warden_features_init"
     },
@@ -1497,9 +896,589 @@
       "source_file": "warden/features/onboarding/entities/__init__.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 9,
+      "community": 13,
       "norm_label": "entities/__init__.py",
       "id": "warden_features_onboarding_entities_init"
+    },
+    {
+      "label": "onboarding/handlers/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/handlers/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 14,
+      "norm_label": "onboarding/handlers/__init__.py",
+      "id": "warden_features_onboarding_handlers_init"
+    },
+    {
+      "label": "warden/features/onboarding/repositories/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 15,
+      "norm_label": "warden/features/onboarding/repositories/__init__.py",
+      "id": "warden_features_onboarding_repositories_init"
+    },
+    {
+      "label": "warden/features/onboarding/repositories/postgres/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/postgres/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_postgres_init",
+      "community": 16,
+      "norm_label": "warden/features/onboarding/repositories/postgres/__init__.py"
+    },
+    {
+      "label": "warden/features/onboarding/services/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 17,
+      "norm_label": "warden/features/onboarding/services/__init__.py",
+      "id": "warden_features_onboarding_services_init"
+    },
+    {
+      "label": "ping/handlers/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/features/ping/handlers/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 18,
+      "norm_label": "ping/handlers/__init__.py",
+      "id": "warden_features_ping_handlers_init"
+    },
+    {
+      "label": "warden/features/ping/services/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/features/ping/services/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 19,
+      "norm_label": "warden/features/ping/services/__init__.py",
+      "id": "warden_features_ping_services_init"
+    },
+    {
+      "label": "member_role.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/entities/member_role.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "member_role.py",
+      "id": "warden_features_onboarding_entities_member_role"
+    },
+    {
+      "label": "TypedDict",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "typeddict",
+      "id": "warden_features_onboarding_entities_member_role_py_typeddict"
+    },
+    {
+      "label": "snapshot_member.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/entities/snapshot_member.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "snapshot_member.py",
+      "id": "warden_features_onboarding_entities_snapshot_member"
+    },
+    {
+      "label": "TypedDict",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "typeddict",
+      "id": "warden_features_onboarding_entities_snapshot_member_py_typeddict"
+    },
+    {
+      "label": "repositories/protocol.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/protocol.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_protocol",
+      "community": 2,
+      "norm_label": "repositories/protocol.py"
+    },
+    {
+      "label": "Protocol",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "protocol",
+      "id": "warden_features_onboarding_repositories_protocol_py_protocol"
+    },
+    {
+      "label": "SnapshotMember",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_protocol_py_snapshotmember",
+      "community": 2,
+      "norm_label": "snapshotmember"
+    },
+    {
+      "label": "onboarding_service.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/services/onboarding_service.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_services_onboarding_service",
+      "community": 2,
+      "norm_label": "onboarding_service.py"
+    },
+    {
+      "label": "force=True: hapus snapshot guild ini dulu, dalam transaksi yang sama.",
+      "file_type": "rationale",
+      "source_file": "warden/features/onboarding/repositories/protocol.py",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_protocol_rationale_16",
+      "community": 2,
+      "norm_label": "force=true: hapus snapshot guild ini dulu, dalam transaksi yang sama."
+    },
+    {
+      "label": "warden/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "warden/__init__.py",
+      "id": "warden_init"
+    },
+    {
+      "label": "tests/features/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 21,
+      "norm_label": "tests/features/__init__.py",
+      "id": "warden_tests_features_init"
+    },
+    {
+      "label": "tests/features/onboarding/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 22,
+      "norm_label": "tests/features/onboarding/__init__.py",
+      "id": "warden_tests_features_onboarding_init"
+    },
+    {
+      "label": "tests/features/onboarding/repositories/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/repositories/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 23,
+      "norm_label": "tests/features/onboarding/repositories/__init__.py",
+      "id": "warden_tests_features_onboarding_repositories_init"
+    },
+    {
+      "label": "tests/features/onboarding/repositories/postgres/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_repositories_postgres_init",
+      "community": 24,
+      "norm_label": "tests/features/onboarding/repositories/postgres/__init__.py"
+    },
+    {
+      "label": "tests/features/onboarding/services/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/services/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 25,
+      "norm_label": "tests/features/onboarding/services/__init__.py",
+      "id": "warden_tests_features_onboarding_services_init"
+    },
+    {
+      "label": "tests/features/ping/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/ping/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 26,
+      "norm_label": "tests/features/ping/__init__.py",
+      "id": "warden_tests_features_ping_init"
+    },
+    {
+      "label": "tests/features/ping/services/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/ping/services/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 27,
+      "norm_label": "tests/features/ping/services/__init__.py",
+      "id": "warden_tests_features_ping_services_init"
+    },
+    {
+      "label": "command",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "command",
+      "id": "command"
+    },
+    {
+      "label": "Context",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "context",
+      "id": "context"
+    },
+    {
+      "label": "group",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "group",
+      "id": "group"
+    },
+    {
+      "label": "Guild",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "guild",
+      "id": "guild"
+    },
+    {
+      "label": "has_guild_permissions",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "has_guild_permissions",
+      "id": "has_guild_permissions"
+    },
+    {
+      "label": "hybrid_command",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "hybrid_command",
+      "id": "hybrid_command"
+    },
+    {
+      "label": "listener",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "listener",
+      "id": "listener"
+    },
+    {
+      "label": "Bot",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "bot",
+      "id": "warden_features_onboarding_handlers_onboarding_handler_py_bot"
+    },
+    {
+      "label": "OnboardingService",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "onboardingservice",
+      "id": "warden_features_onboarding_handlers_onboarding_handler_py_onboardingservice"
+    },
+    {
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "main.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "main",
+      "community": 4,
+      "norm_label": "main.py"
+    },
+    {
+      "label": "bot.py",
+      "file_type": "code",
+      "source_file": "warden/bot.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "bot.py",
+      "id": "warden_bot"
+    },
+    {
+      "label": "config.py",
+      "file_type": "code",
+      "source_file": "warden/config.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_config",
+      "community": 4,
+      "norm_label": "config.py"
+    },
+    {
+      "label": "warden/tests/test_smoke.py",
+      "file_type": "code",
+      "source_file": "warden/tests/test_smoke.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "warden/tests/test_smoke.py",
+      "id": "warden_tests_test_smoke"
+    },
+    {
+      "label": "Every feature package under warden/features/. Adding one = adding a folder.",
+      "file_type": "rationale",
+      "source_file": "warden/bot.py",
+      "source_location": "L14",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "every feature package under warden/features/. adding one = adding a folder.",
+      "id": "warden_bot_rationale_14"
+    },
+    {
+      "label": "Pool",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "pool",
+      "community": 5,
+      "norm_label": "pool"
+    },
+    {
+      "label": "warden/features/onboarding/__init__.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_init",
+      "community": 5,
+      "norm_label": "warden/features/onboarding/__init__.py"
+    },
+    {
+      "label": "Bot",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "bot",
+      "id": "warden_features_onboarding_init_py_bot"
+    },
+    {
+      "label": "postgres/onboarding_repository.py",
+      "file_type": "code",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_postgres_onboarding_repository",
+      "community": 5,
+      "norm_label": "postgres/onboarding_repository.py"
+    },
+    {
+      "label": "SnapshotMember",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_repositories_postgres_onboarding_repository_py_snapshotmember",
+      "community": 5,
+      "norm_label": "snapshotmember"
+    },
+    {
+      "label": "Onboarding feature. Wiring only \u2014 handlers, services, repositories live apart.",
+      "file_type": "rationale",
+      "source_file": "warden/features/onboarding/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_features_onboarding_init_rationale_1",
+      "community": 5,
+      "norm_label": "onboarding feature. wiring only \u2014 handlers, services, repositories live apart."
+    },
+    {
+      "label": "opencode.json",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "opencode.json",
+      "id": "opencode"
+    },
+    {
+      "label": "lsp",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "lsp",
+      "id": "opencode_lsp"
+    },
+    {
+      "label": "pyright",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "pyright",
+      "id": "opencode_lsp_pyright"
+    },
+    {
+      "label": "command",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "command",
+      "id": "opencode_pyright_command"
+    },
+    {
+      "label": "extensions",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "extensions",
+      "id": "opencode_pyright_extensions"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "opencode.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "$schema",
+      "id": "opencode_schema"
+    },
+    {
+      "label": ".py",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": ".py",
+      "id": "ref_py"
+    },
+    {
+      "label": ".pyi",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": ".pyi",
+      "id": "ref_pyi"
+    },
+    {
+      "label": "pyright-langserver",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "pyright-langserver",
+      "id": "ref_pyright_langserver"
+    },
+    {
+      "label": "--stdio",
+      "file_type": "concept",
+      "source_file": "opencode.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "--stdio",
+      "id": "ref_stdio"
+    },
+    {
+      "label": "fixture",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "fixture",
+      "community": 7,
+      "norm_label": "fixture"
+    },
+    {
+      "label": "postgres/test_onboarding_repository.py",
+      "file_type": "code",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "community": 7,
+      "norm_label": "postgres/test_onboarding_repository.py"
+    },
+    {
+      "label": "SnapshotMember",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_py_snapshotmember",
+      "community": 7,
+      "norm_label": "snapshotmember"
+    },
+    {
+      "label": "SnapshotMember",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "snapshotmember",
+      "id": "warden_tests_features_onboarding_services_test_onboarding_service_py_snapshotmember"
+    },
+    {
+      "label": "OnboardingService",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "onboardingservice",
+      "id": "onboardingservice"
     }
   ],
   "links": [
@@ -1523,105 +1502,33 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_config_load_config",
-      "target": "warden_config_config"
+      "target": "warden_config_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L15",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init_setup",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L16",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init_setup",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L16",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_init_setup",
-      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect",
-      "target": "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L23",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_has_onboarding",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L13",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_init",
-      "target": "path"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L30",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_member_count",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L43",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_save",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect"
+      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -1675,12 +1582,12 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L12",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_py_snapshotmember",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_py_snapshotmember",
       "confidence_score": 1.0
     },
     {
@@ -1688,107 +1595,47 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L15",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
       "target": "warden_features_onboarding_entities_member_role_memberrole"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L29",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_force_replaces_previous_snapshot",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L30",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_force_replaces_previous_snapshot",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_force_replaces_previous_snapshot",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
       "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L58",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_migrations_applied_fresh_db",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L59",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_migrations_applied_fresh_db",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_and_has_onboarding",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
       "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L20",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L75",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_and_has_onboarding",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L22",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_and_has_onboarding",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L50",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L51",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
       "confidence_score": 1.0
     },
     {
@@ -1812,7 +1659,19 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "warden_tests_features_onboarding_services_test_onboarding_service_service",
-      "target": "onboardingservice",
+      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_services_test_onboarding_service_service",
+      "target": "warden_tests_features_onboarding_services_test_onboarding_service_py_onboardingservice",
       "confidence_score": 1.0
     },
     {
@@ -1943,9 +1802,9 @@
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing",
-      "target": "command"
+      "target": "command",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -1955,9 +1814,9 @@
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing",
-      "target": "has_guild_permissions"
+      "target": "has_guild_permissions",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -1967,9 +1826,9 @@
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join",
-      "target": "listener"
+      "target": "listener",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -1979,9 +1838,9 @@
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard",
-      "target": "group"
+      "target": "group",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -1998,13 +1857,25 @@
     {
       "relation": "references",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L56",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L23",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_migrations_applied_fresh_db",
-      "target": "parametrize",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_pool",
+      "target": "fixture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_repo",
+      "target": "fixture",
       "confidence_score": 1.0
     },
     {
@@ -2012,12 +1883,12 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L5",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init",
-      "target": "warden_features_onboarding_handlers_onboarding_handler"
+      "target": "warden_features_onboarding_services_onboarding_service",
+      "confidence_score": 1.0
     },
     {
       "relation": "re_exports",
@@ -2027,21 +1898,21 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository"
+      "target": "warden_features_onboarding_handlers_onboarding_handler",
+      "confidence_score": 1.0
     },
     {
       "relation": "re_exports",
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L9",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init",
-      "target": "warden_features_onboarding_services_onboarding_service"
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository",
+      "confidence_score": 1.0
     },
     {
       "relation": "re_exports",
@@ -2071,25 +1942,13 @@
       "relation": "references",
       "context": "generic_arg",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L16",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_py_connection"
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L36",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_save",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_save",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_py_snapshotmember",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2099,9 +1958,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol_onboardingrepository_save",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
+      "target": "warden_features_onboarding_repositories_protocol_py_snapshotmember",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2111,9 +1970,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent",
-      "target": "warden_features_onboarding_services_protocol_snapshotmembersource"
+      "target": "warden_features_onboarding_services_protocol_snapshotmembersource",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2123,9 +1982,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent",
-      "target": "warden_features_onboarding_services_protocol_snapshotmembersource"
+      "target": "warden_features_onboarding_services_protocol_snapshotmembersource",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2192,24 +2051,12 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "main.py",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "main",
-      "target": "warden_bot_warden"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "main.py",
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "main",
-      "target": "warden_config_load_config"
+      "target": "warden_config_load_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -2243,21 +2090,21 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler",
-      "target": "warden_features_onboarding_services_protocol_onboardingservice"
+      "target": "warden_features_onboarding_services_protocol_onboardingservice",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L5",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers"
+      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -2267,81 +2114,21 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_init",
-      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_protocol",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_entities_member_role_memberrole"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
+      "source": "warden_features_onboarding_init",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -2351,9 +2138,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -2363,9 +2150,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_services_protocol_snapshotmembersource"
+      "target": "warden_features_onboarding_services_protocol_snapshotmembersource",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -2407,6 +2194,54 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_services_test_onboarding_service",
+      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_services_test_onboarding_service",
+      "target": "warden_features_onboarding_services_protocol_snapshotmembersource",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "warden/tests/features/onboarding/services/test_onboarding_service.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_services_test_onboarding_service",
+      "target": "warden_features_onboarding_services_protocol_snapshotrole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "warden/tests/test_smoke.py",
       "source_location": "L1",
       "weight": 1.0,
@@ -2423,9 +2258,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "main",
-      "target": "warden_bot"
+      "target": "warden_bot",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2435,9 +2270,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "main",
-      "target": "warden_config"
+      "target": "warden_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2471,33 +2306,21 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler",
-      "target": "warden_features_onboarding_services_protocol"
+      "target": "warden_features_onboarding_services_protocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L7",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
-      "target": "warden_features_onboarding_entities_snapshot_member"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L8",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_runner"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository",
+      "target": "warden_features_onboarding_entities_snapshot_member",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2507,9 +2330,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol",
-      "target": "warden_features_onboarding_entities_snapshot_member"
+      "target": "warden_features_onboarding_entities_snapshot_member",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2519,9 +2342,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_entities_member_role"
+      "target": "warden_features_onboarding_entities_member_role",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2531,9 +2354,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_entities_snapshot_member"
+      "target": "warden_features_onboarding_entities_snapshot_member",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2543,9 +2366,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_repositories_protocol"
+      "target": "warden_features_onboarding_repositories_protocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2555,9 +2378,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_services_protocol"
+      "target": "warden_features_onboarding_services_protocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -2575,11 +2398,11 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L4",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
       "target": "warden_features_onboarding_entities_member_role",
       "confidence_score": 1.0
     },
@@ -2587,11 +2410,11 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L5",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
       "target": "warden_features_onboarding_entities_snapshot_member",
       "confidence_score": 1.0
     },
@@ -2599,12 +2422,12 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L6",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository",
       "confidence_score": 1.0
     },
     {
@@ -2675,9 +2498,9 @@
       "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing",
-      "target": "context"
+      "target": "context",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2687,9 +2510,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_py_bot"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_py_bot",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2699,9 +2522,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_py_onboardingservice"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_py_onboardingservice",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2711,9 +2534,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join",
-      "target": "guild"
+      "target": "guild",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2723,33 +2546,33 @@
       "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard",
-      "target": "context"
+      "target": "context",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init_setup",
-      "target": "warden_features_onboarding_init_py_bot"
+      "target": "warden_features_onboarding_init_py_bot",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
       "context": "parameter_type",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/runner.py",
-      "source_location": "L9",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending",
-      "target": "warden_features_onboarding_repositories_aiosqlite_runner_py_connection"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_init",
+      "target": "pool",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2759,9 +2582,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service_onboardingservice_init",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2895,9 +2718,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_config",
-      "target": "warden_config_load_config"
+      "target": "warden_config_load_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2906,9 +2729,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_config",
-      "target": "warden_config_config"
+      "target": "warden_config_config",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2939,42 +2762,31 @@
       "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "warden/features/onboarding/__init__.py",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init",
-      "target": "warden_features_onboarding_init_setup"
+      "target": "warden_features_onboarding_init_setup",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L11",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/runner.py",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_runner",
-      "target": "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2983,9 +2795,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2994,9 +2806,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service",
-      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice"
+      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3005,9 +2817,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol",
-      "target": "warden_features_onboarding_services_protocol_snapshotmembersource"
+      "target": "warden_features_onboarding_services_protocol_snapshotmembersource",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3016,9 +2828,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol",
-      "target": "warden_features_onboarding_services_protocol_onboardingservice"
+      "target": "warden_features_onboarding_services_protocol_onboardingservice",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3027,9 +2839,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol",
-      "target": "warden_features_onboarding_services_protocol_snapshotrole"
+      "target": "warden_features_onboarding_services_protocol_snapshotrole",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3078,56 +2890,67 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L11",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_snap",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_pool",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L19",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_and_has_onboarding",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_repo",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L28",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_force_replaces_previous_snapshot",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L49",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_and_has_onboarding",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "warden/tests/features/onboarding/repositories/aiosqlite/test_onboarding_repository.py",
-      "source_location": "L57",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository",
-      "target": "warden_tests_features_onboarding_repositories_aiosqlite_test_onboarding_repository_test_migrations_applied_fresh_db",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_force_replaces_previous_snapshot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "target": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
       "confidence_score": 1.0
     },
     {
@@ -3269,9 +3092,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol_onboardingrepository",
-      "target": "warden_features_onboarding_repositories_protocol_py_protocol"
+      "target": "warden_features_onboarding_repositories_protocol_py_protocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
@@ -3280,9 +3103,9 @@
       "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_onboardingservice",
-      "target": "warden_features_onboarding_services_protocol_py_protocol"
+      "target": "warden_features_onboarding_services_protocol_py_protocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
@@ -3291,9 +3114,9 @@
       "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_snapshotmembersource",
-      "target": "warden_features_onboarding_services_protocol_py_protocol"
+      "target": "warden_features_onboarding_services_protocol_py_protocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
@@ -3302,9 +3125,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_snapshotrole",
-      "target": "warden_features_onboarding_services_protocol_py_protocol"
+      "target": "warden_features_onboarding_services_protocol_py_protocol",
+      "confidence_score": 1.0
     },
     {
       "relation": "inherits",
@@ -3325,7 +3148,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "warden_tests_features_onboarding_services_test_onboarding_service_fakemember",
-      "target": "snapshotmembersource",
+      "target": "warden_features_onboarding_services_protocol_snapshotmembersource",
       "confidence_score": 1.0
     },
     {
@@ -3336,7 +3159,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "warden_tests_features_onboarding_services_test_onboarding_service_fakerole",
-      "target": "snapshotrole",
+      "target": "warden_features_onboarding_services_protocol_snapshotrole",
       "confidence_score": 1.0
     },
     {
@@ -3368,9 +3191,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3379,9 +3202,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3390,9 +3213,9 @@
       "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3401,64 +3224,53 @@
       "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
-      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing"
+      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L12",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_init"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_has_onboarding",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L16",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_connect"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_member_count",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L22",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_has_onboarding"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_save",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L29",
+      "source_file": "warden/features/onboarding/repositories/postgres/onboarding_repository.py",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_member_count"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L36",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
-      "target": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository_save"
+      "source": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_init",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3467,9 +3279,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol_onboardingrepository",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_has_onboarding"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_has_onboarding",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3478,9 +3290,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol_onboardingrepository",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_member_count"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_member_count",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3489,9 +3301,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol_onboardingrepository",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_save"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_save",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3500,9 +3312,9 @@
       "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service_onboardingservice",
-      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice_init"
+      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice_init",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3511,9 +3323,9 @@
       "source_location": "L13",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_onboarding_service_onboardingservice",
-      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent"
+      "target": "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3522,9 +3334,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_onboardingservice",
-      "target": "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent"
+      "target": "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3533,9 +3345,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_snapshotrole",
-      "target": "warden_features_onboarding_services_protocol_snapshotrole_is_default"
+      "target": "warden_features_onboarding_services_protocol_snapshotrole_is_default",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -3654,20 +3466,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_init_rationale_1",
-      "target": "warden_features_onboarding_init"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/runner.py",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "warden_features_onboarding_repositories_aiosqlite_runner_rationale_10",
-      "target": "warden_features_onboarding_repositories_aiosqlite_runner_apply_pending"
+      "target": "warden_features_onboarding_init",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -3676,9 +3477,9 @@
       "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_repositories_protocol_rationale_16",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_save"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository_save",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -3687,9 +3488,9 @@
       "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_rationale_16",
-      "target": "warden_features_onboarding_services_protocol_snapshotmembersource"
+      "target": "warden_features_onboarding_services_protocol_snapshotmembersource",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -3698,9 +3499,9 @@
       "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_rationale_31",
-      "target": "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent"
+      "target": "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -3709,9 +3510,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "warden_features_onboarding_services_protocol_rationale_7",
-      "target": "warden_features_onboarding_services_protocol_snapshotrole"
+      "target": "warden_features_onboarding_services_protocol_snapshotrole",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -3749,24 +3550,13 @@
     {
       "relation": "uses",
       "confidence": "INFERRED",
-      "source_file": "warden/features/onboarding/repositories/aiosqlite/onboarding_repository.py",
-      "source_location": "L40",
+      "source_file": "warden/features/onboarding/__init__.py",
+      "source_location": "L18",
       "weight": 0.8,
       "_origin": "ast",
-      "confidence_score": 0.5,
-      "source": "warden_features_onboarding_repositories_aiosqlite_onboarding_repository_aiosqliteonboardingrepository",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
-    },
-    {
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "source_file": "warden/features/onboarding/repositories/protocol.py",
-      "source_location": "L13",
-      "weight": 0.8,
-      "_origin": "ast",
-      "confidence_score": 0.5,
-      "source": "warden_features_onboarding_repositories_protocol_onboardingrepository",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
+      "source": "warden_features_onboarding_init_setup",
+      "target": "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -3775,31 +3565,9 @@
       "source_location": "L10",
       "weight": 0.8,
       "_origin": "ast",
-      "confidence_score": 0.5,
       "source": "warden_features_onboarding_services_onboarding_service_onboardingservice",
-      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository"
-    },
-    {
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
-      "source_location": "L23",
-      "weight": 0.8,
-      "_origin": "ast",
-      "confidence_score": 0.5,
-      "source": "warden_features_onboarding_services_onboarding_service_onboardingservice",
-      "target": "warden_features_onboarding_entities_snapshot_member_snapshotmember"
-    },
-    {
-      "relation": "uses",
-      "confidence": "INFERRED",
-      "source_file": "warden/features/onboarding/services/onboarding_service.py",
-      "source_location": "L27",
-      "weight": 0.8,
-      "_origin": "ast",
-      "confidence_score": 0.5,
-      "source": "warden_features_onboarding_services_onboarding_service_onboardingservice",
-      "target": "warden_features_onboarding_entities_member_role_memberrole"
+      "target": "warden_features_onboarding_repositories_protocol_onboardingrepository",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -3811,8 +3579,19 @@
       "confidence_score": 0.5,
       "source": "warden_features_ping_handlers_ping_handler_pinghandlers",
       "target": "warden_features_ping_services_protocol_pingservice"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "warden/tests/features/onboarding/repositories/postgres/test_onboarding_repository.py",
+      "source_location": "L32",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_repo",
+      "target": "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "confidence_score": 0.5
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e8fcce43217d7c2f26f7d8b0bff91f45442be4f1"
+  "built_at_commit": "ce66ec88d3111993ad1c062433ab878d3fc85464"
 }
