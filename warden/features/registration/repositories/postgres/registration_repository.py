@@ -15,12 +15,11 @@ def _row(record: asyncpg.Record | None) -> Registration | None:
     return dict(record) if record is not None else None  # type: ignore[return-value]
 
 
-def _one(record: asyncpg.Record | None) -> Registration:
+def _one(record: asyncpg.Record | None, ident: str) -> Registration:
     if record is None:
         # satu-satunya kegagalan eksplisit di repo ini; sisanya exception asyncpg
         # yang naik apa adanya
-        log.warning("registration_repo: baris registrasi tidak ditemukan")
-        raise LookupError("registrasi tidak ditemukan")
+        raise LookupError(f"registrasi tidak ditemukan ({ident})")
     return dict(record)  # type: ignore[return-value]
 
 
@@ -57,7 +56,8 @@ class PostgresRegistrationRepository:
                     user_id,
                     thread_id,
                     expires_at,
-                )
+                ),
+                f"user_id={user_id}",
             )
 
     async def reopen(
@@ -71,7 +71,8 @@ class PostgresRegistrationRepository:
                     registration_id,
                     thread_id,
                     expires_at,
-                )
+                ),
+                f"id={registration_id}",
             )
 
     async def submit(
@@ -108,7 +109,8 @@ class PostgresRegistrationRepository:
                     angkatan,
                     prodi,
                     linkedin,
-                )
+                ),
+                f"id={registration_id}",
             )
 
     async def by_thread(self, thread_id: int) -> Registration | None:

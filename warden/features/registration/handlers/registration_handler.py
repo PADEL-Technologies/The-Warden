@@ -97,21 +97,34 @@ class RegistrationHandlers(commands.Cog):
                 },
             )
             return
-        with contextlib.suppress(discord.HTTPException):
+        try:
             await member.add_roles(
                 *[discord.Object(id=r) for r in role_ids],
                 reason="Registrasi sudah disetujui sebelumnya",
             )
-            await member.edit(nick=nickname(reg))
-            log.info(
-                "registration: role dipulihkan setelah join ulang",
+        except discord.HTTPException as exc:
+            log.warning(
+                "registration: role gagal dipulihkan setelah join ulang",
                 extra={
                     "registration_id": reg["id"],
                     "user_id": member.id,
                     "guild_id": member.guild.id,
                     "role_ids": role_ids,
+                    "status": exc.status,
                 },
             )
+            return
+        with contextlib.suppress(discord.HTTPException):
+            await member.edit(nick=nickname(reg))
+        log.info(
+            "registration: role dipulihkan setelah join ulang",
+            extra={
+                "registration_id": reg["id"],
+                "user_id": member.id,
+                "guild_id": member.guild.id,
+                "role_ids": role_ids,
+            },
+        )
 
     @tasks.loop(hours=1)
     async def sweep_archived(self) -> None:
@@ -119,28 +132,44 @@ class RegistrationHandlers(commands.Cog):
         ter-archive saat bot mati tidak akan pernah dapat event susulan."""
         locket = self.bot.get_channel(self.bot.config.registration_locket_channel_id)
         if locket is None:
+            log.warning(
+                "registration: sapuan dilewati, channel locket tidak ketemu",
+                extra={"channel_id": self.bot.config.registration_locket_channel_id},
+            )
             return
-        swept = 0
+        scanned = swept = 0
         # limit=50 per pass: delete thread itu operasi channel-delete, rate limitnya
         # galak. Sisanya kebagian jam berikutnya.
         async for thread in locket.archived_threads(private=True, limit=50):
+            scanned += 1
             reg = await self.service.by_thread(thread.id)
             if reg is None or reg["state"] == "pending":
                 continue  # bukan punya kita, atau hasilnya masih butuh tempat mendarat
-            with contextlib.suppress(discord.HTTPException):
+            try:
                 await thread.delete()
+            except discord.HTTPException as exc:
+                log.debug(
+                    "registration: thread ter-archive gagal dihapus",
+                    extra={
+                        "thread_id": thread.id,
+                        "registration_id": reg["id"],
+                        "status": exc.status,
+                    },
+                )
+            else:
+                swept += 1
+                log.debug(
+                    "registration: thread ter-archive dihapus",
+                    extra={"thread_id": thread.id, "registration_id": reg["id"]},
+                )
             await self.service.clear_thread(thread.id)
-            swept += 1
-            log.debug(
-                "registration: thread ter-archive dihapus",
-                extra={"thread_id": thread.id, "registration_id": reg["id"]},
-            )
-        if swept:
-            log.info(
-                "registration: sapuan thread selesai, %d dihapus",
-                swept,
-                extra={"swept": swept, "channel_id": locket.id},
-            )
+        # tiap jam apa pun hasilnya: baris ini yang membuktikan loopnya masih hidup
+        log.info(
+            "registration: sapuan thread selesai, %d dari %d dihapus",
+            swept,
+            scanned,
+            extra={"scanned": scanned, "swept": swept, "channel_id": locket.id},
+        )
 
     @sweep_archived.before_loop
     async def before_sweep(self) -> None:

@@ -2,6 +2,7 @@ import contextlib
 import logging
 from typing import TYPE_CHECKING
 
+import asyncpg
 import discord
 
 from warden.features.registration.services.registration_service import (
@@ -74,8 +75,18 @@ class ReviewView(discord.ui.View):
         """Umumkan ke thread pendaftar, lalu edit kartunya di tempat."""
         thread = await get_thread(interaction.guild, decided["thread_id"])
         if thread is not None:
-            with contextlib.suppress(discord.HTTPException):
+            try:
                 await speak(thread, content=f"<@{decided['user_id']}> {note}")
+            except discord.HTTPException as exc:
+                log.warning(
+                    "registration: kabar keputusan tidak sampai ke pendaftar",
+                    extra={
+                        "registration_id": decided["id"],
+                        "user_id": decided["user_id"],
+                        "thread_id": decided["thread_id"],
+                        "status": exc.status,
+                    },
+                )
 
         message = interaction.message
         embed = mark_decided(message.embeds[0], decided, interaction.user)
@@ -130,14 +141,34 @@ class ReviewView(discord.ui.View):
         # dicari sekali di sini, bukan dua kali: decide butuh joined_at-nya,
         # _grant butuh objeknya
         member = interaction.guild.get_member(reg["user_id"])
-        decided = await self.service.decide(
-            reg["id"],
-            approve=True,
-            reviewed_by=interaction.user.id,
-            joined_at=member.joined_at.isoformat()
-            if member and member.joined_at
-            else None,
-        )
+        try:
+            decided = await self.service.decide(
+                reg["id"],
+                approve=True,
+                reviewed_by=interaction.user.id,
+                joined_at=member.joined_at.isoformat()
+                if member and member.joined_at
+                else None,
+            )
+        except asyncpg.UniqueViolationError:
+            # satu-satunya index yang bisa bentrok di sini: registrations_nim_approved
+            holder = await self.service.nim_holder(reg["guild_id"], reg["nim"] or "")
+            pemegang = f"<@{holder}>" if holder else "member lain"
+            log.warning(
+                "registration: approve dibatalkan, NIM sudah dipegang member lain",
+                extra={
+                    "registration_id": reg["id"],
+                    "user_id": reg["user_id"],
+                    "nim_holder": holder,
+                    "reviewed_by": interaction.user.id,
+                },
+            )
+            await interaction.followup.send(
+                f"NIM ini sudah dipegang {pemegang}. Approve dibatalkan — reject "
+                "saja, lalu minta orangnya daftar ulang dengan NIM yang benar.",
+                ephemeral=True,
+            )
+            return
         if decided is None:
             await self.already_decided(interaction)
             return

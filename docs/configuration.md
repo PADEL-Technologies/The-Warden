@@ -86,6 +86,7 @@ the offset written out, so they stay unambiguous read from anywhere.
 | `DEBUG`   | Handler/view entry, service calls, repository operation names, **PII**  |
 | `INFO`    | State changes: snapshot taken, form submitted, approved, rejected       |
 | `WARNING` | Permission denied, prodi missing from the mapping, channel not found    |
+| `ERROR`   | Unhandled exceptions, with `exc_type`, `exc_message` and `traceback`    |
 
 `LOG_LEVEL` applies to `warden.*`. The `discord` logger is pinned to `WARNING` in
 code — its `DEBUG` is gateway and heartbeat traffic that buries everything else.
@@ -98,5 +99,38 @@ investigating, not a permanent setting. Repository calls log the operation name
 rather than SQL and params for the same reason: an `INSERT INTO registrations`
 statement carries the whole form.
 
-Tracebacks are **not** in the JSON output — the formatter ignores `exc_info`, and
-there is no `on_app_command_error`. Both are deliberate and both are pending.
+One exception to the rule above: `exc_message` and `traceback` can carry PII at
+`ERROR`, outside the `DEBUG` gate. asyncpg puts `DETAIL` inside the exception
+message, so a `registrations_nim_approved` violation prints the NIM and a
+`registrations_shape` violation prints the whole failing row. That is a deliberate
+trade — stripping `DETAIL` would remove the one line worth reading at 2am, and the
+crash line already carries `user_id`. Tracebacks never include local variables.
+
+## Errors
+
+Unhandled exceptions land in the JSON as `exc_type`, `exc_message` and `traceback`
+(a single string — `jq -r .traceback` prints it readable). No warden code catches
+them; discord.py already logs every surface with `exc_info`, and the formatter
+renders it:
+
+| Surface                                   | Logger                    |
+| ----------------------------------------- | ------------------------- |
+| Buttons, select menus                     | `discord.ui.view`         |
+| Modals                                    | `discord.ui.modal`        |
+| `!registration post`, `!onboard existing` | `discord.ext.commands.bot`|
+| `on_member_join`, `on_guild_join`         | `discord.client`          |
+| The hourly sweep                          | `discord.ext.tasks`       |
+
+Errors that warden catches itself are logged **without** `exc_info` — the message
+already names the cause and `extra=` carries the IDs. That keeps
+`jq 'select(.traceback)'` meaning "nothing handled this", not "something happened".
+
+An exception in the hourly sweep that is not a network error stops the loop for
+good; discord.py does not retry those and nothing restarts it. The bot keeps
+running, the sweep does not. That is why the sweep prints a line every hour even
+when it deletes nothing.
+
+Still pending: the user gets no reply when a button or modal raises — Discord shows
+"This interaction failed" and nothing else. Fixing that means overriding `on_error`,
+which is also where `user_id` would join the crash line. There is no
+`on_app_command_error` because there are no app commands.

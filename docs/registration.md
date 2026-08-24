@@ -168,6 +168,9 @@ async def sweep_archived(self) -> None:
 - The `reg is None` check matters — do not delete every archived private thread in
   that channel.
 - `archived_threads(private=True)` requires the **bot** to have `Manage Threads`.
+- Every pass logs one `INFO` line with `scanned` and `swept`, even when it deletes
+  nothing — a non-network exception stops the loop permanently, and this line is how
+  you notice: `docker logs warden | jq 'select(.swept != null)' | tail -1`.
 
 Not `on_thread_update`: auto-archive is not guaranteed to emit a gateway event, and a
 thread archived while the bot was down never gets a catch-up event. The periodic sweep

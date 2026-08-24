@@ -16,8 +16,6 @@ class JsonFormatter(logging.Formatter):
     sebagai field lewat `extra=`."""
 
     def format(self, record: logging.LogRecord) -> str:
-        # ponytail: exc_info sengaja diabaikan — traceback tidak masuk output JSON.
-        # Field exception ditunda bareng on_app_command_error — pilihan sadar.
         payload = {
             # waktu lokal (TZ=Asia/Jakarta di Dockerfile) dengan offset eksplisit,
             # jadi tetap tidak ambigu walau dibaca di zona lain
@@ -28,6 +26,12 @@ class JsonFormatter(logging.Formatter):
             "logger": record.name,
             "message": record.getMessage(),
         }
+        if record.exc_info:
+            # error yang kita tangkap sendiri dilog tanpa exc_info, jadi traceback
+            # di output selalu berarti "tidak ada yang menangani ini"
+            payload["exc_type"] = type(record.exc_info[1]).__name__
+            payload["exc_message"] = str(record.exc_info[1])
+            payload["traceback"] = self.formatException(record.exc_info)
         payload.update({k: v for k, v in record.__dict__.items() if k not in _RESERVED})
         return json.dumps(payload, ensure_ascii=False, default=str)
 
