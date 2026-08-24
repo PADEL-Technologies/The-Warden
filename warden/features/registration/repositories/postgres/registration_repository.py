@@ -1,3 +1,4 @@
+import logging
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -7,6 +8,8 @@ if TYPE_CHECKING:
 
     from warden.features.registration.entities.registration import Registration
 
+log = logging.getLogger(__name__)
+
 
 def _row(record: asyncpg.Record | None) -> Registration | None:
     return dict(record) if record is not None else None  # type: ignore[return-value]
@@ -14,6 +17,9 @@ def _row(record: asyncpg.Record | None) -> Registration | None:
 
 def _one(record: asyncpg.Record | None) -> Registration:
     if record is None:
+        # satu-satunya kegagalan eksplisit di repo ini; sisanya exception asyncpg
+        # yang naik apa adanya
+        log.warning("registration_repo: baris registrasi tidak ditemukan")
         raise LookupError("registrasi tidak ditemukan")
     return dict(record)  # type: ignore[return-value]
 
@@ -37,6 +43,10 @@ class PostgresRegistrationRepository:
     async def create_open(
         self, guild_id: int, user_id: int, thread_id: int, expires_at: datetime
     ) -> Registration:
+        log.debug(
+            "registration_repo: create_open",
+            extra={"guild_id": guild_id, "user_id": user_id, "thread_id": thread_id},
+        )
         async with self._pool.acquire() as conn:
             return _one(
                 await conn.fetchrow(
@@ -75,6 +85,11 @@ class PostgresRegistrationRepository:
         prodi: str | None,
         linkedin: str | None,
     ) -> Registration:
+        # nama operasi saja, bukan SQL + params: statement-nya membawa nama, NIM,
+        # prodi dan linkedin sekaligus
+        log.debug(
+            "registration_repo: submit", extra={"registration_id": registration_id}
+        )
         async with self._pool.acquire() as conn:
             return _one(
                 await conn.fetchrow(

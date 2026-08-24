@@ -18,6 +18,7 @@ class OnboardingHandlers(commands.Cog):
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild) -> None:
+        log.debug("onboarding: masuk guild baru", extra={"guild_id": guild.id})
         await guild.chunk()  # join saat runtime: roster belum terisi
         created = await self.service.snapshot_if_absent(
             guild.members,
@@ -28,9 +29,18 @@ class OnboardingHandlers(commands.Cog):
         )
         if created:
             count = len(guild.members)
-            log.info("onboarding: snapshot guild %d (%d member)", guild.id, count)
+            log.info(
+                "onboarding: snapshot guild %d (%d member)",
+                guild.id,
+                count,
+                extra={"guild_id": guild.id, "member_count": count},
+            )
         else:
-            log.info("onboarding: guild %d sudah punya snapshot, dilewati", guild.id)
+            log.info(
+                "onboarding: guild %d sudah punya snapshot, dilewati",
+                guild.id,
+                extra={"guild_id": guild.id},
+            )
 
     @commands.group(name="onboard", invoke_without_command=True)
     async def onboard(self, ctx: commands.Context) -> None:
@@ -45,6 +55,14 @@ class OnboardingHandlers(commands.Cog):
         if flag not in (None, "--force"):
             await ctx.send("Format: `!onboard existing [--force]`")
             return
+        log.debug(
+            "onboarding: !onboard existing dipanggil",
+            extra={
+                "guild_id": ctx.guild.id,
+                "triggered_by": ctx.author.id,
+                "force": flag == "--force",
+            },
+        )
         if not ctx.guild.chunked:
             await ctx.guild.chunk()
         created = await self.service.snapshot_if_absent(
@@ -55,11 +73,28 @@ class OnboardingHandlers(commands.Cog):
             triggered_by=ctx.author.id,
             force=flag == "--force",
         )
+        count = len(ctx.guild.members)
         if not created:
+            log.debug(
+                "onboarding: snapshot sudah ada, --force tidak dipakai",
+                extra={"guild_id": ctx.guild.id},
+            )
             await ctx.send(
                 "Snapshot sudah ada. Pakai `!onboard existing --force` untuk menimpa."
             )
-        elif flag == "--force":
-            await ctx.send(f"Snapshot lama ditimpa: {len(ctx.guild.members)} member.")
+            return
+        log.info(
+            "onboarding: snapshot manual %d member (force=%s)",
+            count,
+            flag == "--force",
+            extra={
+                "guild_id": ctx.guild.id,
+                "triggered_by": ctx.author.id,
+                "member_count": count,
+                "force": flag == "--force",
+            },
+        )
+        if flag == "--force":
+            await ctx.send(f"Snapshot lama ditimpa: {count} member.")
         else:
-            await ctx.send(f"Snapshot disimpan: {len(ctx.guild.members)} member.")
+            await ctx.send(f"Snapshot disimpan: {count} member.")

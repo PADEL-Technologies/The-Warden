@@ -1,3 +1,4 @@
+import logging
 from typing import TYPE_CHECKING
 
 from warden.features.onboarding.entities.channel import SnapshotChannel
@@ -13,6 +14,8 @@ if TYPE_CHECKING:
         SnapshotMemberSource,
         SnapshotRole,
     )
+
+log = logging.getLogger(__name__)
 
 
 def _keep_role(role: SnapshotRole) -> bool:
@@ -35,6 +38,9 @@ class OnboardingService:
         force: bool = False,
     ) -> bool:
         if not force and await self._repo.has_onboarding(guild_id):
+            log.debug(
+                "onboarding: guild sudah punya snapshot", extra={"guild_id": guild_id}
+            )
             return False
         snapshot = [
             SnapshotMember(

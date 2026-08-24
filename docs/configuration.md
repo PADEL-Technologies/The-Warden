@@ -11,8 +11,11 @@ on every row, so the multi-guild door stays open.
 | `DATABASE_URL`         | — (required) | Postgres DSN, e.g. `postgres://user:pass@host:5432/db` |
 | `ONBOARDING_ENABLED`   | `true`       | Load the onboarding feature at all                     |
 | `REGISTRATION_ENABLED` | `true`       | Load the registration feature at all                   |
+| `LOG_LEVEL`            | `INFO`       | Root log level for `warden.*` — see [Logging](#logging) |
 
 Flags read as true for `1`, `true`, `yes` (case-insensitive).
+
+`.env.example` carries every variable with dummy values — copy it to `.env`.
 
 ## Registration
 
@@ -61,3 +64,39 @@ to the verifier:
    approval is still recorded; the verifier is told to fix the role order.
 2. The person left the server before a verifier decided → the roles land on their
    next join instead, via `on_member_join`.
+
+## Logging
+
+One JSON object per line on stdout, nothing else: no file, no log channel. The
+formatter lives in `warden/log.py` and is installed from `main.py` before the bot
+starts; `run(..., log_handler=None)` keeps discord.py from installing its own.
+
+```json
+{"ts":"2026-08-24T15:04:05.123+07:00","level":"INFO","logger":"warden.features.registration.services.registration_service","message":"registration: approved","registration_id":42,"guild_id":5,"user_id":9,"state":"approved","reviewed_by":3}
+```
+
+`message` stays a human sentence; anything passed as `extra=` is flattened to the
+top level, which is what makes a run queryable — `docker logs warden | jq 'select(.registration_id==42)'`
+reads one registration as a single thread. Before the row exists the thread is
+`user_id`. Timestamps are local time (`TZ=Asia/Jakarta` in the `Dockerfile`) with
+the offset written out, so they stay unambiguous read from anywhere.
+
+| Level     | What lands there                                                       |
+| --------- | ---------------------------------------------------------------------- |
+| `DEBUG`   | Handler/view entry, service calls, repository operation names, **PII**  |
+| `INFO`    | State changes: snapshot taken, form submitted, approved, rejected       |
+| `WARNING` | Permission denied, prodi missing from the mapping, channel not found    |
+
+`LOG_LEVEL` applies to `warden.*`. The `discord` logger is pinned to `WARNING` in
+code — its `DEBUG` is gateway and heartbeat traffic that buries everything else.
+
+**`LOG_LEVEL=DEBUG` prints PII.** `nama`, `nama_panggilan`, `nim`, `angkatan`,
+`prodi`, `linkedin` and `reject_reason` are only ever passed to `log.debug()`, so
+at `INFO` they are never rendered at all — the level is the enforcement, there is
+no scrubbing filter. Raising to `DEBUG` in production is a temporary move while
+investigating, not a permanent setting. Repository calls log the operation name
+rather than SQL and params for the same reason: an `INSERT INTO registrations`
+statement carries the whole form.
+
+Tracebacks are **not** in the JSON output — the formatter ignores `exc_info`, and
+there is no `on_app_command_error`. Both are deliberate and both are pending.

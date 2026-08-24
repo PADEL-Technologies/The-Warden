@@ -1,3 +1,4 @@
+import logging
 from datetime import UTC, datetime, timedelta
 from typing import TYPE_CHECKING
 
@@ -6,6 +7,8 @@ if TYPE_CHECKING:
     from warden.features.registration.repositories.protocol import (
         RegistrationRepository,
     )
+
+log = logging.getLogger(__name__)
 
 # Petunjuk cleanup, bukan gerbang: submit di menit ke-20 dengan thread masih hidup
 # tetap diterima. auto_archive_duration Discord cuma menerima 60/1440/4320/10080.
@@ -60,31 +63,61 @@ class RegistrationService:
         """Satu cabang per baris tabel §State:
         fresh | reuse | expired_recreate | wait | already."""
         reg = await self._repo.active_by_user(guild_id, user_id)
+        action = self._action(reg, now or datetime.now(UTC))
+        log.debug(
+            "registration: start -> %s",
+            action,
+            extra={
+                "guild_id": guild_id,
+                "user_id": user_id,
+                "action": action,
+                "registration_id": reg["id"] if reg else None,
+                "state": reg["state"] if reg else None,
+            },
+        )
+        return action, reg
+
+    @staticmethod
+    def _action(reg: Registration | None, now: datetime) -> str:
         if reg is None:
-            return "fresh", None  # belum pernah, atau percobaan terakhirnya ditolak
+            return "fresh"  # belum pernah, atau percobaan terakhirnya ditolak
         if reg["state"] == "pending":
-            return "wait", reg
+            return "wait"
         if reg["state"] == "approved":
-            return "already", reg
-        now = now or datetime.now(UTC)
+            return "already"
         expires_at = reg["expires_at"]
         if expires_at is None or expires_at <= now or reg["thread_id"] is None:
-            return "expired_recreate", reg
-        return "reuse", reg
+            return "expired_recreate"
+        return "reuse"
 
     async def open_thread(
         self, guild_id: int, user_id: int, thread_id: int, now: datetime | None = None
     ) -> Registration:
-        return await self._repo.create_open(
+        reg = await self._repo.create_open(
             guild_id, user_id, thread_id, (now or datetime.now(UTC)) + self._ttl
         )
+        log.debug(
+            "registration: thread dibuka",
+            extra={
+                "registration_id": reg["id"],
+                "guild_id": guild_id,
+                "user_id": user_id,
+                "thread_id": thread_id,
+            },
+        )
+        return reg
 
     async def reopen_thread(
         self, registration_id: int, thread_id: int, now: datetime | None = None
     ) -> Registration:
-        return await self._repo.reopen(
+        reg = await self._repo.reopen(
             registration_id, thread_id, (now or datetime.now(UTC)) + self._ttl
         )
+        log.debug(
+            "registration: thread dibuka ulang",
+            extra={"registration_id": registration_id, "thread_id": thread_id},
+        )
+        return reg
 
     async def submit(
         self,
@@ -97,7 +130,21 @@ class RegistrationService:
         prodi: str | None = None,
         linkedin: str | None = None,
     ) -> Registration:
-        return await self._repo.submit(
+        # DEBUG saja: nama/NIM/prodi/linkedin itu PII, di INFO ke atas cuma ID.
+        log.debug(
+            "registration: form disubmit",
+            extra={
+                "registration_id": registration_id,
+                "type": tipe,
+                "nama": nama,
+                "nama_panggilan": nama_panggilan,
+                "nim": nim,
+                "angkatan": angkatan,
+                "prodi": prodi,
+                "linkedin": linkedin,
+            },
+        )
+        reg = await self._repo.submit(
             registration_id,
             tipe,
             nama.strip(),
@@ -107,6 +154,16 @@ class RegistrationService:
             prodi,
             (linkedin or "").strip() or None,
         )
+        log.info(
+            "registration: form masuk, menunggu verifikasi",
+            extra={
+                "registration_id": reg["id"],
+                "guild_id": reg["guild_id"],
+                "user_id": reg["user_id"],
+                "type": tipe,
+            },
+        )
+        return reg
 
     async def decide(
         self,
@@ -117,13 +174,41 @@ class RegistrationService:
         joined_at: str | None = None,
     ) -> Registration | None:
         """None = sudah diputuskan verifikator lain."""
-        return await self._repo.decide(
+        # reason itu teks bebas verifikator — PII, jadi DEBUG saja
+        log.debug(
+            "registration: keputusan masuk",
+            extra={
+                "registration_id": registration_id,
+                "approve": approve,
+                "reviewed_by": reviewed_by,
+                "reject_reason": reason,
+            },
+        )
+        decided = await self._repo.decide(
             registration_id,
             "approved" if approve else "rejected",
             reviewed_by,
             reason,
             joined_at,
         )
+        if decided is None:
+            log.warning(
+                "registration: keputusan ditolak, sudah tidak pending",
+                extra={"registration_id": registration_id, "reviewed_by": reviewed_by},
+            )
+            return None
+        log.info(
+            "registration: %s",
+            decided["state"],
+            extra={
+                "registration_id": registration_id,
+                "guild_id": decided["guild_id"],
+                "user_id": decided["user_id"],
+                "state": decided["state"],
+                "reviewed_by": reviewed_by,
+            },
+        )
+        return decided
 
     async def by_thread(self, thread_id: int) -> Registration | None:
         return await self._repo.by_thread(thread_id)

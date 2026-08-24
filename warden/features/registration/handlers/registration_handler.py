@@ -42,6 +42,13 @@ class RegistrationHandlers(commands.Cog):
         bukan memposting yang kedua."""
         locket = self.bot.get_channel(self.bot.config.registration_locket_channel_id)
         if locket is None:
+            log.warning(
+                "registration: channel locket tidak ketemu",
+                extra={
+                    "channel_id": self.bot.config.registration_locket_channel_id,
+                    "guild_id": ctx.guild.id if ctx.guild else None,
+                },
+            )
             await ctx.send("`REGISTRATION_LOCKET_CHANNEL_ID` tidak ketemu.")
             return
         embed = discord.Embed(
@@ -53,9 +60,17 @@ class RegistrationHandlers(commands.Cog):
         async for message in locket.history(limit=50):
             if message.author.id == self.bot.user.id and message.components:
                 await message.edit(embed=embed, view=view)
+                log.info(
+                    "registration: pesan locket diperbarui",
+                    extra={"message_id": message.id, "channel_id": locket.id},
+                )
                 await ctx.send(f"Pesan locket diperbarui: {message.jump_url}")
                 return
         posted = await locket.send(embed=embed, view=view)
+        log.info(
+            "registration: pesan locket diposting",
+            extra={"message_id": posted.id, "channel_id": locket.id},
+        )
         await ctx.send(f"Pesan locket diposting: {posted.jump_url}")
 
     @commands.Cog.listener()
@@ -72,7 +87,15 @@ class RegistrationHandlers(commands.Cog):
                 prodi_roles=self.bot.config.registration_prodi_roles,
             )
         except KeyError:
-            log.warning("registration: prodi %r tidak ada di mapping", reg["prodi"])
+            log.warning(
+                "registration: prodi %r tidak ada di mapping",
+                reg["prodi"],
+                extra={
+                    "registration_id": reg["id"],
+                    "user_id": member.id,
+                    "guild_id": member.guild.id,
+                },
+            )
             return
         with contextlib.suppress(discord.HTTPException):
             await member.add_roles(
@@ -80,6 +103,15 @@ class RegistrationHandlers(commands.Cog):
                 reason="Registrasi sudah disetujui sebelumnya",
             )
             await member.edit(nick=nickname(reg))
+            log.info(
+                "registration: role dipulihkan setelah join ulang",
+                extra={
+                    "registration_id": reg["id"],
+                    "user_id": member.id,
+                    "guild_id": member.guild.id,
+                    "role_ids": role_ids,
+                },
+            )
 
     @tasks.loop(hours=1)
     async def sweep_archived(self) -> None:
@@ -88,6 +120,7 @@ class RegistrationHandlers(commands.Cog):
         locket = self.bot.get_channel(self.bot.config.registration_locket_channel_id)
         if locket is None:
             return
+        swept = 0
         # limit=50 per pass: delete thread itu operasi channel-delete, rate limitnya
         # galak. Sisanya kebagian jam berikutnya.
         async for thread in locket.archived_threads(private=True, limit=50):
@@ -97,6 +130,17 @@ class RegistrationHandlers(commands.Cog):
             with contextlib.suppress(discord.HTTPException):
                 await thread.delete()
             await self.service.clear_thread(thread.id)
+            swept += 1
+            log.debug(
+                "registration: thread ter-archive dihapus",
+                extra={"thread_id": thread.id, "registration_id": reg["id"]},
+            )
+        if swept:
+            log.info(
+                "registration: sapuan thread selesai, %d dihapus",
+                swept,
+                extra={"swept": swept, "channel_id": locket.id},
+            )
 
     @sweep_archived.before_loop
     async def before_sweep(self) -> None:

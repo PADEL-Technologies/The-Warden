@@ -1,4 +1,5 @@
 import contextlib
+import logging
 from typing import TYPE_CHECKING
 
 import discord
@@ -11,6 +12,8 @@ if TYPE_CHECKING:
     from warden.config import Config
     from warden.features.registration.entities.registration import Registration
     from warden.features.registration.services.protocol import RegistrationService
+
+log = logging.getLogger(__name__)
 
 # 7 hari: begitu formnya masuk, threadnya harus bertahan selama verifikator manusia
 # belum memutuskan.
@@ -104,6 +107,14 @@ class RegistrasiModal(discord.ui.Modal):
     async def on_submit(self, interaction: discord.Interaction) -> None:
         error = validate_angkatan(self.angkatan.value)
         if error:
+            log.debug(
+                "registration: angkatan ditolak validasi",
+                extra={
+                    "registration_id": self.reg["id"],
+                    "user_id": interaction.user.id,
+                    "angkatan": self.angkatan.value,
+                },
+            )
             await interaction.response.send_message(
                 error, view=IsiUlangView(self), ephemeral=True
             )
@@ -139,6 +150,13 @@ class RegistrasiModal(discord.ui.Modal):
             self.config.registration_report_channel_id
         )
         if report is None:
+            log.warning(
+                "registration: channel review tidak ketemu, kartu tidak terkirim",
+                extra={
+                    "registration_id": reg["id"],
+                    "channel_id": self.config.registration_report_channel_id,
+                },
+            )
             await interaction.followup.send(
                 "Formmu tersimpan, tapi channel review belum diset dengan benar. "
                 "Hubungi admin.",
@@ -149,6 +167,15 @@ class RegistrasiModal(discord.ui.Modal):
             embed=embed, view=ReviewView(self.service, self.config)
         )
         await self.service.set_report_message(reg["id"], message.id)
+        log.info(
+            "registration: kartu review diposting",
+            extra={
+                "registration_id": reg["id"],
+                "user_id": reg["user_id"],
+                "message_id": message.id,
+                "channel_id": report.id,
+            },
+        )
         await interaction.followup.send(
             "Formmu sudah masuk. Tunggu verifikasi ya — hasilnya dikirim ke sini.",
             ephemeral=True,

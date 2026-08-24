@@ -14,6 +14,7 @@ class Config:
     registration_mahasiswa_role_id: int
     registration_alumni_role_id: int
     registration_prodi_roles: dict[str, int]
+    log_level: str
 
 
 def _flag(name: str, default: str = "true") -> bool:
@@ -57,4 +58,5 @@ def load_config() -> Config:
         registration_prodi_roles=_parse_role_map(
             os.environ["REGISTRATION_PRODI_ROLES"] if registration else ""
         ),
+        log_level=os.environ.get("LOG_LEVEL", "INFO"),
     )

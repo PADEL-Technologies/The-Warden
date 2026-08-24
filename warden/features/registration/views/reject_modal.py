@@ -1,3 +1,4 @@
+import logging
 from typing import TYPE_CHECKING
 
 import discord
@@ -5,6 +6,8 @@ import discord
 if TYPE_CHECKING:  # ReviewView yang membuat modal ini — impor balik cuma untuk tipe
     from warden.features.registration.entities.registration import Registration
     from warden.features.registration.views.review_view import ReviewView
+
+log = logging.getLogger(__name__)
 
 
 class RejectModal(discord.ui.Modal):
@@ -21,6 +24,13 @@ class RejectModal(discord.ui.Modal):
         self.reg = reg
 
     async def on_submit(self, interaction: discord.Interaction) -> None:
+        log.debug(
+            "registration: modal tolak disubmit",
+            extra={
+                "registration_id": self.reg["id"],
+                "reviewed_by": interaction.user.id,
+            },
+        )
         await interaction.response.defer()
         decided = await self.review.service.decide(
             self.reg["id"],

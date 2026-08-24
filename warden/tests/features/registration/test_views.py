@@ -19,6 +19,7 @@ CONFIG = Config(
     registration_mahasiswa_role_id=4,
     registration_alumni_role_id=5,
     registration_prodi_roles={"d3-ti": 333, "d3-tk": 444},
+    log_level="INFO",
 )
 REG = {"id": 1, "guild_id": 5, "user_id": 9, "prodi": None}
 

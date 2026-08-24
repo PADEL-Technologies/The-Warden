@@ -1,3 +1,4 @@
+import logging
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -6,6 +7,8 @@ if TYPE_CHECKING:
     from warden.features.onboarding.entities.channel import SnapshotChannel
     from warden.features.onboarding.entities.member_role import MemberRole
     from warden.features.onboarding.entities.snapshot_member import SnapshotMember
+
+log = logging.getLogger(__name__)
 
 
 class PostgresOnboardingRepository:
@@ -39,6 +42,18 @@ class PostgresOnboardingRepository:
         channels: list[SnapshotChannel],
         force: bool = False,
     ) -> None:
+        # nama operasi saja, bukan SQL + params: INSERT-nya membawa seluruh
+        # roster ke dalam pesan log
+        log.debug(
+            "onboarding_repo: save",
+            extra={
+                "guild_id": guild_id,
+                "member_count": len(members),
+                "role_count": len(roles),
+                "channel_count": len(channels),
+                "force": force,
+            },
+        )
         async with self._pool.acquire() as conn, conn.transaction():
             if force:
                 await conn.execute(
