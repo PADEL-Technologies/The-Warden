@@ -141,11 +141,9 @@ class RegistrationHandlers(commands.Cog):
         # Discord evaluates auto-archive lazily: a thread past its time can stay
         # archived=False until touched, hiding it from archived_threads() below.
         now = discord.utils.utcnow()
-        # ponytail: gateway cache instead of fetch_active_threads (missing from
-        # the installed discord.py); fresh enough for an hourly sweep.
-        for thread in locket.guild.active_threads:
-            if thread.parent_id != locket.id:
-                continue
+        # ponytail: gateway cache instead of Guild.active_threads() (an API
+        # call, not a property); fresh enough for an hourly sweep.
+        for thread in locket.threads:
             if thread.archive_timestamp and thread.archive_timestamp < now:
                 with contextlib.suppress(discord.HTTPException):
                     await thread.edit(archived=True)
