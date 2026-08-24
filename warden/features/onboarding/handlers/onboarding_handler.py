@@ -4,11 +4,17 @@ from typing import TYPE_CHECKING
 from discord.ext import commands
 
 if TYPE_CHECKING:
+    from collections.abc import Sequence
+
     import discord
 
     from warden.features.onboarding.services.protocol import OnboardingService
 
 log = logging.getLogger(__name__)
+
+
+def _human_count(members: Sequence[discord.Member]) -> int:
+    return sum(1 for m in members if not m.bot)
 
 
 class OnboardingHandlers(commands.Cog):
@@ -27,7 +33,7 @@ class OnboardingHandlers(commands.Cog):
             triggered_by=None,
         )
         if created:
-            count = len(guild.members)
+            count = _human_count(guild.members)
             log.info("onboarding: snapshot guild %d (%d member)", guild.id, count)
         else:
             log.info("onboarding: guild %d sudah punya snapshot, dilewati", guild.id)
@@ -60,6 +66,10 @@ class OnboardingHandlers(commands.Cog):
                 "Snapshot sudah ada. Pakai `!onboard existing --force` untuk menimpa."
             )
         elif flag == "--force":
-            await ctx.send(f"Snapshot lama ditimpa: {len(ctx.guild.members)} member.")
+            await ctx.send(
+                f"Snapshot lama ditimpa: {_human_count(ctx.guild.members)} member."
+            )
         else:
-            await ctx.send(f"Snapshot disimpan: {len(ctx.guild.members)} member.")
+            await ctx.send(
+                f"Snapshot disimpan: {_human_count(ctx.guild.members)} member."
+            )
