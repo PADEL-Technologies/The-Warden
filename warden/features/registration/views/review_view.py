@@ -10,7 +10,7 @@ from warden.features.registration.services.registration_service import (
 )
 from warden.features.registration.views.reject_modal import RejectModal
 from warden.features.registration.views.review_card import mark_decided
-from warden.features.registration.views.threads import get_thread, speak
+from warden.features.registration.views.threads import get_thread, speak, wake
 
 if TYPE_CHECKING:
     from warden.config import Config
@@ -187,7 +187,6 @@ class ReviewView(discord.ui.View):
             return
         # bot yang memasukkan verifikator: `add_user` memberi akses tepat satu thread,
         # `Manage Threads` memberi seluruh server
-        if thread.archived:
-            await thread.edit(archived=False)
+        await wake(thread)
         await thread.add_user(interaction.user)
         await interaction.followup.send(thread.jump_url, ephemeral=True)

@@ -5,13 +5,15 @@ import asyncpg
 import discord
 
 from warden.features.registration.views.pilih_tipe_view import PilihTipeView
-from warden.features.registration.views.threads import get_thread
+from warden.features.registration.views.threads import (
+    THREAD_ARCHIVE_MINUTES,
+    get_thread,
+    wake,
+)
 
 if TYPE_CHECKING:
     from warden.config import Config
     from warden.features.registration.services.protocol import RegistrationService
-
-THREAD_ARCHIVE_MINUTES = 60
 
 
 class OnboardMeView(discord.ui.View):
@@ -47,8 +49,7 @@ class OnboardMeView(discord.ui.View):
         if action == "reuse":
             thread = await get_thread(interaction.guild, reg["thread_id"])
             if thread is not None:
-                if thread.archived:
-                    await thread.edit(archived=False)
+                await wake(thread)
                 await thread.add_user(interaction.user)
                 await interaction.followup.send(thread.jump_url, ephemeral=True)
                 return
