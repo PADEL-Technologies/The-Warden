@@ -39,12 +39,27 @@ class ReviewView(discord.ui.View):
     async def resolve(self, interaction: discord.Interaction) -> Registration | None:
         """Otorisasi + lookup. None = sudah dibalas, callback harus berhenti."""
         if not is_verifier(interaction.user, self.config.registration_verifier_role_id):
+            log.warning(
+                "registration: tombol review diklik non-verifikator",
+                extra={
+                    "user_id": interaction.user.id,
+                    "guild_id": interaction.guild_id,
+                    "message_id": interaction.message.id,
+                },
+            )
             await interaction.response.send_message(
                 "Cuma verifikator yang bisa memakai tombol ini.", ephemeral=True
             )
             return None
         reg = await self.service.by_report_message(interaction.message.id)
         if reg is None:
+            log.warning(
+                "registration: kartu review tanpa baris registrasi",
+                extra={
+                    "message_id": interaction.message.id,
+                    "guild_id": interaction.guild_id,
+                },
+            )
             await interaction.response.send_message(
                 "Kartu ini tidak punya baris registrasi.", ephemeral=True
             )
@@ -95,6 +110,15 @@ class ReviewView(discord.ui.View):
                 prodi_roles=self.config.registration_prodi_roles,
             )
         except KeyError:
+            log.warning(
+                "registration: approve dibatalkan, prodi %r tidak ada di mapping",
+                reg["prodi"],
+                extra={
+                    "registration_id": reg["id"],
+                    "user_id": reg["user_id"],
+                    "reviewed_by": interaction.user.id,
+                },
+            )
             await interaction.response.send_message(
                 f"Prodi `{reg['prodi']}` tidak ada di `REGISTRATION_PRODI_ROLES`. "
                 "Approve dibatalkan — perbaiki config dulu.",
@@ -135,6 +159,10 @@ class ReviewView(discord.ui.View):
         """None = beres. Selain itu pesan untuk verifikator — kegagalan di sini tidak
         boleh membatalkan approve yang sudah tercatat."""
         if member is None:
+            log.warning(
+                "registration: approved tapi orangnya sudah keluar server",
+                extra={"registration_id": reg["id"], "user_id": reg["user_id"]},
+            )
             return (
                 "Ditandai approved, tapi orangnya sudah keluar server. "
                 "Role menyusul otomatis kalau dia join lagi."
@@ -143,7 +171,15 @@ class ReviewView(discord.ui.View):
         try:
             await member.add_roles(*roles, reason=f"Registrasi · {interaction.user}")
         except discord.Forbidden:
-            log.warning("registration: add_roles ditolak untuk %d", member.id)
+            log.warning(
+                "registration: add_roles ditolak untuk %d",
+                member.id,
+                extra={
+                    "registration_id": reg["id"],
+                    "user_id": member.id,
+                    "role_ids": role_ids,
+                },
+            )
             return (
                 "Ditandai approved, tapi bot tidak boleh memberi role itu. "
                 "Naikkan posisi role bot di atas role tujuan, lalu beri manual."
@@ -152,6 +188,14 @@ class ReviewView(discord.ui.View):
         # apa pun permission-nya.
         with contextlib.suppress(discord.HTTPException):
             await member.edit(nick=nickname(reg))
+        log.info(
+            "registration: role dan nickname diberikan",
+            extra={
+                "registration_id": reg["id"],
+                "user_id": member.id,
+                "role_ids": role_ids,
+            },
+        )
         return None
 
     @discord.ui.button(
@@ -178,6 +222,14 @@ class ReviewView(discord.ui.View):
         reg = await self.resolve(interaction)
         if reg is None:
             return
+        log.debug(
+            "registration: verifikator join thread",
+            extra={
+                "registration_id": reg["id"],
+                "reviewed_by": interaction.user.id,
+                "thread_id": reg["thread_id"],
+            },
+        )
         await interaction.response.defer(ephemeral=True)
         thread = await get_thread(interaction.guild, reg["thread_id"])
         if thread is None:

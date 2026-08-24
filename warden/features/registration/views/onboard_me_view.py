@@ -1,4 +1,5 @@
 import contextlib
+import logging
 from typing import TYPE_CHECKING
 
 import asyncpg
@@ -14,6 +15,8 @@ from warden.features.registration.views.threads import (
 if TYPE_CHECKING:
     from warden.config import Config
     from warden.features.registration.services.protocol import RegistrationService
+
+log = logging.getLogger(__name__)
 
 
 class OnboardMeView(discord.ui.View):
@@ -73,12 +76,29 @@ class OnboardMeView(discord.ui.View):
                 await self.service.reopen_thread(reg["id"], thread.id)
         except asyncpg.UniqueViolationError:
             # dua klik hampir bersamaan; registrations_active yang jadi wasitnya
+            log.warning(
+                "registration: klik ganda, registrasi barusan sudah dibuat",
+                extra={
+                    "guild_id": interaction.guild_id,
+                    "user_id": interaction.user.id,
+                    "thread_id": thread.id,
+                },
+            )
             with contextlib.suppress(discord.HTTPException):
                 await thread.delete()
             await interaction.followup.send(
                 "Pendaftaranmu barusan sudah dibuat. Klik sekali lagi.", ephemeral=True
             )
             return
+        log.info(
+            "registration: thread pendaftaran siap",
+            extra={
+                "guild_id": interaction.guild_id,
+                "user_id": interaction.user.id,
+                "thread_id": thread.id,
+                "action": action,
+            },
+        )
         await interaction.followup.send(thread.jump_url, ephemeral=True)
 
     async def _create_thread(
@@ -90,6 +110,13 @@ class OnboardMeView(discord.ui.View):
             self.config.registration_locket_channel_id
         )
         if locket is None:
+            log.warning(
+                "registration: channel locket tidak ketemu saat membuat thread",
+                extra={
+                    "channel_id": self.config.registration_locket_channel_id,
+                    "guild_id": interaction.guild_id,
+                },
+            )
             await interaction.followup.send(
                 "Channel registrasi belum diset dengan benar. Hubungi admin.",
                 ephemeral=True,

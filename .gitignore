@@ -9,6 +9,9 @@ wheels/
 # Virtual environments
 .venv
 
+# Secrets: token bot ada di sini. Contohnya di .env.example.
+.env
+
 # graphify machine-local state (regenerated per machine)
 graphify-out/.graphify_python
 graphify-out/.graphify_root

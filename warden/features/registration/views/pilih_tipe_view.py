@@ -1,3 +1,4 @@
+import logging
 from typing import TYPE_CHECKING
 
 import discord
@@ -7,6 +8,8 @@ from warden.features.registration.views.registrasi_modal import RegistrasiModal
 if TYPE_CHECKING:
     from warden.config import Config
     from warden.features.registration.services.protocol import RegistrationService
+
+log = logging.getLogger(__name__)
 
 
 class PilihTipeView(discord.ui.View):
@@ -28,10 +31,27 @@ class PilihTipeView(discord.ui.View):
             )
             return
         if reg["user_id"] != interaction.user.id:
+            log.warning(
+                "registration: form orang lain dibuka",
+                extra={
+                    "registration_id": reg["id"],
+                    "owner_id": reg["user_id"],
+                    "user_id": interaction.user.id,
+                    "thread_id": interaction.channel_id,
+                },
+            )
             await interaction.response.send_message(
                 "Ini form pendaftaran orang lain.", ephemeral=True
             )
             return
+        log.debug(
+            "registration: modal dibuka",
+            extra={
+                "registration_id": reg["id"],
+                "user_id": interaction.user.id,
+                "type": tipe,
+            },
+        )
         await interaction.response.send_modal(
             RegistrasiModal(self.service, self.config, reg, tipe)
         )
