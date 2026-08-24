@@ -2,8 +2,8 @@ import json
 import logging
 from datetime import UTC, datetime
 
-# Atribut bawaan LogRecord. Apa pun di luar daftar ini datang dari `extra=` dan
-# ikut rata ke top level JSON — itu yang bikin lognya bisa di-query.
+# Builtin LogRecord attributes. Anything outside this set comes from `extra=`
+# and is flattened to top-level JSON — that's what makes logs queryable.
 _RESERVED = frozenset(logging.LogRecord("", 0, "", 0, "", None, None).__dict__) | {
     "message",
     "asctime",
@@ -12,13 +12,12 @@ _RESERVED = frozenset(logging.LogRecord("", 0, "", 0, "", None, None).__dict__) 
 
 
 class JsonFormatter(logging.Formatter):
-    """Satu baris JSON per record. `message` tetap kalimat manusia, ID-nya ikut
-    sebagai field lewat `extra=`."""
+    """One JSON line per record. `message` stays human-readable; IDs ride along
+    as fields via `extra=`."""
 
     def format(self, record: logging.LogRecord) -> str:
         payload = {
-            # waktu lokal (TZ=Asia/Jakarta di Dockerfile) dengan offset eksplisit,
-            # jadi tetap tidak ambigu walau dibaca di zona lain
+            # local time with explicit offset, unambiguous in any timezone
             "ts": datetime.fromtimestamp(record.created, tz=UTC)
             .astimezone()
             .isoformat(timespec="milliseconds"),
@@ -27,8 +26,8 @@ class JsonFormatter(logging.Formatter):
             "message": record.getMessage(),
         }
         if record.exc_info:
-            # error yang kita tangkap sendiri dilog tanpa exc_info, jadi traceback
-            # di output selalu berarti "tidak ada yang menangani ini"
+            # errors we catch ourselves are logged without exc_info, so a
+            # traceback here always means "nothing handled this"
             payload["exc_type"] = type(record.exc_info[1]).__name__
             payload["exc_message"] = str(record.exc_info[1])
             payload["traceback"] = self.formatException(record.exc_info)
@@ -39,8 +38,8 @@ class JsonFormatter(logging.Formatter):
 def setup_logging(level: str) -> None:
     handler = logging.StreamHandler()
     handler.setFormatter(JsonFormatter())
-    # Root dipatok WARNING, LOG_LEVEL hanya dinaikkan untuk warden.*: DEBUG-nya
-    # discord.py dan asyncio itu lalu lintas gateway, heartbeat dan loop internal
-    # yang menenggelamkan log kita. Error pihak ketiga tetap lolos lewat root.
+    # Root stays WARNING; LOG_LEVEL only raises warden.*: discord.py/asyncio
+    # DEBUG traffic is gateway noise that would drown ours. Third-party errors
+    # still surface via root.
     logging.basicConfig(level=logging.WARNING, handlers=[handler], force=True)
     logging.getLogger("warden").setLevel(level.upper())

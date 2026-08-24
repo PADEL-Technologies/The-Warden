@@ -5,12 +5,12 @@ if TYPE_CHECKING:
 
 
 class Registration(TypedDict):
-    """Satu baris `registrations` — satu percobaan pendaftaran, bukan satu orang."""
+    """One `registrations` row — one registration attempt, not one person."""
 
     id: int
     guild_id: int
     user_id: int
-    type: str | None  # mahasiswa | alumni, NULL selama state=open
+    type: str | None  # mahasiswa | alumni, NULL while state=open
     nama: str | None
     nama_panggilan: str | None
     nim: str | None

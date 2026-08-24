@@ -19,8 +19,8 @@ log = logging.getLogger(__name__)
 
 
 def _keep_role(role: SnapshotRole) -> bool:
-    # @everyone pasti dimiliki semua orang; managed = role bot/integrasi (Booster
-    # termasuk) — bukan role yang dikelola manusia, keduanya tidak informatif.
+    # @everyone is held by everyone; managed = bot/integration roles (Boosters
+    # included) — neither is human-managed, both uninformative.
     return not role.is_default() and not role.managed
 
 

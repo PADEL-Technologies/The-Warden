@@ -26,7 +26,7 @@ class Warden(commands.Bot):
     def __init__(self, config: Config) -> None:
         intents = discord.Intents.default()
         intents.message_content = True
-        intents.members = True  # privileged: aktifkan juga di Developer Portal
+        intents.members = True  # privileged: also enable in the Developer Portal
         super().__init__(command_prefix="!", intents=intents)
         self.config = config
 

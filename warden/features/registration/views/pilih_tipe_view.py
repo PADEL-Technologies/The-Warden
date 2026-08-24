@@ -13,8 +13,8 @@ log = logging.getLogger(__name__)
 
 
 class PilihTipeView(discord.ui.View):
-    """Hidup di dalam thread pendaftar. Verifikator ikut masuk lewat Join Thread,
-    jadi pemiliknya tetap harus diperiksa."""
+    """Lives inside the applicant's thread. Verifiers get in via Join Thread,
+    so the owner must still be checked."""
 
     def __init__(self, service: RegistrationService, config: Config) -> None:
         super().__init__(timeout=None)

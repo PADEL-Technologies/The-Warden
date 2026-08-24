@@ -16,10 +16,10 @@ if TYPE_CHECKING:
 
 async def setup(bot: commands.Bot) -> None:
     if not bot.config.onboarding_enabled:
-        return  # toggle OFF = cog tidak dimuat
+        return
     pool = await asyncpg.create_pool(bot.config.database_url)
 
-    # nama kelas = kunci cog di seluruh bot, jadi harus unik antar feature
+    # class name = cog key bot-wide, must stay unique across features
     class OnboardingCog(OnboardingHandlers):
         async def cog_unload(self) -> None:
             await pool.close()

@@ -15,14 +15,14 @@ if TYPE_CHECKING:
 
 log = logging.getLogger(__name__)
 
-# 7 hari: begitu formnya masuk, threadnya harus bertahan selama verifikator manusia
-# belum memutuskan.
+# 7 days: once the form is in, the thread must outlast human verification.
 PENDING_ARCHIVE_MINUTES = 10080
 
 
 class RegistrasiModal(discord.ui.Modal):
-    """Lima komponen, mentok batas Discord. Validasi didorong ke batasan bawaan —
-    modal tidak bisa merespons modal, jadi tolakan setelah submit selalu mahal."""
+    """Five components, at Discord's limit. Validation is pushed into built-in
+    constraints — a modal cannot answer a modal, so post-submit rejections are
+    always costly."""
 
     def __init__(
         self,
@@ -50,8 +50,8 @@ class RegistrasiModal(discord.ui.Modal):
             self.nim = discord.ui.TextInput(
                 min_length=8, max_length=8, default=d.get("nim")
             )
-            # pilihan tertutup: kalau bebas ketik, "D3 TI" lolos verifikasi tapi tidak
-            # dapat role prodi — gagal senyap
+            # closed choice: free typing would let "D3 TI" pass verification
+            # but miss the prodi role — silent failure
             self.prodi = discord.ui.Select(
                 placeholder="Pilih prodi",
                 options=[
@@ -87,8 +87,8 @@ class RegistrasiModal(discord.ui.Modal):
         return self.prodi.values[0] if self.prodi and self.prodi.values else None
 
     def refill(self) -> RegistrasiModal:
-        """Modal baru berisi ketikan lama — tolakan tidak boleh menghapus
-        ketikan orangnya."""
+        """New modal pre-filled with the old typing — a rejection must not wipe
+        the user's input."""
         return RegistrasiModal(
             self.service,
             self.config,
@@ -183,7 +183,7 @@ class RegistrasiModal(discord.ui.Modal):
 
 
 class IsiUlangView(discord.ui.View):
-    """Sementara dan ephemeral: tidak perlu persistent, umurnya semenit."""
+    """Temporary and ephemeral: no need to be persistent, it lives a minute."""
 
     def __init__(self, modal: RegistrasiModal) -> None:
         super().__init__(timeout=600)

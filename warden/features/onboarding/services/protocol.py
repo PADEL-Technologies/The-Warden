@@ -6,7 +6,7 @@ if TYPE_CHECKING:
 
 
 class SnapshotRole(Protocol):
-    """Subset discord.Role yang dibaca service."""
+    """The discord.Role subset the service reads."""
 
     id: int
     name: str
@@ -16,7 +16,7 @@ class SnapshotRole(Protocol):
 
 
 class SnapshotMemberSource(Protocol):
-    """Subset discord.Member yang dibaca service — fake di test memenuhi ini."""
+    """The discord.Member subset the service reads — test fakes satisfy this."""
 
     id: int
     bot: bool
@@ -25,11 +25,11 @@ class SnapshotMemberSource(Protocol):
 
 
 class SnapshotChannelSource(Protocol):
-    """Subset discord.abc.GuildChannel yang dibaca service."""
+    """The discord.abc.GuildChannel subset the service reads."""
 
     id: int
     name: str
-    type: object  # discord.ChannelType enum; str() menghasilkan 'text', 'voice', ...
+    type: object  # discord.ChannelType enum; str() yields 'text', 'voice', ...
 
 
 class OnboardingService(Protocol):
@@ -42,5 +42,5 @@ class OnboardingService(Protocol):
         triggered_by: int | None,
         force: bool = False,
     ) -> bool:
-        """True kalau snapshot dibuat; False kalau sudah ada dan bukan force."""
+        """True if a snapshot was created; False if one exists and not force."""
         ...

@@ -38,8 +38,8 @@ class RegistrationHandlers(commands.Cog):
     @registration.command(name="post")
     @commands.has_guild_permissions(manage_guild=True)
     async def post(self, ctx: commands.Context) -> None:
-        """Pesan permanen di locket. Dijalankan lagi = mengedit pesan lama,
-        bukan memposting yang kedua."""
+        """Permanent locket message. Re-running edits the old message instead of
+        posting a second one."""
         locket = self.bot.get_channel(self.bot.config.registration_locket_channel_id)
         if locket is None:
             log.warning(
@@ -75,7 +75,7 @@ class RegistrationHandlers(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member) -> None:
-        """Orang yang lolos lalu keluar-masuk lagi: rolenya menyusul di sini."""
+        """Rejoiner who was approved before gets their roles restored here."""
         action, reg = await self.service.start(member.guild.id, member.id)
         if action != "already":
             return
@@ -128,8 +128,8 @@ class RegistrationHandlers(commands.Cog):
 
     @tasks.loop(hours=1)
     async def sweep_archived(self) -> None:
-        """auto-archive tidak dijamin memancarkan gateway event, dan thread yang
-        ter-archive saat bot mati tidak akan pernah dapat event susulan."""
+        """Auto-archive is not guaranteed to emit a gateway event, and a thread
+        archived while the bot was down never gets one."""
         locket = self.bot.get_channel(self.bot.config.registration_locket_channel_id)
         if locket is None:
             log.warning(
@@ -138,23 +138,24 @@ class RegistrationHandlers(commands.Cog):
             )
             return
         scanned = swept = 0
-        # Discord mengevaluasi auto-archive secara malas: thread yang jamnya
-        # sudah lewat bisa tetap archived=False kalau tidak disentuh siapa pun,
-        # dan itu membuatnya tak terlihat oleh archived_threads() di bawah.
+        # Discord evaluates auto-archive lazily: a thread past its time can stay
+        # archived=False until touched, hiding it from archived_threads() below.
         now = discord.utils.utcnow()
-        for thread in await locket.guild.fetch_active_threads():
+        # ponytail: gateway cache instead of fetch_active_threads (missing from
+        # the installed discord.py); fresh enough for an hourly sweep.
+        for thread in locket.guild.active_threads:
             if thread.parent_id != locket.id:
                 continue
             if thread.archive_timestamp and thread.archive_timestamp < now:
                 with contextlib.suppress(discord.HTTPException):
                     await thread.edit(archived=True)
-        # limit=50 per pass: delete thread itu operasi channel-delete, rate limitnya
-        # galak. Sisanya kebagian jam berikutnya.
+        # limit=50 per pass: thread delete is a channel-delete op with a harsh
+        # rate limit; the rest waits for the next hour.
         async for thread in locket.archived_threads(private=True, limit=50):
             scanned += 1
             reg = await self.service.by_thread(thread.id)
             if reg is None or reg["state"] == "pending":
-                continue  # bukan punya kita, atau hasilnya masih butuh tempat mendarat
+                continue  # not ours, or the result still needs a landing spot
             try:
                 await thread.delete()
             except discord.HTTPException as exc:
@@ -173,7 +174,7 @@ class RegistrationHandlers(commands.Cog):
                     extra={"thread_id": thread.id, "registration_id": reg["id"]},
                 )
             await self.service.clear_thread(thread.id)
-        # tiap jam apa pun hasilnya: baris ini yang membuktikan loopnya masih hidup
+        # every hour regardless of outcome: proves the loop is still alive
         log.info(
             "registration: sapuan thread selesai, %d dari %d dihapus",
             swept,

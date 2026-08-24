@@ -6,5 +6,5 @@ if TYPE_CHECKING:
 
 class SnapshotMember(TypedDict):
     member_id: int
-    joined_at: str | None  # ISO 8601 (Standar Discord)
+    joined_at: str | None  # ISO 8601 (Discord standard)
     roles: list[MemberRole]

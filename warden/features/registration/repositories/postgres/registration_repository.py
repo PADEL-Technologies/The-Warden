@@ -17,9 +17,8 @@ def _row(record: asyncpg.Record | None) -> Registration | None:
 
 def _one(record: asyncpg.Record | None, ident: str) -> Registration:
     if record is None:
-        # satu-satunya kegagalan eksplisit di repo ini; sisanya exception asyncpg
-        # yang naik apa adanya
-        raise LookupError(f"registrasi tidak ditemukan ({ident})")
+        # the only explicit failure in this repo; the rest are raw asyncpg errors
+        raise LookupError(f"registration not found ({ident})")
     return dict(record)  # type: ignore[return-value]
 
 
@@ -86,8 +85,8 @@ class PostgresRegistrationRepository:
         prodi: str | None,
         linkedin: str | None,
     ) -> Registration:
-        # nama operasi saja, bukan SQL + params: statement-nya membawa nama, NIM,
-        # prodi dan linkedin sekaligus
+        # operation name only, not SQL + params: the statement carries name, NIM,
+        # prodi and linkedin all at once
         log.debug(
             "registration_repo: submit", extra={"registration_id": registration_id}
         )
@@ -147,13 +146,13 @@ class PostgresRegistrationRepository:
         reason: str | None,
         joined_at: str | None = None,
     ) -> Registration | None:
-        # `AND state = 'pending'` adalah satu-satunya penjaga balapan dua verifikator:
-        # approve itu UPDATE, jadi registrations_active tidak pernah ikut bicara.
+        # `AND state = 'pending'` is the only guard against two racing verifiers:
+        # approve is an UPDATE, so registrations_active never gets a say.
         #
-        # Satu statement, bukan dua di dalam transaction: baris members lahir dari
-        # baris registrations yang barusan berubah, jadi "approved tapi members
-        # kosong" (issue #12) tidak bisa terjadi lagi walau koneksinya putus di
-        # tengah. `WHERE state = 'approved'` membuat reject tidak menyentuh members.
+        # One statement, not two in a transaction: the members row is born from
+        # the registrations row that just changed, so "approved but members
+        # empty" (issue #12) can't happen even if the connection drops midway.
+        # `WHERE state = 'approved'` keeps reject away from members.
         async with self._pool.acquire() as conn:
             return _row(
                 await conn.fetchrow(
