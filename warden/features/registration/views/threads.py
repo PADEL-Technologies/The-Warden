@@ -4,6 +4,10 @@ import contextlib
 
 import discord
 
+# Discord me-reset auto_archive_duration ke default server setiap thread
+# di-unarchive — harus dipin ulang di setiap wake().
+THREAD_ARCHIVE_MINUTES = 60
+
 
 async def get_thread(
     guild: discord.Guild, thread_id: int | None
@@ -19,8 +23,15 @@ async def get_thread(
     return thread
 
 
+async def wake(thread: discord.Thread) -> None:
+    """Unarchive sambil pin ulang durasinya: `edit(archived=False)` tanpa
+    `auto_archive_duration` me-reset "Hide after inactivity" ke default
+    server (bisa 1 Week)."""
+    if thread.archived:
+        await thread.edit(archived=False, auto_archive_duration=THREAD_ARCHIVE_MINUTES)
+
+
 async def speak(thread: discord.Thread, **kwargs) -> None:
     """Keputusan bisa datang berhari-hari kemudian, saat threadnya sudah ter-archive."""
-    if thread.archived:
-        await thread.edit(archived=False)
+    await wake(thread)
     await thread.send(**kwargs)
