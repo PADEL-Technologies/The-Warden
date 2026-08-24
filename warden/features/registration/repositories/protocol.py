@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 class RegistrationRepository(Protocol):
     async def active_by_user(self, guild_id: int, user_id: int) -> Registration | None:
-        """open/pending/approved state. At most one, enforced by registrations_active."""
+        """open/pending/approved. At most one, enforced by registrations_active."""
         ...
 
     async def create_open(
