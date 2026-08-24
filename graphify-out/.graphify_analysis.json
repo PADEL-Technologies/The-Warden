@@ -1,112 +1,159 @@
 {
   "communities": {
     "0": [
-      "embed",
+      "before_loop",
+      "loop",
+      "main",
+      "warden_bot",
+      "warden_bot_feature_modules",
+      "warden_bot_rationale_17",
+      "warden_bot_warden",
+      "warden_bot_warden_init",
+      "warden_bot_warden_setup_hook",
+      "warden_config",
+      "warden_config_config",
+      "warden_config_flag",
+      "warden_config_id",
+      "warden_config_load_config",
+      "warden_config_parse_role_map",
+      "warden_config_rationale_25",
+      "warden_config_rationale_33",
       "warden_features_registration_entities_registration",
+      "warden_features_registration_handlers_registration_handler",
+      "warden_features_registration_handlers_registration_handler_py_bot",
+      "warden_features_registration_handlers_registration_handler_py_command",
+      "warden_features_registration_handlers_registration_handler_py_context",
+      "warden_features_registration_handlers_registration_handler_py_group",
+      "warden_features_registration_handlers_registration_handler_py_has_guild_permissions",
+      "warden_features_registration_handlers_registration_handler_py_listener",
+      "warden_features_registration_handlers_registration_handler_py_member",
+      "warden_features_registration_handlers_registration_handler_py_registrationservice",
+      "warden_features_registration_handlers_registration_handler_rationale_131",
+      "warden_features_registration_handlers_registration_handler_rationale_41",
+      "warden_features_registration_handlers_registration_handler_rationale_78",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers_before_sweep",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers_cog_unload",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers_init",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers_on_member_join",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers_post",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers_registration",
+      "warden_features_registration_handlers_registration_handler_registrationhandlers_sweep_archived",
+      "warden_features_registration_init",
+      "warden_features_registration_init_py_bot",
+      "warden_features_registration_init_rationale_1",
+      "warden_features_registration_init_setup",
       "warden_features_registration_repositories_protocol",
       "warden_features_registration_services_protocol",
       "warden_features_registration_services_registration_service",
+      "warden_features_registration_services_registration_service_nickname",
+      "warden_features_registration_services_registration_service_rationale_34",
       "warden_features_registration_services_registration_service_rationale_48",
       "warden_features_registration_services_registration_service_role_ids_for",
-      "warden_features_registration_views_onboard_me_view_onboardmeview_create_thread",
-      "warden_features_registration_views_onboard_me_view_onboardmeview_start",
-      "warden_features_registration_views_onboard_me_view_py_button",
-      "warden_features_registration_views_onboard_me_view_py_interaction",
-      "warden_features_registration_views_onboard_me_view_py_thread",
+      "warden_features_registration_views_onboard_me_view",
+      "warden_features_registration_views_onboard_me_view_onboardmeview",
+      "warden_features_registration_views_onboard_me_view_onboardmeview_init",
+      "warden_features_registration_views_onboard_me_view_py_registrationservice",
+      "warden_features_registration_views_pilih_tipe_view",
+      "warden_features_registration_views_pilih_tipe_view_pilihtipeview",
+      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_init",
+      "warden_features_registration_views_pilih_tipe_view_py_registrationservice",
+      "warden_features_registration_views_pilih_tipe_view_rationale_16",
       "warden_features_registration_views_registrasi_modal",
-      "warden_features_registration_views_reject_modal",
-      "warden_features_registration_views_reject_modal_py_interaction",
-      "warden_features_registration_views_reject_modal_rejectmodal",
-      "warden_features_registration_views_reject_modal_rejectmodal_init",
-      "warden_features_registration_views_reject_modal_rejectmodal_on_submit",
-      "warden_features_registration_views_review_card",
-      "warden_features_registration_views_review_card_build_review_embed",
-      "warden_features_registration_views_review_card_dt",
-      "warden_features_registration_views_review_card_mark_decided",
-      "warden_features_registration_views_review_card_py_member",
-      "warden_features_registration_views_review_card_py_user",
-      "warden_features_registration_views_review_card_rationale_62",
       "warden_features_registration_views_review_view",
-      "warden_features_registration_views_review_view_is_verifier",
-      "warden_features_registration_views_review_view_py_button",
-      "warden_features_registration_views_review_view_py_interaction",
-      "warden_features_registration_views_review_view_py_member",
-      "warden_features_registration_views_review_view_py_user",
-      "warden_features_registration_views_review_view_rationale_190",
-      "warden_features_registration_views_review_view_rationale_25",
-      "warden_features_registration_views_review_view_rationale_41",
-      "warden_features_registration_views_review_view_rationale_75",
-      "warden_features_registration_views_review_view_reviewview",
-      "warden_features_registration_views_review_view_reviewview_already_decided",
-      "warden_features_registration_views_review_view_reviewview_approve",
-      "warden_features_registration_views_review_view_reviewview_finish",
-      "warden_features_registration_views_review_view_reviewview_grant",
-      "warden_features_registration_views_review_view_reviewview_join",
-      "warden_features_registration_views_review_view_reviewview_reject",
-      "warden_features_registration_views_review_view_reviewview_resolve",
-      "warden_features_registration_views_threads",
-      "warden_features_registration_views_threads_get_thread",
-      "warden_features_registration_views_threads_py_guild",
-      "warden_features_registration_views_threads_py_thread",
-      "warden_features_registration_views_threads_rationale_1",
-      "warden_features_registration_views_threads_rationale_15",
-      "warden_features_registration_views_threads_rationale_27",
-      "warden_features_registration_views_threads_rationale_35",
-      "warden_features_registration_views_threads_speak",
-      "warden_features_registration_views_threads_wake"
+      "warden_tests_features_registration_test_views",
+      "warden_tests_features_registration_test_views_rationale_1",
+      "warden_tests_features_registration_test_views_test_semua_view_persistent_dan_custom_id_stabil",
+      "warden_tests_test_smoke",
+      "warden_tests_test_smoke_test_feature_modules_discovers_ping"
     ],
     "1": [
-      "warden_features_onboarding_entities_channel",
-      "warden_features_onboarding_entities_channel_py_typeddict",
-      "warden_features_onboarding_entities_channel_snapshotchannel",
-      "warden_features_onboarding_entities_member_role",
-      "warden_features_onboarding_entities_member_role_memberrole",
-      "warden_features_onboarding_entities_member_role_py_typeddict",
-      "warden_features_onboarding_entities_snapshot_member",
-      "warden_features_onboarding_entities_snapshot_member_py_typeddict",
-      "warden_features_onboarding_entities_snapshot_member_snapshotmember",
-      "warden_features_onboarding_init",
-      "warden_features_onboarding_init_py_bot",
-      "warden_features_onboarding_init_rationale_1",
-      "warden_features_onboarding_init_setup",
-      "warden_features_onboarding_repositories_postgres_onboarding_repository",
-      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
-      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_has_onboarding",
-      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_init",
-      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_member_count",
-      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_save",
-      "warden_features_onboarding_repositories_postgres_onboarding_repository_py_pool",
-      "warden_features_onboarding_repositories_protocol",
-      "warden_features_onboarding_repositories_protocol_onboardingrepository",
-      "warden_features_onboarding_repositories_protocol_onboardingrepository_has_onboarding",
-      "warden_features_onboarding_repositories_protocol_onboardingrepository_member_count",
-      "warden_features_onboarding_repositories_protocol_onboardingrepository_save",
-      "warden_features_onboarding_repositories_protocol_py_protocol",
-      "warden_features_onboarding_repositories_protocol_rationale_21",
-      "warden_features_onboarding_services_onboarding_service",
-      "warden_features_onboarding_services_onboarding_service_keep_role",
-      "warden_features_onboarding_services_onboarding_service_onboardingservice",
-      "warden_features_onboarding_services_onboarding_service_onboardingservice_init",
-      "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_chan",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_pool",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_py_fixture",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_repo",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_force_replaces_previous_snapshot",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_role_and_channel_without_member_still_saved",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_and_has_onboarding",
-      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
-      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo",
-      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_has_onboarding",
-      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_init",
-      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_member_count",
-      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_save"
+      "record",
+      "warden_features_registration_entities_registration_py_typeddict",
+      "warden_features_registration_entities_registration_rationale_8",
+      "warden_features_registration_entities_registration_registration",
+      "warden_features_registration_repositories_postgres_registration_repository",
+      "warden_features_registration_repositories_postgres_registration_repository_one",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_active_by_user",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_attempt_count",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_by_report_message",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_by_thread",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_clear_thread",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_create_open",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_decide",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_init",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_nim_holder",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_reopen",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_set_report_message",
+      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_submit",
+      "warden_features_registration_repositories_postgres_registration_repository_py_datetime",
+      "warden_features_registration_repositories_postgres_registration_repository_py_pool",
+      "warden_features_registration_repositories_postgres_registration_repository_row",
+      "warden_features_registration_repositories_protocol_py_datetime",
+      "warden_features_registration_repositories_protocol_py_protocol",
+      "warden_features_registration_repositories_protocol_rationale_11",
+      "warden_features_registration_repositories_protocol_rationale_21",
+      "warden_features_registration_repositories_protocol_rationale_53",
+      "warden_features_registration_repositories_protocol_rationale_59",
+      "warden_features_registration_repositories_protocol_rationale_63",
+      "warden_features_registration_repositories_protocol_rationale_67",
+      "warden_features_registration_repositories_protocol_registrationrepository",
+      "warden_features_registration_repositories_protocol_registrationrepository_active_by_user",
+      "warden_features_registration_repositories_protocol_registrationrepository_attempt_count",
+      "warden_features_registration_repositories_protocol_registrationrepository_by_report_message",
+      "warden_features_registration_repositories_protocol_registrationrepository_by_thread",
+      "warden_features_registration_repositories_protocol_registrationrepository_clear_thread",
+      "warden_features_registration_repositories_protocol_registrationrepository_create_open",
+      "warden_features_registration_repositories_protocol_registrationrepository_decide",
+      "warden_features_registration_repositories_protocol_registrationrepository_nim_holder",
+      "warden_features_registration_repositories_protocol_registrationrepository_reopen",
+      "warden_features_registration_repositories_protocol_registrationrepository_set_report_message",
+      "warden_features_registration_repositories_protocol_registrationrepository_submit",
+      "warden_features_registration_services_protocol_py_datetime",
+      "warden_features_registration_services_protocol_py_protocol",
+      "warden_features_registration_services_protocol_rationale_13",
+      "warden_features_registration_services_protocol_rationale_44",
+      "warden_features_registration_services_protocol_registrationservice",
+      "warden_features_registration_services_protocol_registrationservice_attempt_count",
+      "warden_features_registration_services_protocol_registrationservice_by_report_message",
+      "warden_features_registration_services_protocol_registrationservice_by_thread",
+      "warden_features_registration_services_protocol_registrationservice_clear_thread",
+      "warden_features_registration_services_protocol_registrationservice_decide",
+      "warden_features_registration_services_protocol_registrationservice_nim_holder",
+      "warden_features_registration_services_protocol_registrationservice_open_thread",
+      "warden_features_registration_services_protocol_registrationservice_reopen_thread",
+      "warden_features_registration_services_protocol_registrationservice_set_report_message",
+      "warden_features_registration_services_protocol_registrationservice_start",
+      "warden_features_registration_services_protocol_registrationservice_submit",
+      "warden_features_registration_services_registration_service_registrationservice_init"
     ],
     "2": [
       "datetime",
       "warden_features_onboarding_handlers_onboarding_handler",
+      "warden_features_onboarding_handlers_onboarding_handler_human_count",
+      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
+      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing",
+      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init",
+      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join",
+      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard",
+      "warden_features_onboarding_handlers_onboarding_handler_py_bot",
+      "warden_features_onboarding_handlers_onboarding_handler_py_command",
+      "warden_features_onboarding_handlers_onboarding_handler_py_context",
+      "warden_features_onboarding_handlers_onboarding_handler_py_group",
+      "warden_features_onboarding_handlers_onboarding_handler_py_guild",
+      "warden_features_onboarding_handlers_onboarding_handler_py_has_guild_permissions",
+      "warden_features_onboarding_handlers_onboarding_handler_py_listener",
+      "warden_features_onboarding_handlers_onboarding_handler_py_member",
+      "warden_features_onboarding_handlers_onboarding_handler_py_onboardingservice",
+      "warden_features_onboarding_init",
+      "warden_features_onboarding_init_py_bot",
+      "warden_features_onboarding_init_rationale_1",
+      "warden_features_onboarding_init_setup",
+      "warden_features_onboarding_services_onboarding_service",
+      "warden_features_onboarding_services_onboarding_service_keep_role",
+      "warden_features_onboarding_services_onboarding_service_onboardingservice",
+      "warden_features_onboarding_services_onboarding_service_onboardingservice_snapshot_if_absent",
       "warden_features_onboarding_services_protocol",
       "warden_features_onboarding_services_protocol_onboardingservice",
       "warden_features_onboarding_services_protocol_onboardingservice_snapshot_if_absent",
@@ -136,16 +183,110 @@
       "warden_tests_features_onboarding_services_test_onboarding_service_test_skips_when_snapshot_exists"
     ],
     "3": [
-      "listener",
-      "member",
+      "warden_features_onboarding_entities_channel",
+      "warden_features_onboarding_entities_channel_py_typeddict",
+      "warden_features_onboarding_entities_channel_snapshotchannel",
+      "warden_features_onboarding_entities_member_role",
+      "warden_features_onboarding_entities_member_role_memberrole",
+      "warden_features_onboarding_entities_member_role_py_typeddict",
+      "warden_features_onboarding_entities_snapshot_member",
+      "warden_features_onboarding_entities_snapshot_member_py_typeddict",
+      "warden_features_onboarding_entities_snapshot_member_snapshotmember",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_has_onboarding",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_init",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_member_count",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository_postgresonboardingrepository_save",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository_py_memberrole",
+      "warden_features_onboarding_repositories_postgres_onboarding_repository_py_pool",
+      "warden_features_onboarding_repositories_protocol",
+      "warden_features_onboarding_repositories_protocol_onboardingrepository",
+      "warden_features_onboarding_repositories_protocol_onboardingrepository_has_onboarding",
+      "warden_features_onboarding_repositories_protocol_onboardingrepository_member_count",
+      "warden_features_onboarding_repositories_protocol_onboardingrepository_save",
+      "warden_features_onboarding_repositories_protocol_py_memberrole",
+      "warden_features_onboarding_repositories_protocol_py_protocol",
+      "warden_features_onboarding_repositories_protocol_rationale_21",
+      "warden_features_onboarding_services_onboarding_service_onboardingservice_init",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_chan",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_pool",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_py_fixture",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_repo",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_snap",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_force_replaces_previous_snapshot",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_role_and_channel_without_member_still_saved",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_and_has_onboarding",
+      "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_test_save_twice_without_force_is_idempotent",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_has_onboarding",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_init",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_member_count",
+      "warden_tests_features_onboarding_services_test_onboarding_service_fakerepo_save",
+      "warden_tests_features_onboarding_services_test_onboarding_service_py_memberrole"
+    ],
+    "4": [
+      "warden_features_registration_views_onboard_me_view_onboardmeview_create_thread",
+      "warden_features_registration_views_onboard_me_view_onboardmeview_start",
+      "warden_features_registration_views_onboard_me_view_py_button",
+      "warden_features_registration_views_onboard_me_view_py_interaction",
+      "warden_features_registration_views_onboard_me_view_py_thread",
+      "warden_features_registration_views_reject_modal",
+      "warden_features_registration_views_reject_modal_py_interaction",
+      "warden_features_registration_views_reject_modal_rejectmodal",
+      "warden_features_registration_views_reject_modal_rejectmodal_init",
+      "warden_features_registration_views_reject_modal_rejectmodal_on_submit",
+      "warden_features_registration_views_review_view_is_verifier",
+      "warden_features_registration_views_review_view_py_button",
+      "warden_features_registration_views_review_view_py_interaction",
+      "warden_features_registration_views_review_view_py_member",
+      "warden_features_registration_views_review_view_py_registrationservice",
+      "warden_features_registration_views_review_view_py_user",
+      "warden_features_registration_views_review_view_rationale_189",
+      "warden_features_registration_views_review_view_rationale_25",
+      "warden_features_registration_views_review_view_rationale_41",
+      "warden_features_registration_views_review_view_rationale_75",
+      "warden_features_registration_views_review_view_reviewview",
+      "warden_features_registration_views_review_view_reviewview_already_decided",
+      "warden_features_registration_views_review_view_reviewview_approve",
+      "warden_features_registration_views_review_view_reviewview_finish",
+      "warden_features_registration_views_review_view_reviewview_grant",
+      "warden_features_registration_views_review_view_reviewview_init",
+      "warden_features_registration_views_review_view_reviewview_join",
+      "warden_features_registration_views_review_view_reviewview_reject",
+      "warden_features_registration_views_review_view_reviewview_resolve",
+      "warden_features_registration_views_threads",
+      "warden_features_registration_views_threads_get_thread",
+      "warden_features_registration_views_threads_py_guild",
+      "warden_features_registration_views_threads_py_thread",
+      "warden_features_registration_views_threads_rationale_1",
+      "warden_features_registration_views_threads_rationale_15",
+      "warden_features_registration_views_threads_rationale_27",
+      "warden_features_registration_views_threads_rationale_35",
+      "warden_features_registration_views_threads_speak",
+      "warden_features_registration_views_threads_wake"
+    ],
+    "5": [
       "timedelta",
-      "warden_features_registration_handlers_registration_handler_rationale_78",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers_on_member_join",
-      "warden_features_registration_services_registration_service_nickname",
       "warden_features_registration_services_registration_service_normalize_nim",
+      "warden_features_registration_services_registration_service_py_datetime",
+      "warden_features_registration_services_registration_service_rationale_176",
       "warden_features_registration_services_registration_service_rationale_21",
       "warden_features_registration_services_registration_service_rationale_26",
-      "warden_features_registration_services_registration_service_rationale_34",
+      "warden_features_registration_services_registration_service_rationale_63",
+      "warden_features_registration_services_registration_service_registrationservice",
+      "warden_features_registration_services_registration_service_registrationservice_action",
+      "warden_features_registration_services_registration_service_registrationservice_attempt_count",
+      "warden_features_registration_services_registration_service_registrationservice_by_report_message",
+      "warden_features_registration_services_registration_service_registrationservice_by_thread",
+      "warden_features_registration_services_registration_service_registrationservice_clear_thread",
+      "warden_features_registration_services_registration_service_registrationservice_decide",
+      "warden_features_registration_services_registration_service_registrationservice_nim_holder",
+      "warden_features_registration_services_registration_service_registrationservice_open_thread",
+      "warden_features_registration_services_registration_service_registrationservice_reopen_thread",
+      "warden_features_registration_services_registration_service_registrationservice_set_report_message",
+      "warden_features_registration_services_registration_service_registrationservice_start",
       "warden_features_registration_services_registration_service_registrationservice_submit",
       "warden_features_registration_services_registration_service_validate_angkatan",
       "warden_tests_features_registration_services_test_registration_service",
@@ -164,33 +305,7 @@
       "warden_tests_features_registration_services_test_registration_service_test_submit_menormalkan_nim",
       "warden_tests_features_registration_services_test_registration_service_test_validate_angkatan"
     ],
-    "4": [
-      "opencode",
-      "opencode_lsp",
-      "opencode_lsp_pyright",
-      "opencode_pyright_command",
-      "opencode_pyright_extensions",
-      "opencode_schema",
-      "ref_py",
-      "ref_pyi",
-      "ref_pyright_langserver",
-      "ref_stdio",
-      "warden_features_onboarding_handlers_onboarding_handler_human_count",
-      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers",
-      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_existing",
-      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_init",
-      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_on_guild_join",
-      "warden_features_onboarding_handlers_onboarding_handler_onboardinghandlers_onboard",
-      "warden_features_onboarding_handlers_onboarding_handler_py_bot",
-      "warden_features_onboarding_handlers_onboarding_handler_py_context",
-      "warden_features_onboarding_handlers_onboarding_handler_py_group",
-      "warden_features_onboarding_handlers_onboarding_handler_py_guild",
-      "warden_features_onboarding_handlers_onboarding_handler_py_has_guild_permissions",
-      "warden_features_onboarding_handlers_onboarding_handler_py_listener",
-      "warden_features_onboarding_handlers_onboarding_handler_py_member",
-      "warden_features_onboarding_handlers_onboarding_handler_py_onboardingservice"
-    ],
-    "5": [
+    "6": [
       "hybrid_command",
       "pingservice",
       "warden_features_ping_handlers_ping_handler",
@@ -213,72 +328,12 @@
       "warden_tests_features_ping_services_test_ping_service",
       "warden_tests_features_ping_services_test_ping_service_test_format_latency"
     ],
-    "6": [
-      "record",
-      "warden_features_registration_entities_registration_py_typeddict",
-      "warden_features_registration_entities_registration_rationale_8",
-      "warden_features_registration_entities_registration_registration",
-      "warden_features_registration_repositories_postgres_registration_repository",
-      "warden_features_registration_repositories_postgres_registration_repository_one",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_active_by_user",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_attempt_count",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_by_report_message",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_by_thread",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_clear_thread",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_create_open",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_decide",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_nim_holder",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_reopen",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_set_report_message",
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_submit",
-      "warden_features_registration_repositories_postgres_registration_repository_py_datetime",
-      "warden_features_registration_repositories_postgres_registration_repository_row"
-    ],
     "7": [
-      "warden_features_registration_repositories_protocol_py_datetime",
-      "warden_features_registration_repositories_protocol_py_protocol",
-      "warden_features_registration_repositories_protocol_rationale_11",
-      "warden_features_registration_repositories_protocol_rationale_21",
-      "warden_features_registration_repositories_protocol_rationale_53",
-      "warden_features_registration_repositories_protocol_rationale_59",
-      "warden_features_registration_repositories_protocol_rationale_63",
-      "warden_features_registration_repositories_protocol_rationale_67",
-      "warden_features_registration_repositories_protocol_registrationrepository",
-      "warden_features_registration_repositories_protocol_registrationrepository_active_by_user",
-      "warden_features_registration_repositories_protocol_registrationrepository_attempt_count",
-      "warden_features_registration_repositories_protocol_registrationrepository_by_report_message",
-      "warden_features_registration_repositories_protocol_registrationrepository_by_thread",
-      "warden_features_registration_repositories_protocol_registrationrepository_clear_thread",
-      "warden_features_registration_repositories_protocol_registrationrepository_create_open",
-      "warden_features_registration_repositories_protocol_registrationrepository_decide",
-      "warden_features_registration_repositories_protocol_registrationrepository_nim_holder",
-      "warden_features_registration_repositories_protocol_registrationrepository_reopen",
-      "warden_features_registration_repositories_protocol_registrationrepository_set_report_message",
-      "warden_features_registration_repositories_protocol_registrationrepository_submit"
-    ],
-    "8": [
-      "main",
-      "warden_bot",
-      "warden_bot_feature_modules",
-      "warden_bot_rationale_17",
-      "warden_bot_warden",
-      "warden_bot_warden_init",
-      "warden_bot_warden_setup_hook",
-      "warden_config",
-      "warden_config_config",
-      "warden_config_flag",
-      "warden_config_id",
-      "warden_config_load_config",
-      "warden_config_parse_role_map",
-      "warden_config_rationale_25",
-      "warden_config_rationale_33",
-      "warden_features_registration_views_review_view_py_registrationservice",
-      "warden_features_registration_views_review_view_reviewview_init",
-      "warden_tests_test_smoke",
-      "warden_tests_test_smoke_test_feature_modules_discovers_ping"
-    ],
-    "9": [
+      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_alumni",
+      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_mahasiswa",
+      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_open",
+      "warden_features_registration_views_pilih_tipe_view_py_button",
+      "warden_features_registration_views_pilih_tipe_view_py_interaction",
       "warden_features_registration_views_registrasi_modal_isiulangview",
       "warden_features_registration_views_registrasi_modal_isiulangview_init",
       "warden_features_registration_views_registrasi_modal_isiulangview_isi_ulang",
@@ -286,56 +341,17 @@
       "warden_features_registration_views_registrasi_modal_py_interaction",
       "warden_features_registration_views_registrasi_modal_py_registrationservice",
       "warden_features_registration_views_registrasi_modal_rationale_186",
-      "warden_features_registration_views_registrasi_modal_rationale_24",
+      "warden_features_registration_views_registrasi_modal_rationale_23",
       "warden_features_registration_views_registrasi_modal_rationale_90",
       "warden_features_registration_views_registrasi_modal_registrasimodal",
       "warden_features_registration_views_registrasi_modal_registrasimodal_init",
       "warden_features_registration_views_registrasi_modal_registrasimodal_on_submit",
       "warden_features_registration_views_registrasi_modal_registrasimodal_prodi_value",
       "warden_features_registration_views_registrasi_modal_registrasimodal_refill",
-      "warden_tests_features_registration_test_views",
-      "warden_tests_features_registration_test_views_rationale_1",
       "warden_tests_features_registration_test_views_test_isi_ulang_membawa_ketikan_lama",
-      "warden_tests_features_registration_test_views_test_modal_pas_di_batas_lima_komponen",
-      "warden_tests_features_registration_test_views_test_semua_view_persistent_dan_custom_id_stabil"
+      "warden_tests_features_registration_test_views_test_modal_pas_di_batas_lima_komponen"
     ],
-    "10": [
-      "warden_features_registration_services_protocol_py_datetime",
-      "warden_features_registration_services_protocol_py_protocol",
-      "warden_features_registration_services_protocol_rationale_13",
-      "warden_features_registration_services_protocol_rationale_45",
-      "warden_features_registration_services_protocol_registrationservice",
-      "warden_features_registration_services_protocol_registrationservice_attempt_count",
-      "warden_features_registration_services_protocol_registrationservice_by_report_message",
-      "warden_features_registration_services_protocol_registrationservice_by_thread",
-      "warden_features_registration_services_protocol_registrationservice_clear_thread",
-      "warden_features_registration_services_protocol_registrationservice_decide",
-      "warden_features_registration_services_protocol_registrationservice_nim_holder",
-      "warden_features_registration_services_protocol_registrationservice_open_thread",
-      "warden_features_registration_services_protocol_registrationservice_reopen_thread",
-      "warden_features_registration_services_protocol_registrationservice_set_report_message",
-      "warden_features_registration_services_protocol_registrationservice_start",
-      "warden_features_registration_services_protocol_registrationservice_submit"
-    ],
-    "11": [
-      "warden_features_registration_services_registration_service_py_datetime",
-      "warden_features_registration_services_registration_service_rationale_176",
-      "warden_features_registration_services_registration_service_rationale_63",
-      "warden_features_registration_services_registration_service_registrationservice",
-      "warden_features_registration_services_registration_service_registrationservice_action",
-      "warden_features_registration_services_registration_service_registrationservice_attempt_count",
-      "warden_features_registration_services_registration_service_registrationservice_by_report_message",
-      "warden_features_registration_services_registration_service_registrationservice_by_thread",
-      "warden_features_registration_services_registration_service_registrationservice_clear_thread",
-      "warden_features_registration_services_registration_service_registrationservice_decide",
-      "warden_features_registration_services_registration_service_registrationservice_init",
-      "warden_features_registration_services_registration_service_registrationservice_nim_holder",
-      "warden_features_registration_services_registration_service_registrationservice_open_thread",
-      "warden_features_registration_services_registration_service_registrationservice_reopen_thread",
-      "warden_features_registration_services_registration_service_registrationservice_set_report_message",
-      "warden_features_registration_services_registration_service_registrationservice_start"
-    ],
-    "12": [
+    "8": [
       "logrecord",
       "warden_log",
       "warden_log_jsonformatter",
@@ -352,7 +368,7 @@
       "warden_tests_test_log_test_record_without_exception_has_no_traceback_field",
       "warden_tests_test_log_test_timestamp_carries_explicit_offset"
     ],
-    "13": [
+    "9": [
       "warden_tests_features_registration_services_test_registration_service_fakerepo",
       "warden_tests_features_registration_services_test_registration_service_fakerepo_active_by_user",
       "warden_tests_features_registration_services_test_registration_service_fakerepo_add",
@@ -369,23 +385,7 @@
       "warden_tests_features_registration_services_test_registration_service_fakerepo_set_report_message",
       "warden_tests_features_registration_services_test_registration_service_fakerepo_submit"
     ],
-    "14": [
-      "before_loop",
-      "warden_features_registration_handlers_registration_handler",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers_before_sweep",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers_cog_unload",
-      "warden_features_registration_init",
-      "warden_features_registration_init_py_bot",
-      "warden_features_registration_init_rationale_1",
-      "warden_features_registration_init_setup",
-      "warden_features_registration_views_onboard_me_view",
-      "warden_features_registration_views_onboard_me_view_onboardmeview",
-      "warden_features_registration_views_onboard_me_view_onboardmeview_init",
-      "warden_features_registration_views_onboard_me_view_py_registrationservice",
-      "warden_features_registration_views_pilih_tipe_view"
-    ],
-    "15": [
+    "10": [
       "warden_tests_features_registration_repositories_postgres_test_registration_repository",
       "warden_tests_features_registration_repositories_postgres_test_registration_repository_members_of",
       "warden_tests_features_registration_repositories_postgres_test_registration_repository_pending",
@@ -399,63 +399,75 @@
       "warden_tests_features_registration_repositories_postgres_test_registration_repository_test_reject_does_not_insert_member",
       "warden_tests_features_registration_repositories_postgres_test_registration_repository_test_second_approve_loses_and_changes_nothing"
     ],
-    "16": [
-      "warden_features_registration_views_pilih_tipe_view_pilihtipeview",
-      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_alumni",
-      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_init",
-      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_mahasiswa",
-      "warden_features_registration_views_pilih_tipe_view_pilihtipeview_open",
-      "warden_features_registration_views_pilih_tipe_view_py_button",
-      "warden_features_registration_views_pilih_tipe_view_py_interaction",
-      "warden_features_registration_views_pilih_tipe_view_py_registrationservice",
-      "warden_features_registration_views_pilih_tipe_view_rationale_16"
+    "11": [
+      "opencode",
+      "opencode_lsp",
+      "opencode_lsp_pyright",
+      "opencode_pyright_command",
+      "opencode_pyright_extensions",
+      "opencode_schema",
+      "ref_py",
+      "ref_pyi",
+      "ref_pyright_langserver",
+      "ref_stdio"
     ],
-    "17": [
-      "command",
-      "context",
-      "group",
-      "has_guild_permissions",
-      "warden_features_registration_handlers_registration_handler_rationale_41",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers_post",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers_registration"
+    "12": [
+      "embed",
+      "warden_features_registration_views_review_card",
+      "warden_features_registration_views_review_card_build_review_embed",
+      "warden_features_registration_views_review_card_dt",
+      "warden_features_registration_views_review_card_mark_decided",
+      "warden_features_registration_views_review_card_py_member",
+      "warden_features_registration_views_review_card_py_user",
+      "warden_features_registration_views_review_card_rationale_61"
     ],
-    "18": [
-      "bot",
-      "registrationservice",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers_init"
+    "13": [
+      "bot"
     ],
-    "19": [
-      "loop",
-      "warden_features_registration_handlers_registration_handler_rationale_131",
-      "warden_features_registration_handlers_registration_handler_registrationhandlers_sweep_archived"
-    ],
-    "20": [
-      "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository_init",
-      "warden_features_registration_repositories_postgres_registration_repository_py_pool"
-    ],
-    "21": [
+    "14": [
       "button"
     ],
-    "22": [
+    "15": [
+      "command"
+    ],
+    "16": [
       "config"
     ],
-    "23": [
+    "17": [
+      "context"
+    ],
+    "18": [
       "fixture"
     ],
-    "24": [
+    "19": [
+      "group"
+    ],
+    "20": [
       "guild"
     ],
-    "25": [
+    "21": [
+      "has_guild_permissions"
+    ],
+    "22": [
       "interaction"
     ],
-    "26": [
+    "23": [
+      "listener"
+    ],
+    "24": [
+      "member"
+    ],
+    "25": [
       "onboardingservice"
     ],
-    "27": [
+    "26": [
       "pool"
     ],
-    "28": [
+    "27": [
       "protocol"
+    ],
+    "28": [
+      "registrationservice"
     ],
     "29": [
       "snapshotmembersource"
@@ -485,174 +497,138 @@
       "warden_features_onboarding_handlers_init"
     ],
     "38": [
-      "warden_features_onboarding_handlers_onboarding_handler_py_command"
-    ],
-    "39": [
       "warden_features_onboarding_repositories_init"
     ],
-    "40": [
+    "39": [
       "warden_features_onboarding_repositories_postgres_init"
     ],
-    "41": [
-      "warden_features_onboarding_repositories_postgres_onboarding_repository_py_memberrole"
-    ],
-    "42": [
+    "40": [
       "warden_features_onboarding_repositories_postgres_onboarding_repository_py_snapshotmember"
     ],
-    "43": [
-      "warden_features_onboarding_repositories_protocol_py_memberrole"
-    ],
-    "44": [
+    "41": [
       "warden_features_onboarding_repositories_protocol_py_snapshotmember"
     ],
-    "45": [
+    "42": [
       "warden_features_onboarding_services_init"
     ],
-    "46": [
+    "43": [
       "warden_features_ping_handlers_init"
     ],
-    "47": [
+    "44": [
       "warden_features_ping_services_init"
     ],
-    "48": [
+    "45": [
       "warden_features_registration_entities_init"
     ],
-    "49": [
+    "46": [
       "warden_features_registration_handlers_init"
     ],
-    "50": [
-      "warden_features_registration_handlers_registration_handler_py_bot"
-    ],
-    "51": [
-      "warden_features_registration_handlers_registration_handler_py_command"
-    ],
-    "52": [
-      "warden_features_registration_handlers_registration_handler_py_context"
-    ],
-    "53": [
-      "warden_features_registration_handlers_registration_handler_py_group"
-    ],
-    "54": [
-      "warden_features_registration_handlers_registration_handler_py_has_guild_permissions"
-    ],
-    "55": [
-      "warden_features_registration_handlers_registration_handler_py_listener"
-    ],
-    "56": [
-      "warden_features_registration_handlers_registration_handler_py_member"
-    ],
-    "57": [
-      "warden_features_registration_handlers_registration_handler_py_registrationservice"
-    ],
-    "58": [
+    "47": [
       "warden_features_registration_repositories_init"
     ],
-    "59": [
+    "48": [
       "warden_features_registration_repositories_postgres_init"
     ],
-    "60": [
+    "49": [
       "warden_features_registration_repositories_postgres_registration_repository_py_registration"
     ],
-    "61": [
+    "50": [
       "warden_features_registration_repositories_protocol_py_registration"
     ],
-    "62": [
+    "51": [
       "warden_features_registration_services_init"
     ],
-    "63": [
+    "52": [
       "warden_features_registration_services_protocol_py_registration"
     ],
-    "64": [
+    "53": [
       "warden_features_registration_services_registration_service_py_registration"
     ],
-    "65": [
+    "54": [
       "warden_features_registration_views_init"
     ],
-    "66": [
+    "55": [
       "warden_features_registration_views_onboard_me_view_py_config"
     ],
-    "67": [
+    "56": [
       "warden_features_registration_views_pilih_tipe_view_py_config"
     ],
-    "68": [
+    "57": [
       "warden_features_registration_views_registrasi_modal_py_config"
     ],
-    "69": [
+    "58": [
       "warden_features_registration_views_review_view_py_config"
     ],
-    "70": [
+    "59": [
       "warden_features_registration_views_review_view_py_registration"
     ],
-    "71": [
+    "60": [
       "warden_init"
     ],
-    "72": [
+    "61": [
       "warden_tests_features_init"
     ],
-    "73": [
+    "62": [
       "warden_tests_features_onboarding_init"
     ],
-    "74": [
+    "63": [
       "warden_tests_features_onboarding_repositories_init"
     ],
-    "75": [
+    "64": [
       "warden_tests_features_onboarding_repositories_postgres_init"
     ],
-    "76": [
+    "65": [
       "warden_tests_features_onboarding_repositories_postgres_test_onboarding_repository_py_snapshotmember"
     ],
-    "77": [
+    "66": [
       "warden_tests_features_onboarding_services_init"
     ],
-    "78": [
-      "warden_tests_features_onboarding_services_test_onboarding_service_py_memberrole"
-    ],
-    "79": [
+    "67": [
       "warden_tests_features_onboarding_services_test_onboarding_service_py_snapshotmember"
     ],
-    "80": [
+    "68": [
       "warden_tests_features_ping_init"
     ],
-    "81": [
+    "69": [
       "warden_tests_features_ping_services_init"
     ],
-    "82": [
+    "70": [
       "warden_tests_features_registration_init"
     ],
-    "83": [
+    "71": [
       "warden_tests_features_registration_repositories_init"
     ],
-    "84": [
+    "72": [
       "warden_tests_features_registration_repositories_postgres_init"
     ],
-    "85": [
+    "73": [
       "warden_tests_features_registration_services_init"
     ],
-    "86": [
+    "74": [
       "warden_tests_features_registration_services_test_registration_service_py_registration"
     ]
   },
   "cohesion": {
-    "0": 0.07402031930333818,
-    "1": 0.10730804810360776,
-    "2": 0.15024630541871922,
-    "3": 0.1111111111111111,
-    "4": 0.09057971014492754,
-    "5": 0.12857142857142856,
-    "6": 0.20526315789473684,
-    "7": 0.10526315789473684,
-    "8": 0.1695906432748538,
-    "9": 0.14619883040935672,
-    "10": 0.14166666666666666,
-    "11": 0.15833333333333333,
-    "12": 0.23809523809523808,
-    "13": 0.18095238095238095,
-    "14": 0.2087912087912088,
-    "15": 0.30303030303030304,
-    "16": 0.3611111111111111,
-    "17": 0.2857142857142857,
-    "18": 0.6666666666666666,
-    "19": 0.6666666666666666,
+    "0": 0.061057692307692306,
+    "1": 0.055523085914669784,
+    "2": 0.07767722473604827,
+    "3": 0.09175377468060394,
+    "4": 0.08502024291497975,
+    "5": 0.08571428571428572,
+    "6": 0.12857142857142856,
+    "7": 0.13333333333333333,
+    "8": 0.23809523809523808,
+    "9": 0.18095238095238095,
+    "10": 0.30303030303030304,
+    "11": 0.2,
+    "12": 0.35714285714285715,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
     "20": 1.0,
     "21": 1.0,
     "22": 1.0,
@@ -707,19 +683,7 @@
     "71": 1.0,
     "72": 1.0,
     "73": 1.0,
-    "74": 1.0,
-    "75": 1.0,
-    "76": 1.0,
-    "77": 1.0,
-    "78": 1.0,
-    "79": 1.0,
-    "80": 1.0,
-    "81": 1.0,
-    "82": 1.0,
-    "83": 1.0,
-    "84": 1.0,
-    "85": 1.0,
-    "86": 1.0
+    "74": 1.0
   },
   "gods": [
     {
@@ -728,14 +692,14 @@
       "degree": 63
     },
     {
-      "id": "warden_features_onboarding_entities_member_role_memberrole",
-      "label": "MemberRole",
-      "degree": 21
-    },
-    {
       "id": "warden_features_registration_views_review_view_reviewview",
       "label": "ReviewView",
       "degree": 21
+    },
+    {
+      "id": "warden_features_registration_services_protocol_registrationservice",
+      "label": "RegistrationService",
+      "degree": 19
     },
     {
       "id": "warden_features_registration_services_registration_service_registrationservice",
@@ -748,19 +712,9 @@
       "degree": 18
     },
     {
-      "id": "warden_features_registration_services_protocol_registrationservice",
-      "label": "RegistrationService",
-      "degree": 18
-    },
-    {
       "id": "warden_features_registration_repositories_postgres_registration_repository_postgresregistrationrepository",
       "label": "PostgresRegistrationRepository",
       "degree": 18
-    },
-    {
-      "id": "warden_features_onboarding_entities_snapshot_member_snapshotmember",
-      "label": "SnapshotMember",
-      "degree": 17
     },
     {
       "id": "warden_tests_features_registration_services_test_registration_service_fakerepo",
@@ -768,34 +722,22 @@
       "degree": 17
     },
     {
-      "id": "warden_features_registration_views_registrasi_modal_registrasimodal",
-      "label": "RegistrasiModal",
+      "id": "warden_features_onboarding_entities_channel_snapshotchannel",
+      "label": "SnapshotChannel",
+      "degree": 16
+    },
+    {
+      "id": "warden_features_onboarding_entities_snapshot_member_snapshotmember",
+      "label": "SnapshotMember",
+      "degree": 16
+    },
+    {
+      "id": "warden_features_registration_repositories_protocol_registrationrepository",
+      "label": "RegistrationRepository",
       "degree": 16
     }
   ],
   "surprises": [
-    {
-      "source": "OnboardMeView",
-      "target": "Config",
-      "source_files": [
-        "warden/features/registration/views/onboard_me_view.py",
-        "warden/config.py"
-      ],
-      "confidence": "INFERRED",
-      "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
-    },
-    {
-      "source": "PilihTipeView",
-      "target": "Config",
-      "source_files": [
-        "warden/features/registration/views/pilih_tipe_view.py",
-        "warden/config.py"
-      ],
-      "confidence": "INFERRED",
-      "relation": "uses",
-      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
-    },
     {
       "source": "RegistrasiModal",
       "target": "Config",
@@ -819,11 +761,33 @@
       "why": "inferred connection - not explicitly stated in source; bridges separate communities"
     },
     {
-      "source": "OnboardMeView",
-      "target": "PilihTipeView",
+      "source": "OnboardingService",
+      "target": "SnapshotChannel",
       "source_files": [
-        "warden/features/registration/views/onboard_me_view.py",
-        "warden/features/registration/views/pilih_tipe_view.py"
+        "warden/features/onboarding/services/onboarding_service.py",
+        "warden/features/onboarding/entities/channel.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "OnboardingService",
+      "target": "SnapshotMember",
+      "source_files": [
+        "warden/features/onboarding/services/onboarding_service.py",
+        "warden/features/onboarding/entities/snapshot_member.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
+    },
+    {
+      "source": "OnboardingService",
+      "target": "OnboardingRepository",
+      "source_files": [
+        "warden/features/onboarding/services/onboarding_service.py",
+        "warden/features/onboarding/repositories/protocol.py"
       ],
       "confidence": "INFERRED",
       "relation": "uses",
