@@ -1,6 +1,6 @@
-"""Yang cuma ketahuan di server hidup: modal kelebihan komponen, dan view yang
-tidak persistent — restart bot lalu semua button lama membalas "This interaction
-failed", tanpa satu pun tanda di UI."""
+"""Only discovered on a live server: a modal over the component limit, and a
+non-persistent view — restart the bot and every old button replies "This
+interaction failed" with no sign in the UI."""
 
 from warden.config import Config
 from warden.features.registration.views.onboard_me_view import OnboardMeView

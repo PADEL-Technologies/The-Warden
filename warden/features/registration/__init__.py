@@ -1,5 +1,5 @@
 """Registration feature. Wiring only — handlers, services, repositories, views
-hidup terpisah."""
+live apart."""
 
 from typing import TYPE_CHECKING
 
@@ -24,11 +24,11 @@ if TYPE_CHECKING:
 
 async def setup(bot: commands.Bot) -> None:
     if not bot.config.registration_enabled:
-        return  # toggle OFF = cog tidak dimuat
+        return
     pool = await asyncpg.create_pool(bot.config.database_url)
     service = RegistrationService(PostgresRegistrationRepository(pool))
 
-    # nama kelas = kunci cog di seluruh bot, jadi harus unik antar feature
+    # class name = cog key bot-wide, must stay unique across features
     class RegistrationCog(RegistrationHandlers):
         async def cog_unload(self) -> None:
             await super().cog_unload()
@@ -36,8 +36,8 @@ async def setup(bot: commands.Bot) -> None:
 
     await bot.add_cog(RegistrationCog(bot, service))
 
-    # add_view mendaftarkan handler untuk custom_id, bukan untuk satu pesan: sekali di
-    # sini menghidupkan kembali semua thread lama dan semua kartu yang belum diputuskan.
+    # add_view registers a handler per custom_id, not per message: one call here
+    # revives all old threads and undecided cards.
     bot.add_view(OnboardMeView(service, bot.config))
     bot.add_view(PilihTipeView(service, bot.config))
     bot.add_view(ReviewView(service, bot.config))

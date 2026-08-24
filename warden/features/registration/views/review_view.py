@@ -22,8 +22,8 @@ log = logging.getLogger(__name__)
 
 
 def is_verifier(user: discord.abc.User, verifier_role_id: int) -> bool:
-    """Button Discord bisa diklik siapa pun yang bisa melihat pesannya — permission
-    channel adalah lapisan kedua, bukan pengaman."""
+    """Anyone who can see the message can click a Discord button — channel
+    permissions are a second layer, not the guard."""
     if not isinstance(user, discord.Member):
         return False
     return user.guild_permissions.manage_guild or any(
@@ -38,7 +38,7 @@ class ReviewView(discord.ui.View):
         self.config = config
 
     async def resolve(self, interaction: discord.Interaction) -> Registration | None:
-        """Otorisasi + lookup. None = sudah dibalas, callback harus berhenti."""
+        """Authorize + lookup. None = already answered, callback must stop."""
         if not is_verifier(interaction.user, self.config.registration_verifier_role_id):
             log.warning(
                 "registration: tombol review diklik non-verifikator",
@@ -72,7 +72,7 @@ class ReviewView(discord.ui.View):
         decided: Registration,
         note: str,
     ) -> None:
-        """Umumkan ke thread pendaftar, lalu edit kartunya di tempat."""
+        """Announce to the applicant's thread, then edit the card in place."""
         thread = await get_thread(interaction.guild, decided["thread_id"])
         if thread is not None:
             try:
@@ -138,8 +138,7 @@ class ReviewView(discord.ui.View):
             return
 
         await interaction.response.defer()
-        # dicari sekali di sini, bukan dua kali: decide butuh joined_at-nya,
-        # _grant butuh objeknya
+        # fetched once here: decide needs joined_at, _grant needs the object
         member = interaction.guild.get_member(reg["user_id"])
         try:
             decided = await self.service.decide(
@@ -151,7 +150,7 @@ class ReviewView(discord.ui.View):
                 else None,
             )
         except asyncpg.UniqueViolationError:
-            # satu-satunya index yang bisa bentrok di sini: registrations_nim_approved
+            # the only index that can collide here: registrations_nim_approved
             holder = await self.service.nim_holder(reg["guild_id"], reg["nim"] or "")
             pemegang = f"<@{holder}>" if holder else "member lain"
             log.warning(
@@ -187,8 +186,8 @@ class ReviewView(discord.ui.View):
         role_ids: list[int],
         member: discord.Member | None,
     ) -> str | None:
-        """None = beres. Selain itu pesan untuk verifikator — kegagalan di sini tidak
-        boleh membatalkan approve yang sudah tercatat."""
+        """None = fine. Otherwise a message for the verifier — a failure here must
+        not roll back an already-recorded approve."""
         if member is None:
             log.warning(
                 "registration: approved tapi orangnya sudah keluar server",
@@ -215,8 +214,8 @@ class ReviewView(discord.ui.View):
                 "Ditandai approved, tapi bot tidak boleh memberi role itu. "
                 "Naikkan posisi role bot di atas role tujuan, lalu beri manual."
             )
-        # Nickname bukan hasil yang penting; owner server tidak bisa diganti bot
-        # apa pun permission-nya.
+        # Nickname is not the important outcome; the server owner can't be
+        # renamed by a bot regardless of permissions.
         with contextlib.suppress(discord.HTTPException):
             await member.edit(nick=nickname(reg))
         log.info(
@@ -268,8 +267,8 @@ class ReviewView(discord.ui.View):
                 "Threadnya sudah tidak ada.", ephemeral=True
             )
             return
-        # bot yang memasukkan verifikator: `add_user` memberi akses tepat satu thread,
-        # `Manage Threads` memberi seluruh server
+        # the bot adds the verifier: `add_user` grants exactly one thread,
+        # `Manage Threads` would grant the whole server
         await wake(thread)
         await thread.add_user(interaction.user)
         await interaction.followup.send(thread.jump_url, ephemeral=True)

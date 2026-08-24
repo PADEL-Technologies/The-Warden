@@ -25,7 +25,7 @@ class OnboardingHandlers(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild: discord.Guild) -> None:
         log.debug("onboarding: masuk guild baru", extra={"guild_id": guild.id})
-        await guild.chunk()  # join saat runtime: roster belum terisi
+        await guild.chunk()  # runtime join: the roster isn't filled yet
         created = await self.service.snapshot_if_absent(
             guild.members,
             guild.roles,
@@ -55,7 +55,7 @@ class OnboardingHandlers(commands.Cog):
     @onboard.command(name="existing")
     @commands.has_guild_permissions(manage_guild=True)
     async def existing(self, ctx: commands.Context, *, flag: str | None = None) -> None:
-        if ctx.guild is None:  # dipakai di DM — tidak ada yang bisa di-onboard
+        if ctx.guild is None:  # used in a DM — nothing to onboard
             await ctx.send("Command ini hanya bisa dipakai di server.")
             return
         if flag not in (None, "--force"):

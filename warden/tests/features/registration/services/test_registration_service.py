@@ -107,11 +107,11 @@ class FakeRepo:
     async def decide(
         self, registration_id, state, reviewed_by, reason, _joined_at=None
     ):
-        # joined_at cuma dipakai insert ke members, dan itu SQL — lihat
+        # joined_at only feeds the members insert, which is SQL — see
         # tests/.../postgres/test_registration_repository.py
         row = self._by_id(registration_id)
         if row["state"] != "pending":
-            return None  # verifikator lain sudah menang
+            return None  # another verifier already won
         row |= {"state": state, "reviewed_by": reviewed_by, "reject_reason": reason}
         return row
 
@@ -161,14 +161,14 @@ async def test_start_recreates_when_ttl_lewat():
     await svc.open_thread(5, 1, thread_id=99, now=NOW)
     action, reg = await svc.start(5, 1, NOW + timedelta(minutes=16))
     assert action == "expired_recreate"
-    assert reg["id"] == 1  # baris lama dipakai ulang, bukan baris kedua
+    assert reg["id"] == 1  # old row reused, not a second one
 
 
 async def test_start_recreates_when_thread_sudah_disapu():
     svc, _repo = service()
     await svc.open_thread(5, 1, thread_id=99, now=NOW)
     await svc.clear_thread(99)
-    action, _ = await svc.start(5, 1, NOW)  # TTL masih hidup, threadnya tidak
+    action, _ = await svc.start(5, 1, NOW)  # TTL alive, the thread is not
     assert action == "expired_recreate"
 
 
@@ -187,7 +187,7 @@ async def test_rejected_orang_boleh_daftar_lagi():
     await svc.submit(reg["id"], "alumni", "Rizky R", "Rizky", "2021", linkedin="x")
     await svc.decide(reg["id"], approve=False, reviewed_by=7, reason="foto buram")
     assert await svc.start(5, 1, NOW) == ("fresh", None)
-    assert await svc.attempt_count(5, 1) == 1  # percobaan berikutnya jadi ke-2
+    assert await svc.attempt_count(5, 1) == 1  # next attempt becomes #2
 
 
 async def test_decide_kedua_kalah_balapan():
@@ -196,7 +196,7 @@ async def test_decide_kedua_kalah_balapan():
     await svc.submit(reg["id"], "alumni", "Rizky R", "Rizky", "2021", linkedin="x")
     assert await svc.decide(reg["id"], approve=True, reviewed_by=7) is not None
     assert await svc.decide(reg["id"], approve=False, reviewed_by=8) is None
-    assert repo.rows[0]["reviewed_by"] == 7  # pemenang tidak ditimpa
+    assert repo.rows[0]["reviewed_by"] == 7  # winner not overwritten
 
 
 async def test_submit_menormalkan_nim():
@@ -227,20 +227,20 @@ async def test_nim_holder_hanya_lihat_approved():
         nim="A1B2C3D4",
         prodi="d3-ti",
     )
-    assert await svc.nim_holder(5, "A1B2C3D4") is None  # masih pending
+    assert await svc.nim_holder(5, "A1B2C3D4") is None  # still pending
     await svc.decide(reg["id"], approve=True, reviewed_by=7)
     assert await svc.nim_holder(5, "A1B2C3D4") == 1
 
 
 def test_normalize_nim():
     assert normalize_nim(" a1b2 ") == "A1B2"
-    assert normalize_nim("  ") is None  # alumni tanpa NIM tidak bentrok di indeks unik
+    assert normalize_nim("  ") is None  # alumni without NIM never hits the unique index
     assert normalize_nim(None) is None
 
 
 def test_validate_angkatan():
     assert validate_angkatan("2021", NOW) is None
-    assert validate_angkatan("2026", NOW) is None  # tahun berjalan masuk
+    assert validate_angkatan("2026", NOW) is None  # current year allowed
     assert validate_angkatan("2027", NOW) is not None
     assert validate_angkatan("1999", NOW) is not None
     assert validate_angkatan("20a1", NOW) is not None

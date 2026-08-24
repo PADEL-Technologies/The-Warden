@@ -10,20 +10,20 @@ if TYPE_CHECKING:
 
 log = logging.getLogger(__name__)
 
-# Petunjuk cleanup, bukan gerbang: submit di menit ke-20 dengan thread masih hidup
-# tetap diterima. auto_archive_duration Discord cuma menerima 60/1440/4320/10080.
+# Cleanup hint, not a gate: a submit at minute 20 on a live thread is still
+# accepted. Discord's auto_archive_duration only takes 60/1440/4320/10080.
 TTL = timedelta(minutes=15)
 ANGKATAN_MIN = 2000
-NICKNAME_MAX = 32  # batas Discord
+NICKNAME_MAX = 32  # Discord's limit
 
 
 def normalize_nim(raw: str | None) -> str | None:
-    """Tanpa ini `a1b2 ` dan `A1B2` jadi dua NIM berbeda dan indeks unik bocor."""
+    """Without this `a1b2 ` and `A1B2` are two NIMs and the unique index leaks."""
     return (raw or "").strip().upper() or None
 
 
 def validate_angkatan(raw: str, now: datetime | None = None) -> str | None:
-    """None = lolos. Selain itu pesan untuk ephemeral."""
+    """None = passed. Otherwise a message for the ephemeral reply."""
     year = (now or datetime.now(UTC)).year
     if not raw.strip().isdigit() or not ANGKATAN_MIN <= int(raw.strip()) <= year:
         return f"Angkatan harus tahun antara {ANGKATAN_MIN} dan {year}."
@@ -31,10 +31,10 @@ def validate_angkatan(raw: str, now: datetime | None = None) -> str | None:
 
 
 def nickname(reg: Registration) -> str:
-    """`[D3-TI]Rizky` / `[ALUMNI]Rizky`. Prodi = key mapping env, di-upper()."""
+    """`[D3-TI]Rizky` / `[ALUMNI]Rizky`. Prodi = env mapping key, upper()."""
     prefix = "ALUMNI" if reg["type"] == "alumni" else (reg["prodi"] or "").upper()
-    # ponytail: dipotong di 32 kalau key prodi-nya kepanjangan — Discord menolak
-    # nickname lebih dari itu. Perpendek key-nya kalau potongannya kelihatan.
+    # ponytail: clipped at 32 if the prodi key is too long — Discord rejects
+    # longer nicknames. Shorten the key if the cut becomes visible.
     return f"[{prefix}]{reg['nama_panggilan']}"[:NICKNAME_MAX]
 
 
@@ -45,8 +45,8 @@ def role_ids_for(
     alumni_role_id: int,
     prodi_roles: dict[str, int],
 ) -> list[int]:
-    """KeyError kalau prodinya tidak ada di mapping — approve harus gagal keras,
-    bukan diam-diam cuma memberi role mahasiswa."""
+    """KeyError if the prodi is missing from the mapping — approve must fail
+    loudly, not silently hand out only the mahasiswa role."""
     if reg["type"] == "alumni":
         return [alumni_role_id]
     return [mahasiswa_role_id, prodi_roles[reg["prodi"] or ""]]
@@ -60,7 +60,7 @@ class RegistrationService:
     async def start(
         self, guild_id: int, user_id: int, now: datetime | None = None
     ) -> tuple[str, Registration | None]:
-        """Satu cabang per baris tabel §State:
+        """One branch per row of the §State table:
         fresh | reuse | expired_recreate | wait | already."""
         reg = await self._repo.active_by_user(guild_id, user_id)
         action = self._action(reg, now or datetime.now(UTC))
@@ -80,7 +80,7 @@ class RegistrationService:
     @staticmethod
     def _action(reg: Registration | None, now: datetime) -> str:
         if reg is None:
-            return "fresh"  # belum pernah, atau percobaan terakhirnya ditolak
+            return "fresh"  # never registered, or last attempt was rejected
         if reg["state"] == "pending":
             return "wait"
         if reg["state"] == "approved":
@@ -130,7 +130,7 @@ class RegistrationService:
         prodi: str | None = None,
         linkedin: str | None = None,
     ) -> Registration:
-        # DEBUG saja: nama/NIM/prodi/linkedin itu PII, di INFO ke atas cuma ID.
+        # DEBUG only: name/NIM/prodi/linkedin are PII; INFO and above log IDs.
         log.debug(
             "registration: form disubmit",
             extra={
@@ -173,8 +173,8 @@ class RegistrationService:
         reason: str | None = None,
         joined_at: str | None = None,
     ) -> Registration | None:
-        """None = sudah diputuskan verifikator lain."""
-        # reason itu teks bebas verifikator — PII, jadi DEBUG saja
+        """None = another verifier already decided."""
+        # the reason is free verifier text — PII, so DEBUG only
         log.debug(
             "registration: keputusan masuk",
             extra={

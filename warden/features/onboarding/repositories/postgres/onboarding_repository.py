@@ -42,8 +42,8 @@ class PostgresOnboardingRepository:
         channels: list[SnapshotChannel],
         force: bool = False,
     ) -> None:
-        # nama operasi saja, bukan SQL + params: INSERT-nya membawa seluruh
-        # roster ke dalam pesan log
+        # operation name only, not SQL + params: the INSERT would drag the
+        # whole roster into the log message
         log.debug(
             "onboarding_repo: save",
             extra={
@@ -68,8 +68,8 @@ class PostgresOnboardingRepository:
                     "DELETE FROM onboardings WHERE guild_id = $1", guild_id
                 )
 
-            # katalog role & channel dari guild, bukan diturunkan dari member
-            # (role/channel tanpa member tetap masuk — issue #7)
+            # role & channel catalogs come from the guild, not derived from
+            # members (member-less roles/channels still included — issue #7)
             await conn.executemany(
                 "INSERT INTO roles (guild_id, role_id, role_name) "
                 "VALUES ($1, $2, $3) ON CONFLICT DO NOTHING",

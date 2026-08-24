@@ -1,5 +1,5 @@
-"""Issue #12: approve harus menulis ke members. Logikanya ada di SQL, jadi fake
-repo tidak membuktikan apa pun — ini harus kena Postgres beneran."""
+"""Issue #12: approve must write to members. The logic lives in SQL, so a fake
+repo proves nothing — this has to hit real Postgres."""
 
 import os
 import random
@@ -17,7 +17,7 @@ pytestmark = pytest.mark.skipif(
     TEST_DB is None, reason="WARDEN_TEST_DATABASE_URL tidak diset"
 )
 
-# guild_id acak per test: rerun terhadap DB yang sama tidak bentrok, tanpa cleanup
+# random guild_id per test: reruns against the same DB never collide, no cleanup
 GUILD = random.randrange(2**62)
 EXPIRES = datetime(2026, 8, 23, 14, 0, tzinfo=UTC)
 JOINED_AT = "2026-08-01T10:00:00+00:00"
@@ -36,7 +36,7 @@ def repo(pool):
 
 
 async def pending(repo, user_id: int, nim: str):
-    """create_open → submit, satu-satunya jalan sah menuju state=pending."""
+    """create_open → submit, the only legal path to state=pending."""
     reg = await repo.create_open(GUILD, user_id, user_id, EXPIRES)
     return await repo.submit(
         reg["id"], "mahasiswa", "Nama Lengkap", "Nama", nim, "2021", "d3-ti", None
@@ -67,7 +67,7 @@ async def test_reject_does_not_insert_member(repo, pool):
 
 
 async def test_approve_keeps_existing_member_row(repo, pool):
-    # sudah kena snapshot onboarding duluan: ON CONFLICT DO NOTHING, bukan error
+    # already captured by the onboarding snapshot: ON CONFLICT DO NOTHING, not an error
     await pool.execute(
         "INSERT INTO members (guild_id, user_id, joined_at) VALUES ($1, $2, $3)",
         GUILD,
@@ -76,7 +76,7 @@ async def test_approve_keeps_existing_member_row(repo, pool):
     )
     reg = await pending(repo, 30, "A0000030")
     assert await repo.decide(reg["id"], "approved", 99, None, None) is not None
-    assert await members_of(pool, 30) == [(30, JOINED_AT)]  # tidak ditimpa NULL
+    assert await members_of(pool, 30) == [(30, JOINED_AT)]  # not overwritten with NULL
 
 
 async def test_second_approve_loses_and_changes_nothing(repo, pool):

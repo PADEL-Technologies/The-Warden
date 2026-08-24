@@ -10,8 +10,7 @@ class RegistrationService(Protocol):
     async def start(
         self, guild_id: int, user_id: int, now: datetime | None = None
     ) -> tuple[str, Registration | None]:
-        """fresh | reuse | expired_recreate | wait | already, plus barisnya
-        kalau ada."""
+        """fresh | reuse | expired_recreate | wait | already, plus the row if any."""
         ...
 
     async def open_thread(
@@ -42,7 +41,7 @@ class RegistrationService(Protocol):
         reason: str | None = None,
         joined_at: str | None = None,
     ) -> Registration | None:
-        """None = sudah diputuskan verifikator lain."""
+        """None = another verifier already decided."""
         ...
 
     async def by_thread(self, thread_id: int) -> Registration | None: ...

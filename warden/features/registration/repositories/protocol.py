@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 class RegistrationRepository(Protocol):
     async def active_by_user(self, guild_id: int, user_id: int) -> Registration | None:
-        """state open/pending/approved. Maksimal satu, dijaga registrations_active."""
+        """open/pending/approved. At most one, enforced by registrations_active."""
         ...
 
     async def create_open(
@@ -18,8 +18,8 @@ class RegistrationRepository(Protocol):
     async def reopen(
         self, registration_id: int, thread_id: int, expires_at: datetime
     ) -> Registration:
-        """Baris open yang TTL-nya lewat dipakai ulang — thread barunya ditambal
-        ke sini, jadi registrations_active tidak perlu ikut berdebat."""
+        """Reuses an open row whose TTL passed — the new thread is patched onto
+        it, so registrations_active never has to argue."""
         ...
 
     async def submit(
@@ -50,19 +50,19 @@ class RegistrationRepository(Protocol):
         reason: str | None,
         joined_at: str | None = None,
     ) -> Registration | None:
-        """None = barisnya sudah bukan pending; verifikator lain menang balapan.
-        state='approved' sekalian menulis barisnya ke members (issue #12);
-        joined_at dari Discord, NULL kalau orangnya sudah keluar server."""
+        """None = row is no longer pending; another verifier won the race.
+        state='approved' also writes the members row (issue #12); joined_at is
+        from Discord, NULL if the user already left."""
         ...
 
     async def attempt_count(self, guild_id: int, user_id: int) -> int:
-        """Termasuk percobaan yang sedang berjalan → "Percobaan ke-N" di kartu."""
+        """Includes the in-flight attempt → "Attempt #N" on the card."""
         ...
 
     async def nim_holder(self, guild_id: int, nim: str) -> int | None:
-        """user_id pemilik NIM yang sudah approved, kalau ada."""
+        """user_id of the approved NIM holder, if any."""
         ...
 
     async def clear_thread(self, thread_id: int) -> None:
-        """Thread sudah dihapus di Discord; barisnya tetap ada sebagai riwayat."""
+        """Thread deleted in Discord; the row remains as history."""
         ...

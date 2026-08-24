@@ -18,5 +18,5 @@ class OnboardingRepository(Protocol):
         channels: list[SnapshotChannel],
         force: bool = False,
     ) -> None:
-        """force=True: hapus snapshot guild ini dulu, dalam transaksi yang sama."""
+        """force=True: delete this guild's snapshot first, in the same transaction."""
         ...

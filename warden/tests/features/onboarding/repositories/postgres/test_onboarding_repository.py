@@ -16,7 +16,7 @@ pytestmark = pytest.mark.skipif(
     TEST_DB is None, reason="WARDEN_TEST_DATABASE_URL tidak diset"
 )
 
-# guild_id acak per test: rerun terhadap DB yang sama tidak bentrok, tanpa cleanup
+# random guild_id per test: reruns against the same DB never collide, no cleanup
 GUILD = random.randrange(2**62)
 OTHER_GUILD = GUILD + 1
 
@@ -50,7 +50,7 @@ async def test_save_and_has_onboarding(repo):
     await repo.save(GUILD, 1, [snap(10, "Mod"), snap(20, "Mod", "Admin")], [], [])
     assert await repo.has_onboarding(GUILD)
     assert await repo.member_count(GUILD) == 2
-    assert not await repo.has_onboarding(OTHER_GUILD)  # guild lain tidak terpengaruh
+    assert not await repo.has_onboarding(OTHER_GUILD)  # other guilds untouched
 
 
 async def test_force_replaces_previous_snapshot(repo, pool):
@@ -89,8 +89,8 @@ async def test_force_replaces_previous_snapshot(repo, pool):
             "SELECT triggered_by, member_count FROM onboardings WHERE guild_id = $1",
             GUILD,
         )
-    assert [r["role_name"] for r in roles] == ["Admin"]  # role lama ikut terhapus
-    assert [c["channel_name"] for c in channels] == ["random"]  # channel lama juga
+    assert [r["role_name"] for r in roles] == ["Admin"]  # old roles deleted
+    assert [c["channel_name"] for c in channels] == ["random"]  # old channels too
     assert [r["user_id"] for r in member_roles] == [30]
     assert [(r["triggered_by"], r["member_count"]) for r in onboarding] == [(1, 1)]
 
@@ -104,7 +104,7 @@ async def test_save_twice_without_force_is_idempotent(repo):
 
 
 async def test_role_and_channel_without_member_still_saved(repo, pool):
-    # issue #7: katalog role, dan kini channel, tidak diturunkan dari member
+    # issue #7: role and channel catalogs are not derived from members
     await repo.save(
         GUILD,
         None,

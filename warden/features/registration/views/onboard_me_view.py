@@ -34,8 +34,8 @@ class OnboardMeView(discord.ui.View):
     async def start(
         self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
-        # semua balasan ephemeral: #registration-locket publik dan pesan permanennya
-        # jangan ketimbun
+        # every reply ephemeral: #registration-locket is public and its pinned
+        # message must not be buried
         await interaction.response.defer(ephemeral=True)
         action, reg = await self.service.start(
             interaction.guild_id, interaction.user.id
@@ -56,7 +56,7 @@ class OnboardMeView(discord.ui.View):
                 await thread.add_user(interaction.user)
                 await interaction.followup.send(thread.jump_url, ephemeral=True)
                 return
-            action = "expired_recreate"  # DB bilang hidup, Discord bilang tidak
+            action = "expired_recreate"  # DB says alive, Discord says otherwise
 
         if action == "expired_recreate":
             old = await get_thread(interaction.guild, reg["thread_id"])
@@ -75,7 +75,7 @@ class OnboardMeView(discord.ui.View):
             else:
                 await self.service.reopen_thread(reg["id"], thread.id)
         except asyncpg.UniqueViolationError:
-            # dua klik hampir bersamaan; registrations_active yang jadi wasitnya
+            # two near-simultaneous clicks; registrations_active is the referee
             log.warning(
                 "registration: klik ganda, registrasi barusan sudah dibuat",
                 extra={
@@ -104,8 +104,8 @@ class OnboardMeView(discord.ui.View):
     async def _create_thread(
         self, interaction: discord.Interaction
     ) -> discord.Thread | None:
-        # id dari config, bukan interaction.channel: sapuan cleanup memakai channel
-        # yang sama, dan keduanya harus menunjuk tempat yang persis sama
+        # id from config, not interaction.channel: the cleanup sweep uses the
+        # same channel and both must point at the exact same place
         locket = interaction.guild.get_channel(
             self.config.registration_locket_channel_id
         )
@@ -125,7 +125,7 @@ class OnboardMeView(discord.ui.View):
         thread = await locket.create_thread(
             name=f"Registrasi · {interaction.user.name}"[:100],
             type=discord.ChannelType.private_thread,
-            invitable=False,  # cuma bot yang boleh menambah orang
+            invitable=False,  # only the bot may add people
             auto_archive_duration=THREAD_ARCHIVE_MINUTES,
             reason="Registrasi",
         )

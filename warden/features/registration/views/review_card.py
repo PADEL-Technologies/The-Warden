@@ -20,8 +20,8 @@ def build_review_embed(
 ) -> discord.Embed:
     embed = discord.Embed(
         title=f"Registrasi {(reg['type'] or '').capitalize()} · Percobaan ke-{attempt}",
-        # mention untuk buka profil, id mentah karena mention tidak berguna
-        # begitu orangnya keluar server
+        # mention opens the profile; raw id because a mention is useless once
+        # the user has left the server
         description=f"<@{reg['user_id']}> · `{reg['user_id']}`",
         color=discord.Color.blurple(),
         timestamp=discord.utils.utcnow(),
@@ -41,8 +41,7 @@ def build_review_embed(
     else:
         embed.add_field(name="LinkedIn", value=reg["linkedin"] or "-", inline=False)
 
-    # satu-satunya sinyal alt account yang tersedia — ditampilkan, tidak dipakai
-    # untuk aturan otomatis
+    # the only alt-account signal available — shown, never used for rules
     created = getattr(member, "created_at", None)
     joined = getattr(member, "joined_at", None)
     embed.add_field(
@@ -59,8 +58,8 @@ def build_review_embed(
 def mark_decided(
     embed: discord.Embed, reg: Registration, verifier: discord.abc.User
 ) -> discord.Embed:
-    """Kartu diedit di tempat, bukan dihapus: #registration-report jadi log
-    keputusan yang bisa digulir."""
+    """Card is edited in place, not deleted: #registration-report stays a
+    scrollable decision log."""
     approved = reg["state"] == "approved"
     embed.color = discord.Color.green() if approved else discord.Color.red()
     if reg["reject_reason"]:

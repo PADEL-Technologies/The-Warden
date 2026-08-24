@@ -30,8 +30,7 @@ def _parse_role_map(raw: str) -> dict[str, int]:
 
 
 def _id(name: str, enabled: bool) -> int:
-    """Wajib saat fiturnya hidup: lebih baik gagal di startup daripada diam
-    saat orang pertama mengklik."""
+    """Required when the feature is on: fail at startup, not silently on first click."""
     return int(os.environ[name]) if enabled else 0
 
 

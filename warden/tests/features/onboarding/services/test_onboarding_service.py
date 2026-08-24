@@ -78,7 +78,7 @@ async def test_skips_when_snapshot_exists():
     svc, repo = service()
     assert await svc.snapshot_if_absent([FakeMember(1, [])], [], [], 5, None)
     assert not await svc.snapshot_if_absent([FakeMember(2, [])], [], [], 5, None)
-    assert len(repo.saved[5]) == 1  # snapshot kedua tidak jalan
+    assert len(repo.saved[5]) == 1  # second snapshot didn't run
 
 
 async def test_force_overrides_existing():
@@ -108,7 +108,7 @@ async def test_none_joined_at_survives():
 
 
 async def test_role_without_member_still_in_catalog():
-    # issue #7: role 0 member tetap masuk katalog
+    # issue #7: a 0-member role still lands in the catalog
     svc, repo = service()
     lonely = FakeRole(9, "Kosong")
     await svc.snapshot_if_absent([FakeMember(1, [])], [lonely], [], 5, None)
