@@ -138,6 +138,16 @@ class RegistrationHandlers(commands.Cog):
             )
             return
         scanned = swept = 0
+        # Discord mengevaluasi auto-archive secara malas: thread yang jamnya
+        # sudah lewat bisa tetap archived=False kalau tidak disentuh siapa pun,
+        # dan itu membuatnya tak terlihat oleh archived_threads() di bawah.
+        now = discord.utils.utcnow()
+        for thread in await locket.guild.fetch_active_threads():
+            if thread.parent_id != locket.id:
+                continue
+            if thread.archive_timestamp and thread.archive_timestamp < now:
+                with contextlib.suppress(discord.HTTPException):
+                    await thread.edit(archived=True)
         # limit=50 per pass: delete thread itu operasi channel-delete, rate limitnya
         # galak. Sisanya kebagian jam berikutnya.
         async for thread in locket.archived_threads(private=True, limit=50):
