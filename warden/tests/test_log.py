@@ -1,5 +1,6 @@
 import json
 import logging
+import sys
 
 from warden.log import JsonFormatter, setup_logging
 
@@ -34,6 +35,20 @@ def test_timestamp_carries_explicit_offset():
 def test_non_serializable_value_does_not_crash():
     # default=str: satu nilai aneh tidak boleh menjatuhkan seluruh baris log
     assert _record(payload=object())["payload"].startswith("<object")
+
+
+def test_exception_fields():
+    try:
+        raise ValueError("gagal")
+    except ValueError:
+        out = _record(exc_info=sys.exc_info())
+    assert out["exc_type"] == "ValueError"
+    assert out["exc_message"] == "gagal"
+    assert "ValueError: gagal" in out["traceback"]
+
+
+def test_record_without_exception_has_no_traceback_field():
+    assert "traceback" not in _record()
 
 
 def test_log_level_only_raises_warden_loggers():
