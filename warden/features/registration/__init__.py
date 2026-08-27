@@ -19,10 +19,10 @@ from warden.features.registration.views.pilih_tipe_view import PilihTipeView
 from warden.features.registration.views.review_view import ReviewView
 
 if TYPE_CHECKING:
-    from discord.ext import commands
+    from warden.bot import Warden
 
 
-async def setup(bot: commands.Bot) -> None:
+async def setup(bot: Warden) -> None:
     if not bot.config.registration_enabled:
         return
     pool = await asyncpg.create_pool(bot.config.database_url)
