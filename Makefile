@@ -42,7 +42,7 @@ db:
 	docker compose up -d
 
 update-harness:
-	uv tool run --from graphifyy graphify extract . --code-only
+	uv tool run --from graphifyy graphify extract . --code-only --directed
 	find graphify-out -maxdepth 1 -type d -regextype posix-extended -regex '.*/[0-9]{4}-[0-9]{2}-[0-9]{2}' -exec rm -rf {} +
 	uv run python -c "import shutil; shutil.rmtree('.serena/cache', ignore_errors=True)"
 
