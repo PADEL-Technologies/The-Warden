@@ -36,6 +36,7 @@ class OnboardMeView(discord.ui.View):
     ) -> None:
         # every reply ephemeral: #registration-locket is public and its pinned
         # message must not be buried
+        assert interaction.guild is not None and interaction.guild_id is not None
         await interaction.response.defer(ephemeral=True)
         action, reg = await self.service.start(
             interaction.guild_id, interaction.user.id
@@ -50,6 +51,8 @@ class OnboardMeView(discord.ui.View):
             return
 
         if action == "reuse":
+            # reuse/expired_recreate selalu disertai row (lihat _action)
+            assert reg is not None
             thread = await get_thread(interaction.guild, reg["thread_id"])
             if thread is not None:
                 await wake(thread)
@@ -59,6 +62,7 @@ class OnboardMeView(discord.ui.View):
             action = "expired_recreate"  # DB says alive, Discord says otherwise
 
         if action == "expired_recreate":
+            assert reg is not None
             old = await get_thread(interaction.guild, reg["thread_id"])
             if old is not None:
                 with contextlib.suppress(discord.HTTPException):
@@ -104,12 +108,13 @@ class OnboardMeView(discord.ui.View):
     async def _create_thread(
         self, interaction: discord.Interaction
     ) -> discord.Thread | None:
+        assert interaction.guild is not None
         # id from config, not interaction.channel: the cleanup sweep uses the
         # same channel and both must point at the exact same place
         locket = interaction.guild.get_channel(
             self.config.registration_locket_channel_id
         )
-        if locket is None:
+        if not isinstance(locket, discord.TextChannel):
             log.warning(
                 "registration: channel locket tidak ketemu saat membuat thread",
                 extra={

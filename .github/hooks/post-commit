@@ -27,7 +27,7 @@ echo "[post-commit] refreshing graphify graph (code-only)..."
 # pyproject.toml) as a side effect - warn instead of silently committing
 # (or discarding) whatever changed.
 before=$(git diff --name-only -- . ':!graphify-out')
-if uv tool run --from graphifyy graphify extract . --code-only >/dev/null 2>&1; then
+if uv tool run --from graphifyy graphify extract . --code-only --directed >/dev/null 2>&1; then
     # graphify backs up graphify-out/ into a dated dir before overwriting
     # curated (manually labeled) graphs. git history already versions
     # graphify-out/, so a fresh dated copy every run is pure clutter -

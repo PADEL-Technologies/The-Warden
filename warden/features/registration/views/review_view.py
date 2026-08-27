@@ -39,6 +39,8 @@ class ReviewView(discord.ui.View):
 
     async def resolve(self, interaction: discord.Interaction) -> Registration | None:
         """Authorize + lookup. None = already answered, callback must stop."""
+        # component-only view: interaction.message/guild selalu ada di runtime
+        assert interaction.message is not None
         if not is_verifier(interaction.user, self.config.registration_verifier_role_id):
             log.warning(
                 "registration: tombol review diklik non-verifikator",
@@ -73,6 +75,7 @@ class ReviewView(discord.ui.View):
         note: str,
     ) -> None:
         """Announce to the applicant's thread, then edit the card in place."""
+        assert interaction.message is not None and interaction.guild is not None
         thread = await get_thread(interaction.guild, decided["thread_id"])
         if thread is not None:
             try:
@@ -92,10 +95,12 @@ class ReviewView(discord.ui.View):
         embed = mark_decided(message.embeds[0], decided, interaction.user)
         disabled = ReviewView(self.service, self.config)
         for item in disabled.children:
-            item.disabled = True
+            if isinstance(item, (discord.ui.Button, discord.ui.Select)):
+                item.disabled = True
         await message.edit(embed=embed, view=disabled)
 
     async def already_decided(self, interaction: discord.Interaction) -> None:
+        assert interaction.message is not None
         current = await self.service.by_report_message(interaction.message.id)
         who = f"<@{current['reviewed_by']}>" if current else "verifikator lain"
         await interaction.followup.send(
@@ -110,6 +115,7 @@ class ReviewView(discord.ui.View):
     async def approve(
         self, interaction: discord.Interaction, _button: discord.ui.Button
     ) -> None:
+        assert interaction.guild is not None
         reg = await self.resolve(interaction)
         if reg is None:
             return
@@ -252,6 +258,7 @@ class ReviewView(discord.ui.View):
         reg = await self.resolve(interaction)
         if reg is None:
             return
+        assert interaction.guild is not None
         log.debug(
             "registration: verifikator join thread",
             extra={

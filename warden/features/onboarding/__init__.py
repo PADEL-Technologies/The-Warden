@@ -11,10 +11,10 @@ from warden.features.onboarding.repositories.postgres.onboarding_repository impo
 from warden.features.onboarding.services.onboarding_service import OnboardingService
 
 if TYPE_CHECKING:
-    from discord.ext import commands
+    from warden.bot import Warden
 
 
-async def setup(bot: commands.Bot) -> None:
+async def setup(bot: Warden) -> None:
     if not bot.config.onboarding_enabled:
         return
     pool = await asyncpg.create_pool(bot.config.database_url)
