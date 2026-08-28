@@ -19,6 +19,10 @@ CONFIG = Config(
     registration_mahasiswa_role_id=4,
     registration_alumni_role_id=5,
     registration_prodi_roles={"d3-ti": 333, "d3-tk": 444},
+    moderation_enabled=False,
+    moderation_admin_role_ids=[],
+    moderation_ignored_channel_ids=[],
+    moderation_warning_delete_after=15,
     log_level="INFO",
 )
 REG = {"id": 1, "guild_id": 5, "user_id": 9, "prodi": None}
