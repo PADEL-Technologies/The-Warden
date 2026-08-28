@@ -11,6 +11,7 @@ on every row, so the multi-guild door stays open.
 | `DATABASE_URL`         | — (required) | Postgres DSN, e.g. `postgres://user:pass@host:5432/db` |
 | `ONBOARDING_ENABLED`   | `true`       | Load the onboarding feature at all                     |
 | `REGISTRATION_ENABLED` | `true`       | Load the registration feature at all                   |
+| `MODERATION_ENABLED`   | `true`       | Load the moderation feature at all                     |
 | `LOG_LEVEL`            | `INFO`       | Root log level for `warden.*` — see [Logging](#logging) |
 
 Flags read as true for `1`, `true`, `yes` (case-insensitive).
@@ -42,11 +43,64 @@ are also the nickname prefix (upper-cased). A prodi key that is missing from the
 mapping at approval time **fails the approve** with an explicit ephemeral rather
 than silently granting only the mahasiswa role.
 
+## Moderation
+
+`MODERATION_ADMIN_ROLE_IDS` is **required** when `MODERATION_ENABLED` is true and
+read with `os.environ[...]`: without it nobody could register a keyword and nobody
+would be exempt from the filter, so the bot fails at startup rather than running
+mute.
+
+| Variable                         | Default    | Purpose                                                    |
+| -------------------------------- | ---------- | ---------------------------------------------------------- |
+| `MODERATION_ADMIN_ROLE_IDS`      | — required | `111,222` — may run `/keyword`, `/regex`, `/label`          |
+| `MODERATION_IGNORED_CHANNEL_IDS` | empty      | `333,444` — messages here are never inspected               |
+| `MODERATION_WARNING_DELETE_AFTER`| `15`       | Seconds before the public warning deletes itself            |
+
+`MODERATION_ADMIN_ROLE_IDS` does double duty: those roles are also **exempt from
+the filter**. That is one variable rather than two, and it means a mod quoting a
+judol link while discussing a case does not trip the filter they maintain.
+
+The channel list is an **exemption** list, not an allowlist — every channel is
+watched unless it is named here, so a newly created channel is covered by default
+instead of being silently unmonitored.
+
+Command access is the app owner (`bot.is_owner()`, which reads the application
+owner from the Developer Portal and therefore survives a change of server
+ownership) **or** any of those roles. A rejected attempt gets an ephemeral reply
+and a `WARNING` line carrying `user_id`.
+
+See [Moderation feature](moderation.md) for the labels and how matching works.
+
+### Privacy: this feature stores chat messages
+
+`moderation_hits.content` holds the **full text of every flagged message**,
+permanently, and there is no TTL. That is deliberate — the table is the training
+corpus for the fastText phase, and an automatic purge would delete the data before
+it can be used. It is also the sharpest data-retention decision in this repo, so
+it should be a conscious one:
+
+- Only messages that **matched** a keyword or regex rule are stored. Clean
+  messages are never written; a message with no match costs no database call.
+- Anyone with database access can read it. Restrict Postgres accordingly — the
+  Discord permission model does not apply here.
+- Deleting one person's history is a direct statement, there is no command for it:
+  ```sql
+  DELETE FROM moderation_hit_matches WHERE hit_id IN
+      (SELECT id FROM moderation_hits WHERE author_id = <user_id>);
+  DELETE FROM moderation_hits WHERE author_id = <user_id>;
+  ```
+
+Unlike registration PII, this is **not** gated behind `LOG_LEVEL=DEBUG` — the
+message text is in the database at every log level. Repository calls still log
+operation names rather than SQL and params, for the same reason as elsewhere: an
+`INSERT INTO moderation_hits` statement carries the whole message.
+
 ## Server permissions this assumes
 
 | Who                    | Permission                                            |
 | ---------------------- | ----------------------------------------------------- |
 | Bot                    | `Manage Threads`, `Manage Roles`, `Manage Nicknames`   |
+| Bot                    | `Manage Messages` — moderation deletes flagged messages |
 | Bot                    | its role must sit **above** every role it grants       |
 | `@everyone`            | **revoke** `Change Nickname`                           |
 | Verifier role          | **no** `Manage Threads` — the bot does `add_user`      |
@@ -120,6 +174,8 @@ renders it:
 | `!registration post`, `!onboard existing` | `discord.ext.commands.bot`|
 | `on_member_join`, `on_guild_join`         | `discord.client`          |
 | The hourly sweep                          | `discord.ext.tasks`       |
+| `on_message`, `on_message_edit`           | `discord.client`          |
+| `/keyword`, `/regex`, `/label`            | `discord.app_commands.tree` |
 
 Errors that warden catches itself are logged **without** `exc_info` — the message
 already names the cause and `extra=` carries the IDs. That keeps
@@ -132,5 +188,8 @@ when it deletes nothing.
 
 Still pending: the user gets no reply when a button or modal raises — Discord shows
 "This interaction failed" and nothing else. Fixing that means overriding `on_error`,
-which is also where `user_id` would join the crash line. There is no
-`on_app_command_error` because there are no app commands.
+which is also where `user_id` would join the crash line.
+
+The moderation cog closes that gap for itself with `cog_app_command_error`, which
+turns a rejected permission check into an ephemeral reply plus a `WARNING`. It only
+covers that cog; there is still no bot-wide `on_app_command_error`.

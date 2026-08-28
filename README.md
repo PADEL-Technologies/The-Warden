@@ -1,11 +1,14 @@
 # warden
 
-Discord bot for a campus community. Two features are live:
+Discord bot for a campus community. Three features are live:
 
 - **onboarding** — snapshots the member roster and their roles the first time the
   bot joins a guild.
 - **registration** — manual member verification: form in a private thread, review
   card for verifiers, roles and nickname on approval.
+- **moderation** — watches every message for keywords and regex rules, labels what
+  it finds, deletes and warns on the heavy labels. The stored hits double as the
+  training corpus for a classifier later.
 
 Plus **ping**, the reference feature that shows the folder layout.
 
@@ -52,6 +55,7 @@ to `Asia/Jakarta`. The image does not carry `migrations/`.
 - [Architecture](docs/architecture.md) — feature layout, adding a feature, AI harness
 - [Onboarding feature](docs/onboarding.md)
 - [Registration feature](docs/registration.md)
+- [Moderation feature](docs/moderation.md) — labels, matching, commands, path to fastText
 
 User-facing bot messages are in Indonesian; code, comments in new code, and docs
 are in English.

@@ -115,6 +115,64 @@ untouched, `joined_at` included.
 `roles.id`, which only exists if the snapshot ran, and every other role change after
 the snapshot is equally stale.
 
+### Moderation (`20260828000000_moderation.sql`)
+
+Four tables. `moderation_keywords` and `moderation_regex_rules` carry **no
+`guild_id`**, unlike everything else here: a word list is a property of the
+language, not of the community.
+
+```
+moderation_hits.id        <- moderation_hit_matches.hit_id
+moderation_keywords.id    <- moderation_hit_matches.rule_id  (rule_kind='keyword')
+moderation_regex_rules.id <- moderation_hit_matches.rule_id  (rule_kind='regex')
+```
+
+Removal is soft (`enabled BOOLEAN`), so `UNIQUE (label, normalized)` is a plain
+constraint rather than a partial index — a disabled row still has to collide, or
+re-adding a term could not reuse it:
+
+```sql
+INSERT INTO moderation_keywords (label, term, normalized, created_by)
+SELECT $1, t.term, t.normalized, $4
+FROM unnest($2::text[], $3::text[]) AS t(term, normalized)
+ON CONFLICT (label, normalized) DO UPDATE SET enabled = true
+RETURNING normalized, term, (xmax = 0) AS was_new
+```
+
+`xmax = 0` is how an insert is told apart from the update branch — the alternative
+is a `SELECT` first, which races against a second admin running the same command.
+`normalized` comes back because it is the conflict key: on conflict the *stored*
+`term` wins, which may differ in case from what was typed.
+
+The migration also seeds 12 regex rules with `created_by = NULL`. Postgres runs
+with `standard_conforming_strings` on, so `\b` in those literals is a backslash
+followed by `b`, exactly as `re` wants it.
+
+### A hit and its reasons are written together
+
+`record_hit()` is a data-modifying CTE, same shape and same reason as
+`registrations.decide()`:
+
+```sql
+WITH h AS (
+    INSERT INTO moderation_hits (...) VALUES (...) RETURNING id
+), m AS (
+    INSERT INTO moderation_hit_matches (hit_id, label, rule_kind, rule_id, matched_term)
+    SELECT h.id, t.label, t.kind, t.rule_id, t.term
+    FROM h, unnest($9::text[], $10::text[], $11::bigint[], $12::text[])
+             AS t(label, kind, rule_id, term)
+)
+SELECT id FROM h
+```
+
+One statement, so a dropped connection cannot leave a hit with no reasons attached.
+One row per match rather than a label array on the hit: that is what makes the
+fastText export a plain `GROUP BY`, and what keeps "which keyword produces the most
+false positives" answerable.
+
+`moderation_hits.content` stores the member's full message text, permanently. See
+the privacy section in [Configuration](configuration.md#privacy-this-feature-stores-chat-messages).
+
 ## Operational note: pgbouncer
 
 `create_pool()` does not set `statement_cache_size=0`. That is safe under pgbouncer
